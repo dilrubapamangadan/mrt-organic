@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/category', 'CategoryController@index');
+Route::prefix('category')->group(function () {
+    Route::post('/store', 'CategoryController@store');
+    Route::put('/{id}', 'CategoryController@update');
+    Route::put('/edit/{id}', 'CategoryController@edit');
+    Route::delete('/{id}', 'CategoryController@destroy');
+});
