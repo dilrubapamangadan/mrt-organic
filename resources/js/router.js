@@ -7,8 +7,9 @@ Vue.use(VueRouter);
 
 export default new VueRouter({
     routes: [
-        { path: '/', component: ExampleComponent },
-        { path: '/test', component: Home }
+        { path: '/dashboard', component:  Home},
+        { path: '/category', component: Home },
+        { path: '/products', component: Home }
     ],
     mode: 'history'
 });
