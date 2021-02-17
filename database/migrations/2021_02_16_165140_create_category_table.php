@@ -13,7 +13,7 @@ class CreateCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('category', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id('ct_slno');
             $table->string('ct_name');
             $table->boolean('status')->default(true);
@@ -28,11 +28,6 @@ class CreateCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::create('category', function (Blueprint $table) {
-            $table->id('ct_slno');
-            $table->string('ct_name');
-            $table->boolean('status');
-            $table->timestamps();
-        });
+        Schema::dropIfExists('categories');
     }
 }
