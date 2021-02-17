@@ -40,8 +40,9 @@ class CategoryController extends Controller
             'description' => 'required',
         ]);
         $newCategory = new Category;
-        $newCategory->ct_name = $request["name"];
-        $newCategory->ct_description = $request["desc"];
+        $newCategory->name = $request["name"];
+        $newCategory->description = $request["description"];
+        $newCategory->status = $request["status"]?1:0;
         $newCategory->save();
 
         return $newCategory;
@@ -78,13 +79,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $existingCategory = Category::find( $id );
-
+        $existingCategory = Category::findOrFail( $id );
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+        ]);
         if( $existingCategory ){
-            $existingCategory->ct_name = $request->category["name"];
+            $existingCategory->name = $request['name'];
+            $existingCategory->description = $request['description'];
+            $existingCategory->status = $request['status'] ? true : false;
             $existingCategory->save();
-
-            return $existingCategory;
+            return 'Success';
         }
 
         return 'Item not found';
