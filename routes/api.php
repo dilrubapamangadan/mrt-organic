@@ -25,3 +25,5 @@ Route::prefix('category')->group(function () {
     Route::put('/edit/{id}', 'CategoryController@update');
     Route::delete('/{id}', 'CategoryController@destroy');
 });
+
+Route::get('/store', 'StoreController@index');

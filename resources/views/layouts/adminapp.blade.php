@@ -38,12 +38,6 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ asset('index3.html') }}" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
 
     <!-- SEARCH FORM -->
@@ -104,7 +98,7 @@
       <img src="{{ asset('assets/img/logo.png') }}"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+           style="margin-left: -0.2rem;max-height: 25px;">
       <span class="brand-text font-weight-light">Organic</span>
     </a>
 
@@ -126,25 +120,39 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
-            <router-link to="/dashboard" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i>
+            <router-link to="/dashboard" class="nav-link"><i class="nav-icon fas fa-chart-bar"></i>
               <p>
                 Dashboard
               </p>
             </router-link>
           </li>
           <li class="nav-item">
-          <router-link to="/category" class="nav-link"><i class="nav-icon fas fa-th"></i>
+          <router-link to="/category" class="nav-link"><i class="nav-icon fas fa-tags"></i>
             <p>
               Category
             </p>
           </router-link>
           </li>
           <li class="nav-item">
-          <router-link to="/products" class="nav-link"><i class="nav-icon fas fa-th"></i>
+          <router-link to="/products" class="nav-link"><i class="nav-icon fas fa-tags"></i>
             <p>
               Products
             </p>
           </router-link>
+          </li>
+          <li class="nav-item">
+          <router-link to="/enquiry" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i>
+            <p>
+              Enquiry
+            </p>
+          </router-link>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="nav-icon fas fa-sign-out-alt"></i>
+            <p>
+              Sign Out
+            </p>
+          </a>
           </li>
         </ul>
       </nav>
@@ -152,63 +160,15 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+  </form>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Fixed Layout</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item"><a href="#">Layout</a></li>
-              <li class="breadcrumb-item active">Fixed Layout</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-            <main class="py-4">
-                @yield('content')
-            </main>
-
-      {{-- <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <!-- Default box -->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Title</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fas fa-minus"></i></button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fas fa-times"></i></button>
-                </div>
-              </div>
-              <div class="card-body">
-                Start creating your amazing application!
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer">
-                Footer
-              </div>
-              <!-- /.card-footer-->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
-      </div> --}}
-    </section>
-    <!-- /.content -->
+    <main>
+      @yield('content')
+  </main>
+   
   </div>
   <!-- /.content-wrapper -->
   </div>

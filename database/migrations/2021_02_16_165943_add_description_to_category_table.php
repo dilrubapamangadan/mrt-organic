@@ -14,9 +14,9 @@ class AddDescriptionToCategoryTable extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->longText('ct_description')->after('ct_name');
-            $table->longText('ct_img')->after('ct_description')->nullable();
-            $table->integer('ct_sp_slno')->after('ct_description');
+            $table->longText('description')->after('name');
+            $table->longText('img')->after('description')->nullable();
+            $table->integer('store_id')->after('description');
         });
     }
 
@@ -28,9 +28,9 @@ class AddDescriptionToCategoryTable extends Migration
     public function down()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->longText('ct_description');
-            $table->longText('ct_img');
-            $table->longText('ct_sp_slno');
+            $table->longText('description');
+            $table->longText('img');
+            $table->longText('store_id');
         });
     }
 }

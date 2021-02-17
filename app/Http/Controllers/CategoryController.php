@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::orderBy('created_at', 'DESC')->get();
+        $categoryData = Category::getCategory();
+        return $categoryData;
     }
 
     /**
@@ -43,6 +44,13 @@ class CategoryController extends Controller
         $newCategory->name = $request["name"];
         $newCategory->description = $request["description"];
         $newCategory->status = $request["status"]?1:0;
+        $newCategory->store_id = $request["store_id"];
+        if($request["img"]){
+            $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
+            \Image::make($request["img"])->save(public_path('img/category/').$name);
+            $newCategory->img = $name;
+
+        }
         $newCategory->save();
 
         return $newCategory;
@@ -87,8 +95,17 @@ class CategoryController extends Controller
         if( $existingCategory ){
             $existingCategory->name = $request['name'];
             $existingCategory->description = $request['description'];
-            $existingCategory->status = $request['status'] ? true : false;
+            $existingCategory->status = $request['status'] ? 1 : 0;
+            $existingCategory->store_id = $request['store_id'];
+
+            if($request["img"] != $existingCategory->img){
+                $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
+                \Image::make($request["img"])->save(public_path('img/category/').$name);
+                $existingCategory->img = $name;
+    
+            }
             $existingCategory->save();
+
             return 'Success';
         }
 

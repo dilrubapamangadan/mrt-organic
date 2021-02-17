@@ -14,9 +14,9 @@ class CreateProductCategoryTable extends Migration
     public function up()
     {
         Schema::create('product_category', function (Blueprint $table) {
-            $table->id('pc_clno');
-            $table->integer('pc_pd_slno');
-            $table->integer('pc_ct_slno');
+            $table->id('id');
+            $table->integer('product_id');
+            $table->integer('category_id');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

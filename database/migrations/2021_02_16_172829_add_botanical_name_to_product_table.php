@@ -14,7 +14,7 @@ class AddBotanicalNameToProductTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('pd_botanical_name')->nullable()->after('pd_name');
+            $table->string('botanical_name')->nullable()->after('name');
         });
     }
 
@@ -26,7 +26,7 @@ class AddBotanicalNameToProductTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('pd_botanical_name');
+            $table->string('botanical_name');
         });
     }
 }

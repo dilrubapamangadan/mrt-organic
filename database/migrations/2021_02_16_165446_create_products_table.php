@@ -14,11 +14,11 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('pd_slno');
-            $table->string('pd_name');
-            $table->longText('pd_description')->nullable();
-            $table->string('pd_img')->nullable();
-            $table->boolean('pd_feature_status')->default(false);
+            $table->id('id');
+            $table->string('name');
+            $table->longText('description')->nullable();
+            $table->string('img')->nullable();
+            $table->boolean('feature_status')->default(false);
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
