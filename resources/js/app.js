@@ -6,6 +6,8 @@ import { Form, HasError, AlertError } from 'vform'
 import VueProgressBar from 'vue-progressbar'
 import Swal from 'sweetalert2'
 import 'animate.css'
+import vWow from 'v-wow'
+Vue.use(vWow);
 //form
 window.Form = Form;
 Vue.component(HasError.name, HasError);

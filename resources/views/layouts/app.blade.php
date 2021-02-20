@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,23 +14,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/custom/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/custom/css/line-awesome.min.css">
-    <link rel="stylesheet" href="assets/custom/css/owl.carousel.min.css">
+    {{-- <link rel="stylesheet" href="assets/custom/css/owl.carousel.min.css"> --}}
     <link rel="stylesheet" type="text/css" href="assets/custom/css/component.css" />
-    <link rel="stylesheet" type="text/css" href="assets/custom/css/animate.css" />
+    {{-- <link rel="stylesheet" type="text/css" href="assets/custom/css/animate.css" /> --}}
     <link rel="stylesheet" type="text/css" href="assets/custom/css/mobile-nav.css" />
     <link rel="stylesheet" href="assets/custom/css/custom.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
         <header>
             <div class="first-row">
                 <div class="container-fluid text-center align-items-center">
@@ -127,10 +127,12 @@
                 </nav>
             </div>
         </header>
-        <main class="py-4">
+    <div id="app">
+
             @yield('content')
-        </main>
-        <footer class="wow fadeInUp" data-wow-duration="1s">
+    </div>
+
+        <footer class="wow fadeInUp" data-wow-duration="1s" >
             <div class="container relative">
                 <div class="pb-4 pb-md-5 logo"><img src="img/brand-logo.png" data-src="img/brand-logo.png" alt="MRT" width="266" height="104"></div>
                 <div class="row">
@@ -215,7 +217,6 @@
                 </div>
             </div>
         </footer>
-    </div>
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -232,101 +233,40 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="assets/custom/js/jquery.countup.js"></script>
-    <script src="assets/custom/js/wow.js"></script>
+    {{-- <script src="assets/custom/js/wow.js"></script> --}}
     <script src="assets/custom/js/owl.carousel.min.js"></script>
     <script src="assets/custom/js/modernizr.custom.js"></script>
     <script src="assets/custom/js/jquery.dlmenu.js"></script>
 
     <script type="text/javascript">
-        //fixed header script
-        $(window).scroll(function(){
-            if ($(window).scrollTop() >= 100) {
-            $('header').addClass('fixed-header');
-            // $('nav div').addClass('visible-title');
-            }
-            else {
-            $('header').removeClass('fixed-header');
-            // $('nav div').removeClass('visible-title');
-            }
-        });
-        
-        //carousel
-        $('.carousel').carousel({
-            pause: "false"
-        });
-    
-        $(window).on('load', function() {
-            $('#status').fadeOut(); 
-            $('#preloader').delay(350).fadeOut('slow');
-            $('body').delay(350).css({'overflow':'visible'});
-        })
-        
-        $('.counter').countUp();
-    
-        new WOW().init();
-                
-        $(document).ready(function() {
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                    autoplay:false,
-                    //autoWidth:true,
-                responsiveClass: true,
-                    nav: true,
-                responsive: {
-                    0: {
-                    items: 1,
-                    nav: true
-                    },
-                    600: {
-                    items: 2,
-                    
-                    }
-                    ,
-                    900: {
-                    items: 3,
-                    
-                    },
-                    1000: {
-                    items: 3,
-                    
-                    loop: true,
-                    margin: 20
-                    }
-                }
-            })
-                
-        })
-    
-        $('#carousel-solutions').owlCarousel({
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            margin: 20,
-            responsiveClass: true,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                600: {
-                    items: 3,
-                },
-                1200: {
-                    items: 6,
-                }
-            }
-        });
-        
-        $('.carousel').carousel({
-            pause: "false"
-        });
-    
-        $(function() {
-            $( '#dl-menu' ).dlmenu({
-                animationClasses : { classin : 'dl-animate-in-5', classout : 'dl-animate-out-5' }
-            });
-        });
-    </script>
-    </body>
+    //fixed header script
+   $(window).scroll(function(){
+    if ($(window).scrollTop() >= 100) {
+        $('header').addClass('fixed-header');
+        // $('nav div').addClass('visible-title');
+    }
+    else {
+        $('header').removeClass('fixed-header');
+        // $('nav div').removeClass('visible-title');
+    }
+   });
+ 
+
+   $(window).on('load', function() {
+     $('#status').fadeOut(); 
+     $('#preloader').delay(350).fadeOut('slow');
+     $('body').delay(350).css({'overflow':'visible'});
+   })
+
+
+$('.counter').countUp();
+
+			$(function() {
+				$( '#dl-menu' ).dlmenu({
+					animationClasses : { classin : 'dl-animate-in-5', classout : 'dl-animate-out-5' }
+				});
+			});
+	</script>
+
+</body>
 </html>
-       
