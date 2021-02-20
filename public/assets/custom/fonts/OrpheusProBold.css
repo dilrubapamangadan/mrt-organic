@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'OrpheusProBold';
+    src: url('fonts/OrpheusProBold.eot');
+    src: url('fonts/OrpheusProBold.eot') format('embedded-opentype'),
+         url('fonts/OrpheusProBold.woff2') format('woff2'),
+         url('fonts/OrpheusProBold.woff') format('woff'),
+         url('fonts/OrpheusProBold.ttf') format('truetype'),
+         url('fonts/OrpheusProBold.svg#OrpheusProBold') format('svg');
+}

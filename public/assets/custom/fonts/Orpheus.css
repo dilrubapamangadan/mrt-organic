@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Orpheus';
+    src: url('fonts/Orpheus.eot');
+    src: url('fonts/Orpheus.eot') format('embedded-opentype'),
+         url('fonts/Orpheus.woff2') format('woff2'),
+         url('fonts/Orpheus.woff') format('woff'),
+         url('fonts/Orpheus.ttf') format('truetype'),
+         url('fonts/Orpheus.svg#Orpheus') format('svg');
+}
