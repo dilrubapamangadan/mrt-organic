@@ -115,7 +115,7 @@
                         <div class="modal-body">
                         
                                 <div class="form-group">
-                                    <label for="name">Email</label>
+                                    <label for="name">Name</label>
                                     <input v-model="form.name" type="text" class="form-control" id="name" placeholder="Name" :class="{ 'is-invalid': form.errors.has('name') }">
                                 </div>
                                 <has-error :form="form" field="name"></has-error>
@@ -195,10 +195,11 @@ export default {
     },
     methods: {
         loadShop(){
-            axios.get('/api/store').then(({ data }) => { this.items = data})
+            axios.get('/api/store').then(({ data }) => { this.items = data; })
         },
         loadCategory(){
-            axios.get('/api/category').then(({ data }) => { this.categories = data})
+            this.$Progress.start()
+            axios.get('/api/category').then(({ data }) => { this.categories = data; this.$Progress.finish();})
         },
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
@@ -264,12 +265,20 @@ export default {
             }).then((result) => {
                 if(result.value){
                     this.form.delete('/api/category/'+id)
-                        .then(() => {
-                             toast.fire({
-                                icon: 'success',
-                                title: 'Deleted!,Record has been deleted.'
-                            })
+                        .then(({data}) => {
                             Fire.$emit('updateList');
+                            if(data.success){
+                                toast.fire({
+                                    icon: 'success',
+                                    title: data.message
+                                })
+                            }else{
+                                swal.fire(
+                                    'Failed!',
+                                    data.message,
+                                    'warning'
+                                )
+                            }
                         })
                         .catch(() => {
                             swal.fire(

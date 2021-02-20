@@ -5,7 +5,7 @@ import Vuetify from '../plugins/vuetify'
 import { Form, HasError, AlertError } from 'vform'
 import VueProgressBar from 'vue-progressbar'
 import Swal from 'sweetalert2'
-
+import 'animate.css'
 //form
 window.Form = Form;
 Vue.component(HasError.name, HasError);

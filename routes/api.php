@@ -26,4 +26,15 @@ Route::prefix('category')->group(function () {
     Route::delete('/{id}', 'CategoryController@destroy');
 });
 
+Route::get('/product', 'ProductController@index');
+Route::prefix('product')->group(function () {
+    Route::post('/store', 'ProductController@store');
+    Route::put('/{id}', 'ProductController@update');
+    Route::put('/edit/{id}', 'ProductController@update');
+    Route::delete('/{id}', 'ProductController@destroy');
+});
+
 Route::get('/store', 'StoreController@index');
+Route::prefix('store')->group(function () {
+    Route::get('/category/{id}', 'StoreController@storeCategories');
+});

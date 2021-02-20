@@ -39,13 +39,13 @@
                                     Product
                                 </th>
                                 <th style="width: 15%">
+                                    Category
+                                </th>
+                                <th style="width: 15%">
                                     Store
                                 </th>
                                 <th>
                                     Description
-                                </th>
-                                <th style="width: 8%" class="text-center">
-                                    Status
                                 </th>
                                 <th style="width: 10%">
                                     
@@ -54,30 +54,34 @@
                         </thead>
                         
                         <tbody>
-                            <tr v-for="category in categories" :key="category.id">
+                            <tr v-for="product in products" :key="product.id">
                                 <td class="align-middle">
                                     <ul class="list-inline">
                                         <li class="list-inline-item" >
-                                            <img v-if="category.img" alt="Avatar" style="width:50px" class="img-fluid img-thumbnail" :src="'img/category/'+category.img">
+                                            <img v-if="product.img" alt="Avatar" style="width:50px" class="img-fluid img-thumbnail" :src="'img/product/'+product.img">
                                             <img v-else alt="Avatar" style="width:50px" class="img-fluid img-thumbnail" src="assets/img/empty.jpg">
                                         </li>
                                         
                                     </ul>
                                 </td>
                                 <td class="align-middle">
-                                    <h6>{{ category.name | upText }}</h6>
+                                    <h6>{{ product.name | upText }}</h6>
                                 </td>
                                 
-                                <td class="align-middle">
-                                    <h6>{{ category.store }}</h6>
+                                <td class="align-middle" >
+                                    <p>{{ product.category }}</p>
                                 </td>
 
                                 <td class="align-middle" >
-                                    <p>{{ category.description }}</p>
+                                    <p>{{ product.store }}</p>
+                                </td>
+
+                                <td class="align-middle" >
+                                    <p>{{ product.description }}</p>
                                 </td>
                                 
                                 <td class="project-state align-middle">
-                                    <span v-if="category.status" class="badge badge-success">Active</span>
+                                    <span v-if="product.status" class="badge badge-success">Active</span>
                                     <span v-else class="badge badge-danger">Inactive</span>
                                 </td>
                                 <td class="project-actions text-right align-middle">
@@ -85,11 +89,11 @@
                                         <i class="fas fa-eye text-success">
                                         </i>
                                     </a>
-                                    <a @click="editModal(category)" class="btn border btn-default  btn-sm" href="#">
+                                    <a @click="editModal(product)" class="btn border btn-default  btn-sm" href="#">
                                         <i class="fas fa-pencil-alt text-primary">
                                         </i>
                                     </a>
-                                    <a @click="deleteCategory(category.id)" class="btn border btn-default  btn-sm" href="#">
+                                    <a @click="deleteProduct(product.id)" class="btn border btn-default  btn-sm" href="#">
                                         <i class="fas fa-trash text-danger">
                                         </i>
                                     </a>
@@ -110,25 +114,32 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <v-form @submit.prevent="editMode ? updateCategory() : createCategory()">
+                        <v-form @submit.prevent="editMode ? updateProduct() : createProduct()">
 
                         <div class="modal-body">
                         
                                 <div class="form-group">
-                                    <label for="name">Email</label>
+                                    <label for="name">Name</label>
                                     <input v-model="form.name" type="text" class="form-control" id="name" placeholder="Name" :class="{ 'is-invalid': form.errors.has('name') }">
                                 </div>
                                 <has-error :form="form" field="name"></has-error>
 
                                 <div class="form-group">
                                     <label for="inputState">Store</label>
-                                    <select name="store" v-model="form.store_id" class="form-control" >
+                                    <select @change="loadCategory(form.store_id)" name="store" v-model="form.store_id" class="form-control" >
                                         <option v-for="item in items" v-bind:key="item.id" v-bind:value="item.id" :selected="item.id == form.store_id"> {{ item.name }} </option>
                                     </select>
                                 <!-- <has-error :form="form" field="store"></has-error> -->
 
                                 </div>
-                                
+
+                                <div class="form-group">
+                                    <label for="inputState">Category</label>
+                                    <select  name="category" v-model="form.category_id" class="form-control" >
+                                        <option v-for="category in categories" v-bind:key="category.id" v-bind:value="category.id" :selected="category.id == form.category_id"> {{ category.name }} </option>
+                                    </select>
+                                <!-- <has-error :form="form" field="store"></has-error> -->
+                                </div>
                                 <div v-if="!form.img">
                                     <h6>Select an image</h6>
                                     <input type="file" @change="onFileChange">
@@ -136,7 +147,7 @@
                             
                                 <div v-else>
                                     <img v-show="!imagePreview" :src="form.img" />
-                                    <img v-show="imagePreview" :src="'img/category/'+form.img" />
+                                    <img v-show="imagePreview" :src="'img/product/'+form.img" />
                                     <button @click.prevent="removeImage"><i class="fas fa-trash text-danger"></i>
                                     Remove image</button>
                                 </div>
@@ -181,15 +192,17 @@ export default {
             Status: '',
             editMode: false,
             imagePreview: false,
-            categories: {},
+            categories: [],
             items: [],
+            products: {},
             form: new Form({
                 id: '',
                 name: '',
                 description: '',
                 status: true,
                 img:'',
-                store_id:''
+                store_id: '',
+                category_id: ''
             })
         }
     },
@@ -197,8 +210,13 @@ export default {
         loadShop(){
             axios.get('/api/store').then(({ data }) => { this.items = data})
         },
-        loadCategory(){
-            axios.get('/api/category').then(({ data }) => { this.categories = data})
+        loadCategory(id){
+             this.$Progress.start()
+            axios.get('/api/store/category/'+id).then(({ data }) => { this.categories = data; this.$Progress.finish(); })
+        },
+        loadProduct(){
+             this.$Progress.start()
+            axios.get('/api/product').then(({ data }) => { this.products = data; this.$Progress.finish(); })
         },
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
@@ -221,13 +239,14 @@ export default {
                 this.imagePreview = false;
             this.form.img = '';
         },
-        editModal(category){
+        editModal(product){
             this.editMode = true;
             this.imagePreview = true;
             this.form.clear();
             this.form.reset();
+            this.loadCategory(product.store_id);
             $('#addModal').modal('show');
-            this.form.fill(category);
+            this.form.fill(product);
         },
         newModal(){
             this.editMode = false;
@@ -235,9 +254,9 @@ export default {
             this.form.reset();
             $('#addModal').modal('show');
         },
-        createCategory(){
+        createProduct(){
             this.$Progress.start()
-            this.form.post('/api/category/store')
+            this.form.post('/api/product/store')
                 .then(() => {
                     Fire.$emit('updateList');
                     $('#addModal').modal('hide');
@@ -252,7 +271,7 @@ export default {
                     this.$Progress.finish()
                 })
         },
-        deleteCategory(id){
+        deleteProduct(id){
             swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -263,7 +282,7 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if(result.value){
-                    this.form.delete('/api/category/'+id)
+                    this.form.delete('/api/product/'+id)
                         .then(() => {
                              toast.fire({
                                 icon: 'success',
@@ -281,11 +300,11 @@ export default {
                 }
             });
         },
-        updateCategory(id){
+        updateProduct(id){
             this.$Progress.start()
-            this.form.put('/api/category/edit/'+this.form.id)
+            this.form.put('/api/product/edit/'+this.form.id)
                 .then(() => {
-                    Fire.$emit('updateList');
+                    Fire.$emit('updateList')
                     $('#addModal').modal('hide');
                     toast.fire({
                         icon: 'success',
@@ -302,9 +321,9 @@ export default {
     },
     created() {
         this.loadShop();
-        this.loadCategory();
+        this.loadProduct();
         Fire.$on('updateList',() => {
-            this.loadCategory();
+            this.loadProduct();
         });
     }
 }

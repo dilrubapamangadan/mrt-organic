@@ -81,4 +81,11 @@ class StoreController extends Controller
     {
         //
     }
+
+    public function storeCategories(Request $request, $id)
+    {
+        $categoris = Store::getCategories($id);
+        return $categoris;
+    }
+
 }

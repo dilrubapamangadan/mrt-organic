@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
-
+use App\Models\Product;
+use App\Models\ProductCategory;
 class ProductController extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $productData = Product::getProduct();
+        return $productData;
     }
 
     /**
@@ -34,7 +36,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+        $newProduct = new Product;
+        $newProduct->name = $request["name"];
+        $newProduct->description = $request["description"];
+        $newProduct->status = $request["status"]?1:0;
+        if($request["img"]){
+            $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
+            \Image::make($request["img"])->save(public_path('img/product/').$name);
+            $newProduct->img = $name;
+
+        }
+        $newProduct->save();
+
+        $id = DB::getPdo()->lastInsertId();
+        $newProductCategory = new ProductCategory;
+        $newProductCategory->product_id     = $id;
+        $newProductCategory->category_id    = $request["category_id"];
+        $newProductCategory->save();
+
+        return $newProductCategory;
     }
 
     /**
@@ -68,7 +92,30 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $existingProduct = Product::findOrFail( $id );
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+        if( $existingProduct ){
+            $existingProduct->name = $request['name'];
+            $existingProduct->description = $request['description'];
+            $existingProduct->status = $request['status'] ? 1 : 0;
+
+            if($request["img"] != $existingProduct->img){
+                $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
+                \Image::make($request["img"])->save(public_path('img/product/').$name);
+                $existingProduct->img = $name;
+    
+            }
+            $existingProduct->save();
+
+            ProductCategory::where('product_id', $request['id'])
+            ->update(['category_id' => $request['category_id']]);
+            return 'Success';
+        }
+
+        return 'Item not found';
     }
 
     /**
@@ -79,6 +126,15 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $existingProduct = Product::find( $id );
+
+        if( $existingProduct ){
+            $existingProduct->delete();
+            $existingProductCategory = ProductCategory::where('product_id', $id);
+            $existingProductCategory->delete();
+            return 'Item successfully deleted.';
+        }
+
+        return 'Item not found.';
     }
 }

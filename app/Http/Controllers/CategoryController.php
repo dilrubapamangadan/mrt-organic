@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\ProductCategory;
 
 class CategoryController extends Controller
 {
@@ -120,14 +121,22 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $existingCategory = Category::find( $id );
-
-        if( $existingCategory ){
-            $existingCategory->delete();
-
-            return 'Item successfully deleted.';
+        $productCategory = ProductCategory::where('category_id', $id)->count();
+        if(!$productCategory){
+            $existingCategory = Category::find( $id );
+            if( $existingCategory ){
+                $existingCategory->delete();
+                $result['status'] = true;
+                $result['message'] = 'Category successfully deleted.';
+            }else{
+                $result['status'] = true;
+                $result['message'] = 'Category not found.';
+            }
+        }else{
+            $result['status'] = false;
+            $result['message'] = 'Remove products in this category first.';
         }
 
-        return 'Item not found.';
+        return $result;
     }
 }
