@@ -20,7 +20,7 @@ Vue.filter('upText', function(text){
 
 //progress bar
 const options = {
-    color: '#bffaf3',
+    color: '#7dab4a',
     failedColor: '#874b4b',
     thickness: '5px',
     transition: {

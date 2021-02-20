@@ -17,12 +17,12 @@
       <div class="row">
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">CPU Traffic</span>
+                <span class="info-box-text">Enquiry</span>
                 <span class="info-box-number">
-                  10
+                  {{ items.enquiry }}
                   <small>%</small>
                 </span>
               </div>
@@ -33,11 +33,13 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-tags"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">41,410</span>
+                <router-link to="/category">
+                  <span class="info-box-text">Categories</span>
+                </router-link>
+                <span class="info-box-number">{{ items.category }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -53,27 +55,15 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
+                 <router-link to="/products">
+                <span class="info-box-text">Products</span>
+                 </router-link>
+                <span class="info-box-number">{{ items.products }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
-                <span class="info-box-number">2,000</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
       </div>
 	  </div>
     </section>
@@ -82,7 +72,23 @@
 </template>
 <script>
 export default {
-  
+  data() {
+    return {
+      items: {
+        products: 0,
+        category: 0,
+        enquiry: 0
+      }
+    }
+  },
+  methods: {
+    loadStatistics(){
+      axios.get('/api/dashboard').then(({ data }) => { this.items = data})
+    }
+  },
+  created() {
+    this.loadStatistics();
+  },
 }
 </script>
   

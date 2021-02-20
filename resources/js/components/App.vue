@@ -2,8 +2,8 @@
 <div>
     <transition
         mode="out-in"
-        enter-active-class="animate__animated animate__fadeInRightBig animate__fast"
-        leave-active-class="animate__animated animate__fadeOutLeftBig animate__fast"
+        enter-active-class="animate__animated animate__fadeIn animate__fast"
+        leave-active-class="animate__animated animate__fadeOut animate__fast"
       >
     <router-view></router-view>
     </transition>
