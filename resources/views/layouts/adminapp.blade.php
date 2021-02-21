@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="{{ asset('assets/css/adminlte.min.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+  <base href="{{ config('app.url') }}" target="_blank" />
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
 

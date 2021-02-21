@@ -27,15 +27,15 @@
     },
     "dependencies": {
         "animate.css": "^4.1.1",
-        "owl.carousel": "^2.3.4",
         "sweetalert2": "^10.15.1",
         "v-wow": "git+https://github.com/guisoares2011/vue-wow.git",
         "vform": "^1.0.1",
+        "vue-js-counter": "^1.0.3",
         "vue-owl-carousel": "^2.0.3",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.5.1",
+        "vue-wow": "^1.2.0",
         "vuetify": "^2.4.4",
-        "vuetify-loader": "^1.4.3",
-        "wowjs": "^1.1.3"
+        "vuetify-loader": "^1.4.3"
     }
 }

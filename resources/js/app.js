@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import router from './router';
 import App from './components/App';
+import Admin from './components/Admin';
 import Vuetify from '../plugins/vuetify'
 import { Form, HasError, AlertError } from 'vform'
 import VueProgressBar from 'vue-progressbar'
@@ -58,7 +59,8 @@ window.Fire = new Vue();
 const app = new Vue({
     el: '#app',
     components: {
-        App
+        App,
+        Admin
     },
     router,
     vuetify:Vuetify

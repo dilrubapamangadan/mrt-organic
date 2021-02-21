@@ -22,6 +22,12 @@ class IndexController extends Controller
      */
     public function index()
     {
+        // return view('index');
+        return view('index1');
+    }
+    public function test()
+    {
+        // return view('index');
         return view('index');
     }
 }

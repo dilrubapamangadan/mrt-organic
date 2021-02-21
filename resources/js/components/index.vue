@@ -34,10 +34,17 @@
         <div class="container">
             <h2 class="font-normal text-center m-0">Let the numbers speak for us:</h2>
             <div class="row justify-content-between">
-                <div class="colum font-bold border-right fadeInUp" v-wow data-wow-duration="1s"><i><img src="assets/custom/img/icon-hand.png" data-src="assets/custom/img/icon-hand.png" width="68" height="68" alt="hand"> </i> <span class="d-block counter">35,000</span>progressive&nbsp;farmers </div>
-                <div class="colum font-bold border-right fadeInUp"  v-wow data-wow-duration="1.5s"><i><img src="assets/custom/img/farm.png" data-src="assets/custom/img/farm.png" width="76" height="76" alt="hand"> </i> <span class="d-block counter">2,80,000</span>hectares&nbsp;of&nbsp;fertile&nbsp;land</div>
-                <div class="colum font-bold border-right fadeInUp"  v-wow data-wow-duration="2s"><i><img src="assets/custom/img/india.png" data-src="assets/custom/img/india.png" width="67" height="70" alt="hand"> </i> <span class="d-block counter">29</span>states&nbsp;of&nbsp;India</div>
-                <div class="colum font-bold fadeInUp"  v-wow data-wow-duration="2.5s"><i><img src="assets/custom/img/location.png" data-src="assets/custom/img/location.png" width="62" height="62" alt="hand"> </i> <span class="d-block counter">13</span>countries</div>
+                <transition
+                    mode="out-in"
+                    enter-active-class="animate__animated animate__fadeIn animate__fast"
+                    leave-active-class="animate__animated animate__fadeOut animate__fast"
+                >
+                <div class="colum font-bold border-right"><i><img src="assets/custom/img/icon-hand.png" data-src="assets/custom/img/icon-hand.png" width="68" height="68" alt="hand"> </i> <span class="d-block counter"><VueJsCounter start="10000" end="35000" duration="500" thousand=","></VueJsCounter></span>progressive&nbsp;farmers </div>
+                </transition>
+                
+                <div class="colum font-bold border-right fadeInUp"  v-wow data-wow-duration="1.5s"><i><img src="assets/custom/img/farm.png" data-src="assets/custom/img/farm.png" width="76" height="76" alt="hand"> </i> <span class="d-block counter"><VueJsCounter start="100000" end="280000" duration="500" thousand=","></VueJsCounter></span>hectares&nbsp;of&nbsp;fertile&nbsp;land</div>
+                <div class="colum font-bold border-right fadeInUp"  v-wow data-wow-duration="2s"><i><img src="assets/custom/img/india.png" data-src="assets/custom/img/india.png" width="67" height="70" alt="hand"> </i> <span class="d-block counter"><VueJsCounter  end="29" duration="500" thousand=","></VueJsCounter></span>states&nbsp;of&nbsp;India</div>
+                <div class="colum font-bold fadeInUp"  v-wow data-wow-duration="2.5s"><i><img src="assets/custom/img/location.png" data-src="assets/custom/img/location.png" width="62" height="62" alt="hand"> </i> <span class="d-block counter"><VueJsCounter  end="13" duration="500" thousand=","></VueJsCounter></span>countries</div>
             </div>
         </div>
     </section>
@@ -234,13 +241,13 @@
 <script>
 //index page imports
 import carousel from 'vue-owl-carousel'
-    export default {
-         components: { carousel },
-        mounted() {
-            // WOW.init();
-        }
-    }
+import VueJsCounter from 'vue-js-counter'
+export default {
+        components: { 
+            carousel,
+            VueJsCounter 
+        },
+
+}
 </script>
-<style>
-/* @import url('../assets/custom/css/custom.css'); */
-</style>
+
