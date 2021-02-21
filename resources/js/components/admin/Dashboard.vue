@@ -36,7 +36,7 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-tags"></i></span>
 
               <div class="info-box-content">
-                <router-link to="/category">
+                <router-link to="/admin/category">
                   <span class="info-box-text">Categories</span>
                 </router-link>
                 <span class="info-box-number">{{ items.category }}</span>
@@ -55,7 +55,7 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                 <router-link to="/products">
+                 <router-link to="/admin/products">
                 <span class="info-box-text">Products</span>
                  </router-link>
                 <span class="info-box-number">{{ items.products }}</span>

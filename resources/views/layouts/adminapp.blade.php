@@ -120,28 +120,28 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
-            <router-link to="/dashboard" class="nav-link"><i class="nav-icon fas fa-chart-bar"></i>
+            <router-link to="/admin/dashboard" class="nav-link"><i class="nav-icon fas fa-chart-bar"></i>
               <p>
                 Dashboard
               </p>
             </router-link>
           </li>
           <li class="nav-item">
-          <router-link to="/category" class="nav-link"><i class="nav-icon fas fa-tags"></i>
+          <router-link to="/admin/category" class="nav-link"><i class="nav-icon fas fa-tags"></i>
             <p>
               Category
             </p>
           </router-link>
           </li>
           <li class="nav-item">
-          <router-link to="/products" class="nav-link"><i class="nav-icon fas fa-tags"></i>
+          <router-link to="/admin/products" class="nav-link"><i class="nav-icon fas fa-tags"></i>
             <p>
               Products
             </p>
           </router-link>
           </li>
           <li class="nav-item">
-          <router-link to="/enquiry" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i>
+          <router-link to="/admin/enquiry" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i>
             <p>
               Enquiry
             </p>

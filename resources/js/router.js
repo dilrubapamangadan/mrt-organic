@@ -10,9 +10,9 @@ Vue.use(VueRouter);
 
 export default new VueRouter({
     routes: [
-        { path: '/dashboard', component:  Dashboard},
-        { path: '/category', component: Category },
-        { path: '/products', component: Products },
+        { path: '/admin/dashboard', component:  Dashboard},
+        { path: '/admin/category', component: Category },
+        { path: '/admin/products', component: Products },
         { path: '/', component: Index },
         {
             path: "/:catchAll(.*)",

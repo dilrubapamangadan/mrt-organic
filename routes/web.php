@@ -6,4 +6,4 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/', 'IndexController@index')->name('Mrt Organic');
 
-Route::get('/{any}', 'AppController@index')->where('any', '.*');
+Route::get('/admin/{any}', 'AppController@index')->where('any', '.*');
