@@ -217,117 +217,128 @@
                 </div>
             </div>
         </footer>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!--       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+        <script src="assets/custom/js/jquery-3.2.1.slim.min.js"></script>
+        <script src="assets/custom/js/popper.min.js"></script>
+        <script src="assets/custom/js/bootstrap.min.js" ></script>
+        
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+        
         <script src="assets/custom/js/jquery.min.js"></script>
-   <!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<!--       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-<script src="assets/custom/js/jquery-3.2.1.slim.min.js"></script>
-<script src="assets/custom/js/popper.min.js"></script>
-<script src="assets/custom/js/bootstrap.min.js" ></script>
-
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-
-<script src="assets/custom/js/jquery.min.js"></script>
-<script src="assets/custom/js/jquery.nice-select.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-<script src="assets/custom/js/jquery.countup.js"></script>
-<script src="assets/custom/js/wow.js"></script>
-<script src="assets/custom/js/owl.carousel.min.js"></script>
-<script src="assets/custom/js/modernizr.custom.js"></script>
-<script src="assets/custom/js/jquery.dlmenu.js"></script>
-
-<script type="text/javascript">
-    //fixed header script
-   $(window).scroll(function(){
-   if ($(window).scrollTop() >= 100) {
-     $('header').addClass('fixed-header');
-    // $('nav div').addClass('visible-title');
-   }
-   else {
-     $('header').removeClass('fixed-header');
-    // $('nav div').removeClass('visible-title');
-   }
-   });
- 
-   $('.carousel').carousel({
-    pause: "false"
-});
-
-   $(window).on('load', function() {
-     $('#status').fadeOut(); 
-     $('#preloader').delay(350).fadeOut('slow');
-     $('body').delay(350).css({'overflow':'visible'});
-   })
-
-
-
-$('.counter').countUp();
-
-         new WOW().init();
-      
-      $(document).ready(function() {
-     
-              $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                  autoplay:false,
-                   //autoWidth:true,
-                responsiveClass: true,
-                  nav: true,
-                responsive: {
-                  0: {
-                    items: 1,
-                    nav: true
-                  },
-                  600: {
-                    items: 2,
-                   
-                  }
-                    ,
-                  900: {
-                    items: 3,
-                   
-                  },
-                  1000: {
-                    items: 3,
-                   
-                    loop: true,
-                    margin: 20
-                  }
-                }
-              })
-
-              $('#carousel-solutions').owlCarousel({
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                margin: 20,
-                responsiveClass: true,
-                responsive: {
-                    0: {
-                        items: 1,
-                    },
-                    600: {
-                        items: 3,
-                    },
-                    1200: {
-                        items: 6,
-                    }
-                }
-            });
-
-            $('.carousel').carousel({
-                pause: "false"
-            });
+        
+        <script>
+            //fixed header script
+           $(window).scroll(function(){
+           if ($(window).scrollTop() >= 100) {
+             $('header').addClass('fixed-header');
+            // $('nav div').addClass('visible-title');
+           }
+           else {
+             $('header').removeClass('fixed-header');
+            // $('nav div').removeClass('visible-title');
+           }
+           });
          
-      })
-
-			$(function() {
-				$( '#dl-menu' ).dlmenu({
-					animationClasses : { classin : 'dl-animate-in-5', classout : 'dl-animate-out-5' }
-				});
-			});
-</script>
-
-</body>
-</html>
+            //carousel
+            $('.carousel').carousel({
+            pause: "false"
+        });
+            
+        </script>
+        
+        <script type="text/javascript">
+           $(window).on('load', function() {
+             $('#status').fadeOut(); 
+             $('#preloader').delay(350).fadeOut('slow');
+             $('body').delay(350).css({'overflow':'visible'});
+           })
+        </script>
+        
+         <script src="assets/custom/js/jquery.nice-select.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+        <script src="assets/custom/js/jquery.countup.js"></script>
+        <script>
+        $('.counter').countUp();
+        </script>
+        <script src="assets/custom/js/wow.js"></script>
+        <script>
+                 new WOW().init();
+              </script>
+        <script src="assets/custom/js/owl.carousel.min.js"></script>
+        
+        <script>
+              $(document).ready(function() {
+                      $('.owl-carousel').owlCarousel({
+                        loop: true,
+                        margin: 10,
+                          autoplay:false,
+                           //autoWidth:true,
+                        responsiveClass: true,
+                          nav: true,
+                        responsive: {
+                          0: {
+                            items: 1,
+                            nav: true
+                          },
+                          600: {
+                            items: 2,
+                           
+                          }
+                            ,
+                          900: {
+                            items: 3,
+                           
+                          },
+                          1000: {
+                            items: 3,
+                           
+                            loop: true,
+                            margin: 20
+                          }
+                        }
+                      })
+                 
+              })
+                     
+        </script>
+        <script>
+        $('#carousel-solutions').owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            margin: 20,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                600: {
+                    items: 3,
+                },
+                1200: {
+                    items: 6,
+                }
+            }
+        });
+        </script>
+        <script>
+        $('.carousel').carousel({
+            pause: "false"
+        });
+        </script>
+        <script src="assets/custom/js/modernizr.custom.js"></script>
+        <script src="assets/custom/js/jquery.dlmenu.js"></script>
+                <script>
+                    $(function() {
+                        $( '#dl-menu' ).dlmenu({
+                            animationClasses : { classin : 'dl-animate-in-5', classout : 'dl-animate-out-5' }
+                        });
+                    });
+                </script>
+        
+        </body>
+        </html>
+        
