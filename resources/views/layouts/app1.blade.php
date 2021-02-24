@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="assets/custom/css/custom.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'MRT ORGANIC') }}</title>
 
 
 </head>
