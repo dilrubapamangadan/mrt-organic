@@ -1,13 +1,7 @@
 <template>
 <div>
-    <transition
-       name="fade" mode="out-in"
-        enter-active-class="animate__animated animate__fadeInLeft animate__fast"
-        leave-active-class="animate__animated animate__fadeOut animate__fast"
-      >
-      <header1></header1>
-    </transition>
-
+   
+    <header1></header1>
     <router-view></router-view>
 
         <!-- set progressbar -->

@@ -13,7 +13,7 @@ export default new VueRouter({
         { path: '/admin/dashboard', component:  Dashboard},
         { path: '/admin/category', component: Category },
         { path: '/admin/products', component: Products },
-        { path: '/test', component: Index },
+        { path: '/', component: Index },
         {
             path: "/:catchAll(.*)",
             component: NotFound,
