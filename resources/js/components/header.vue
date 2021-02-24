@@ -35,7 +35,7 @@
                     <div class="collapse col-4 navbar-collapse d-none d-lg-block" id="main_nav">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active"> <a class="nav-link" href="#"><i class="las la-home"></i></a> </li>
-                            <li class="nav-item"><a class="nav-link" href="#">Our Story</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#story" v-smooth-scroll>Our Story</a></li>
                             <li class="nav-item dropdown"> <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Organic Products</a>
                                 <ul class="dropdown-menu fade-up">
                                     <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
@@ -58,7 +58,7 @@
                                     <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#"> Contact Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#contact" v-smooth-scroll> Contact Us</a></li>
                         </ul>
                     </div>
                     <div class="col-5 d-block d-md-none  relative">

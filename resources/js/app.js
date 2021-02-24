@@ -7,8 +7,16 @@ import { Form, HasError, AlertError } from 'vform'
 import VueProgressBar from 'vue-progressbar'
 import Swal from 'sweetalert2'
 import 'animate.css'
-import vWow from 'v-wow'
-Vue.use(vWow);
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+//scroll
+import VueSmoothScroll from 'vue2-smooth-scroll'
+Vue.use(VueSmoothScroll,{
+    duration: 200,
+  updateHistory: false,
+})
+
 //form
 window.Form = Form;
 Vue.component(HasError.name, HasError);
@@ -57,6 +65,9 @@ window.toast = Toast;
 window.Fire = new Vue();
 
 const app = new Vue({
+    created(){
+        AOS.init()
+    },
     el: '#app',
     components: {
         App,

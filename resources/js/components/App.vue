@@ -1,7 +1,7 @@
 <template>
 <div>
     <transition
-        mode="out-in"
+       name="fade" mode="out-in"
         enter-active-class="animate__animated animate__fadeInLeft animate__fast"
         leave-active-class="animate__animated animate__fadeOut animate__fast"
       >
@@ -11,7 +11,7 @@
     <router-view></router-view>
 
         <!-- set progressbar -->
-    <vue-progress-bar></vue-progress-bar>  
+    <!-- <vue-progress-bar></vue-progress-bar>   -->
     <footer1></footer1>
        
 </div>
