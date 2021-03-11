@@ -101,7 +101,7 @@ html {
 	-webkit-transition:all ease .4s ;
 	-o-transition:all ease .4ms ;
 }
-body{color: #000000;font-family: 'OrpheusPro';}
+body{color: #000000;font-family: 'OrpheusPro';background: #ffffff}
 img{height: auto;max-width: 100%}
 
 html {
@@ -110,6 +110,27 @@ html {
   -moz-osx-font-smoothing: grayscale;overflow-x:hidden;
 }
 .relative{position: relative}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color:  orange green;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: orange;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color:orange;
+  border-radius: 20px;
+  border: 3px solid green;
+}
+
 /*  Clearfix
 ------------------------------------------------------------------------------*/
 .clearfix:after,
@@ -371,7 +392,7 @@ position: relative;;opacity: 1;
 .SectionStory .bg h2{color: #e5faee;font-size: calc(18px + (48 - 18) * ((100vw - 320px) / (1920 - 320)));padding: 0 0 25px}
 .SectionStory .bg .description{padding: 0 0 50px}
 .SectionStory .bg .more{display: inline-block;border-bottom: 3px solid #d2bd48;padding: 0 40px 15px;color: #ffffff}
-.SectionStory .vector{position: absolute;bottom:-193px;left: -50px;z-index: 8;max-width:122%;pointer-events: none}
+.SectionStory .vector{position: absolute;bottom:-193px;left: -50px;right: -50px;z-index: 8;max-width:122%;pointer-events: none;width: 61%;}
 .SectionStory .wall{position: absolute;left: 0;bottom:-18px; width: 100%;height: 90px;z-index: 5;display: block;
 background-image:		
 		 url(../img/story-wall.png);
@@ -491,7 +512,8 @@ transition:All .9s ease;
 -moz-transition:All .9s ease;
 -o-transition:All .9s ease;position: relative;top:10px;opacity: 0;
 }
-
+.products .owl-carousel .owl-item .item .textHV img{max-width:48px }
+.products .owl-carousel .owl-item .item .text img{max-width:48px }
 .products .owl-carousel .owl-item .item:hover .textHV{background:rgba(35,100,62, 1);top:0;}
 .products .owl-carousel .owl-item .item:hover .textHV img{transition-delay: 0.1s;top:0;opacity: 1;}
 .products .owl-carousel .owl-item .item:hover .textHV h3{transition-delay: 0.2s;top:0;opacity: 1;}
