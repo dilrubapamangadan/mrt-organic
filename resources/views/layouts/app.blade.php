@@ -24,6 +24,7 @@
 
 </head>
 <body>
+    <div id="butter">
     <div id="app">
 
       
@@ -31,6 +32,7 @@
             @yield('content')
 
          
+    </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -49,8 +51,10 @@
     <script src="assets/custom/js/modernizr.custom.js"></script>
     <script src="assets/custom/js/jquery.dlmenu.js"></script>
     <script src="assets/custom/js/owl.carousel.min.js"></script>
-
+    <script src="assets/js/scroll.js"></script>
     <script type="text/javascript">
+    butter.init({cancelOnTouch: true});
+
     //fixed header script
 //    $(window).scroll(function(){
 //     if ($(window).scrollTop() >= 100) {
