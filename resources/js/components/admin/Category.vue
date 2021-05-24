@@ -58,8 +58,8 @@
                                 <td class="align-middle">
                                     <ul class="list-inline">
                                         <li class="list-inline-item" >
-                                            <img v-if="category.img" alt="Avatar" style="width:50px" class="img-fluid img-thumbnail" :src="'img/category/'+category.img">
-                                            <img v-else alt="Avatar" style="width:50px" class="img-fluid img-thumbnail" src="assets/img/empty.jpg">
+                                            <img v-if="category.img" alt="Avatar" style="width:80px" class="img-fluid img-thumbnail" :src="'/img/category/'+category.img">
+                                            <img v-else alt="Avatar" style="width:80px" class="img-fluid img-thumbnail" src="assets/img/empty.jpg">
                                         </li>
                                         
                                     </ul>
@@ -136,7 +136,7 @@
                             
                                 <div v-else>
                                     <img v-show="!imagePreview" :src="form.img" />
-                                    <img v-show="imagePreview" :src="'img/category/'+form.img" />
+                                    <img v-show="imagePreview" :src="'/img/category/'+form.img" />
                                     <button @click.prevent="removeImage"><i class="fas fa-trash text-danger"></i>
                                     Remove image</button>
                                 </div>

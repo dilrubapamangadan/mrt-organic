@@ -58,8 +58,8 @@
                                 <td class="align-middle">
                                     <ul class="list-inline">
                                         <li class="list-inline-item" >
-                                            <img v-if="product.img" alt="Avatar" style="width:50px" class="img-fluid img-thumbnail" :src="'img/product/'+product.img">
-                                            <img v-else alt="Avatar" style="width:50px" class="img-fluid img-thumbnail" src="assets/img/empty.jpg">
+                                            <img v-if="product.img" alt="Avatar" style="width:80px" class="img-fluid img-thumbnail" :src="'/img/product/'+product.img">
+                                            <img v-else alt="Avatar" style="width:80px" class="img-fluid img-thumbnail" src="assets/img/empty.jpg">
                                         </li>
                                         
                                     </ul>
