@@ -71,7 +71,7 @@ const app = new Vue({
     el: '#app',
     components: {
         App,
-        Admin
+        Admin,
     },
     router,
     vuetify:Vuetify

@@ -23,8 +23,9 @@ Route::get('/dashboard', 'DashboardController@index');
 Route::get('/category', 'CategoryController@index');
 Route::prefix('category')->group(function () {
     Route::post('/store', 'CategoryController@store');
+    Route::get('/{id}', 'CategoryController@show');
     Route::put('/{id}', 'CategoryController@update');
-    Route::put('/edit/{id}', 'CategoryController@update');
+    // Route::put('/edit/{id}', 'CategoryController@update');
     Route::delete('/{id}', 'CategoryController@destroy');
 });
 
@@ -32,7 +33,8 @@ Route::get('/product', 'ProductController@index');
 Route::prefix('product')->group(function () {
     Route::post('/store', 'ProductController@store');
     Route::put('/{id}', 'ProductController@update');
-    Route::put('/edit/{id}', 'ProductController@update');
+    Route::get('/{id}', 'ProductController@show');
+    // Route::put('/edit/{id}', 'ProductController@update');
     Route::delete('/{id}', 'ProductController@destroy');
 });
 
