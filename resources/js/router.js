@@ -42,7 +42,7 @@ const routes= [
             component: Index 
         },
         { 
-            path: '/admin/category/add', 
+            path: '/category/add', 
             name: 'Category Add',
             component: CategoryForm 
         },
