@@ -87,7 +87,7 @@
                                     <span v-else class="badge badge-danger">Inactive</span>
                                 </td>
                                 <td class="project-actions text-right align-middle">
-                                    <a class="btn border btn-default btn-sm" href="#">
+                                    <a @click="showModal(product)" class="btn border btn-default btn-sm" href="#">
                                         <i class="fas fa-eye text-success">
                                         </i>
                                     </a>
@@ -111,6 +111,34 @@
         </div>
     </section>
     <!-- /.content -->
+
+     <!-- Modal -->
+    <div class="modal" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+            
+                    <center>
+                        <h1>{{modalData.name}}</h1>
+                        <img :src="'/img/product/'+modalData.img" />
+
+                        <p v-html="modalData.description" ></p>
+                    </center>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+                
+            </div>
+
+        </div>
+    </div>
 </div>  
 </template>
 <script>
@@ -118,7 +146,12 @@ export default {
     data() {
         return {
             Status: '',
-            products: {}
+            products: {},
+            modalData: new Form({
+                name: '',
+                description: '',
+                img:'',
+            })
         }
     },
     methods: {
@@ -155,6 +188,10 @@ export default {
                 }
             });
         },
+        showModal(product){
+            $('#viewModal').modal('show');
+            this.modalData.fill(product);
+        }
     },
     created() {
         this.loadProduct();
@@ -165,5 +202,10 @@ export default {
 }
 </script>
 <style scoped>
-
+img {
+  width: 80%;
+  margin: auto;
+  display: block;
+  margin-bottom: 10px;
+}
 </style>

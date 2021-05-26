@@ -44,9 +44,9 @@
                                 <th style="width: 15%">
                                     Store
                                 </th>
-                                <th>
+                                <!-- <th>
                                     Description
-                                </th>
+                                </th> -->
                                 <th style="width: 8%" class="text-center">
                                     Status
                                 </th>
@@ -75,16 +75,16 @@
                                     <h6>{{ category.store }}</h6>
                                 </td>
 
-                                <td class="align-middle" >
+                                <!-- <td class="align-middle" >
                                     <p v-html="category.description"></p>
-                                </td>
+                                </td> -->
                                 
                                 <td class="project-state align-middle">
                                     <span v-if="category.status" class="badge badge-success">Active</span>
                                     <span v-else class="badge badge-danger">Inactive</span>
                                 </td>
                                 <td class="project-actions text-right align-middle">
-                                    <a class="btn border btn-default btn-sm" href="#">
+                                    <a @click="showModal(category)" class="btn border btn-default btn-sm" href="#">
                                         <i class="fas fa-eye text-success">
                                         </i>
                                     </a>
@@ -108,6 +108,34 @@
         </div>
     </section>
     <!-- /.content -->
+
+    <!-- Modal -->
+    <div class="modal" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+            
+                    <center>
+                        <h1>{{modalData.name}}</h1>
+                        <img :src="'/img/category/'+modalData.img" />
+
+                        <p v-html="modalData.description" ></p>
+                    </center>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+                
+            </div>
+
+        </div>
+    </div>
 </div>  
 </template>
 <script>
@@ -116,6 +144,11 @@ export default {
         return {
             Status: '',
             categories: {},
+            modalData: new Form({
+                name: '',
+                description: '',
+                img:'',
+            })
         }
     },
     methods: {
@@ -159,7 +192,11 @@ export default {
                         }) 
                 }
             });
-        }
+        },
+        showModal(category){
+            $('#viewModal').modal('show');
+            this.modalData.fill(category);
+        },
     },
     created() {
         this.loadCategory();
@@ -170,5 +207,10 @@ export default {
 }
 </script>
 <style scoped>
-
+img {
+  width: 80%;
+  margin: auto;
+  display: block;
+  margin-bottom: 10px;
+}
 </style>
