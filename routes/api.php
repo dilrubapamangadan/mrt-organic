@@ -20,25 +20,25 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/dashboard', 'DashboardController@index');
 
-Route::get('/category', 'CategoryController@index');
 Route::prefix('category')->group(function () {
-    Route::post('/store', 'CategoryController@store');
+    Route::get('/', 'CategoryController@index');    
+    Route::post('/store', 'CategoryController@store')->middleware('auth:api');
     Route::get('/{id}', 'CategoryController@show');
-    Route::put('/{id}', 'CategoryController@update');
+    Route::put('/{id}', 'CategoryController@update')->middleware('auth:api');
     // Route::put('/edit/{id}', 'CategoryController@update');
-    Route::delete('/{id}', 'CategoryController@destroy');
+    Route::delete('/{id}', 'CategoryController@destroy')->middleware('auth:api');
 });
 
-Route::get('/product', 'ProductController@index');
 Route::prefix('product')->group(function () {
-    Route::post('/store', 'ProductController@store');
-    Route::put('/{id}', 'ProductController@update');
+    Route::get('/', 'ProductController@index');
+    Route::post('/store', 'ProductController@store')->middleware('auth:api');
+    Route::put('/{id}', 'ProductController@update')->middleware('auth:api');
     Route::get('/{id}', 'ProductController@show');
     // Route::put('/edit/{id}', 'ProductController@update');
-    Route::delete('/{id}', 'ProductController@destroy');
+    Route::delete('/{id}', 'ProductController@destroy')->middleware('auth:api');
 });
 
-Route::get('/store', 'StoreController@index');
 Route::prefix('store')->group(function () {
+    Route::get('/', 'StoreController@index');
     Route::get('/category/{id}', 'StoreController@storeCategories');
 });
