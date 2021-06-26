@@ -3,10 +3,10 @@
             <div class="first-row">
                 <div class="container-fluid text-center align-items-center">
                     <ul>
-                        <li><i><img src="assets/custom/img/icon-pure.png" width="19" height="28" alt="pure" data-src="assets/custom/img/icon-pure.png"> </i> <span>100% Pure</span></li>
-                        <li><i><img src="assets/custom/img/icon-chemical.png" width="23" height="31" alt="pure" data-src="assets/custom/img/icon-chemical.png"> </i> <span>Chemical Free</span> </li>
-                        <li><i><img src="assets/custom/img/icon-rabit.png" width="34" height="34" alt="pure" data-src="assets/custom/img/icon-rabit.png"> </i> <span>Cruelty Free</span> </li>
-                        <li><i><img src="assets/custom/img/icon-echo-friendly.png" width="35" height="31" alt="pure" data-src="assets/custom/img/icon-echo-friendly.png"> </i> <span>Eco Friendly</span></li>
+                        <li><i><img src="/assets/custom/img/icon-pure.png" width="19" height="28" alt="pure" data-src="/assets/custom/img/icon-pure.png"> </i> <span>100% Pure</span></li>
+                        <li><i><img src="/assets/custom/img/icon-chemical.png" width="23" height="31" alt="pure" data-src="/assets/custom/img/icon-chemical.png"> </i> <span>Chemical Free</span> </li>
+                        <li><i><img src="/assets/custom/img/icon-rabit.png" width="34" height="34" alt="pure" data-src="/assets/custom/img/icon-rabit.png"> </i> <span>Cruelty Free</span> </li>
+                        <li><i><img src="/assets/custom/img/icon-echo-friendly.png" width="35" height="31" alt="pure" data-src="/assets/custom/img/icon-echo-friendly.png"> </i> <span>Eco Friendly</span></li>
                     </ul>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                         </div>
                         <div class="col text-right">
                             <ul class="right list-inline ml-auto">
-                                <li class="list-inline-item online-store"><a href="#"><i><img src="assets/custom/img/icon-web.png" data-src="assets/custom/img/icon-web.png" width="24" height="24" alt="online store"> </i> Online Store</a> </li>
+                                <li class="list-inline-item online-store"><a href="#"><i><img src="/assets/custom/img/icon-web.png" data-src="/assets/custom/img/icon-web.png" width="24" height="24" alt="online store"> </i> Online Store</a> </li>
                                 <li class="list-inline-item social"><a href="#"><i class="lab la-facebook-f"></i></a></li>
                                 <li class="list-inline-item social"><a href="#"><i class="lab la-twitter"></i></a></li>
                                 <li class="list-inline-item social"><a href="#"><i class="lab la-instagram"></i></a></li>
@@ -34,11 +34,20 @@
                 <nav class="navbar navbar-expand-lg   row p-0 no-gutters">
                     <div class="collapse col-4 navbar-collapse d-none d-lg-block" id="main_nav">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active"> <a class="nav-link" href="#"><i class="las la-home"></i></a> </li>
-                            <li class="nav-item"><a class="nav-link" href="#story" v-smooth-scroll>Our Story</a></li>
-                            <li class="nav-item dropdown"> <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Organic Products</a>
+                            <li class="nav-item active"> 
+                                <router-link class="nav-link" to="/"><i class="las la-home"></i></router-link>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#story" v-smooth-scroll>Our Story</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <router-link class="nav-link  dropdown-toggle" data-toggle="dropdown" to="/products"> Organic Products</router-link>
                                 <ul class="dropdown-menu fade-up">
-                                    <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+                                    <li>
+                                         <router-link class="dropdown-item" to="/products/3">
+                                            Submenu item 1
+                                        </router-link>
+                                    </li>
                                     <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
                                     <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li>
                                 </ul>
@@ -47,7 +56,7 @@
                     </div>
                     <!-- navbar-collapse.// -->
                     <div class="col-4 text-center ">
-                        <a class="brand text-white" href="#"><img src="assets/custom/img/brand-logo.png" data-src="assets/custom/img/brand-logo.png" width="266" height="104" alt="MRT"> </a>
+                        <a class="brand text-white" href="#"><img src="/assets/custom/img/brand-logo.png" data-src="/assets/custom/img/brand-logo.png" width="266" height="104" alt="MRT"> </a>
                     </div>
                     <div class="col-4  d-none d-lg-block">
                         <ul class="navbar-nav ">
@@ -58,7 +67,7 @@
                                     <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#contact" v-smooth-scroll> Contact Us</a></li>
+                            <li class="nav-item"><router-link class="nav-link" to="/contact"> Contact Us</router-link></li>
                         </ul>
                     </div>
                     <div class="col-5 d-block d-md-none  relative">
@@ -66,7 +75,8 @@
                             <button class="dl-trigger">Open Menu</button>
                             <ul class="dl-menu">
                                 <li><a href="#">Home</a></li>
-                                <li> <a href="#" class="has-sub">Organic Products <i class="las la-angle-right ml-auto float-right"></i></a>
+                                <li> 
+                                    <router-link class="has-sub" to="/products"> Organic Products<i class="las la-angle-right ml-auto float-right"></i></router-link>
                                     <ul class="dl-submenu">
                                         <li><a href="#">ORGANIC ESSENTIAL OILS</a></li>
                                         <li><a href="#">ORGANIC CARRIER OILS</a></li>
