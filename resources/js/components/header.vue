@@ -43,13 +43,11 @@
                             <li class="nav-item dropdown">
                                 <router-link class="nav-link  dropdown-toggle" data-toggle="dropdown" to="/products"> Organic Products</router-link>
                                 <ul class="dropdown-menu fade-up">
-                                    <li>
-                                         <router-link class="dropdown-item" to="/products/3">
-                                            Submenu item 1
+                                    <li v-for="product in products" :key="product.id">
+                                         <router-link v-if="product.store_id==1" class="dropdown-item" :to="`/products/${product.slug}`">
+                                            {{ product.name | upText }}
                                         </router-link>
                                     </li>
-                                    <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
-                                    <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -62,9 +60,11 @@
                         <ul class="navbar-nav ">
                             <li class="nav-item dropdown"> <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown"> Conventional Products </a>
                                 <ul class="dropdown-menu fade-up">
-                                    <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
-                                    <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
-                                    <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li>
+                                     <li v-for="product in products" :key="product.id">
+                                         <router-link v-if="product.store_id==2" class="dropdown-item" :to="`/products/${product.slug}`">
+                                            {{ product.name | upText }}
+                                        </router-link>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item"><router-link class="nav-link" to="/contact"> Contact Us</router-link></li>
@@ -113,6 +113,19 @@
 </template>
 <script>
 export default {
-    
+    data() {
+        return {
+            products: {},
+        }
+    },
+    methods: {
+        loadProduct(){
+             this.$Progress.start()
+            axios.get('/api/product').then(({ data }) => { this.products = data; this.$Progress.finish(); })
+        },
+    },
+    created() {
+        this.loadProduct();
+    }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <section>
         <div>
-            contact
+            Product Details
         </div>
     </section>
 </template>
