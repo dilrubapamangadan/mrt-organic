@@ -79,6 +79,17 @@ class ProductController extends Controller
         return $productData;
     }
 
+    public function categoryProduct($slug)
+    {
+        $productData = DB::table('products')
+        ->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id')
+        ->leftJoin('categories', 'categories.id', '=', 'product_categories.category_id')
+        ->where('categories.slug',$slug)
+        ->select('products.id as id','products.name as name','products.description as description','products.status as status','products.img as img','product_categories.category_id as category_id','categories.store_id as store_id')
+        ->get();
+       
+        return $productData;
+    }
     /**
      * Show the form for editing the specified resource.
      *

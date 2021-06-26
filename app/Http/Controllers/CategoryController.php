@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -69,6 +70,16 @@ class CategoryController extends Controller
         return $categoryData;
     }
 
+    public function storeCategories($slug)
+    {
+        $categoryData = DB::table('categories')
+        ->Join('stores', 'stores.id', '=', 'categories.store_id')
+        ->where('stores.slug',$slug)
+        ->select('categories.name as name','categories.slug as slug')
+        ->get();
+       
+        return $categoryData;
+    }
     /**
      * Show the form for editing the specified resource.
      *

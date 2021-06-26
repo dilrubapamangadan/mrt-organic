@@ -25,6 +25,7 @@ Route::prefix('category')->group(function () {
     Route::post('/store', 'CategoryController@store')->middleware('auth:api');
     Route::get('/{id}', 'CategoryController@show');
     Route::put('/{id}', 'CategoryController@update')->middleware('auth:api');
+    Route::get('/store/{slug}', 'CategoryController@storeCategories');
     // Route::put('/edit/{id}', 'CategoryController@update');
     Route::delete('/{id}', 'CategoryController@destroy')->middleware('auth:api');
 });
@@ -34,6 +35,7 @@ Route::prefix('product')->group(function () {
     Route::post('/store', 'ProductController@store')->middleware('auth:api');
     Route::put('/{id}', 'ProductController@update')->middleware('auth:api');
     Route::get('/{id}', 'ProductController@show');
+    Route::get('/category/{slug}', 'ProductController@categoryProduct');
     // Route::put('/edit/{id}', 'ProductController@update');
     Route::delete('/{id}', 'ProductController@destroy')->middleware('auth:api');
 });

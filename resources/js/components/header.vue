@@ -41,11 +41,11 @@
                                 <a class="nav-link" href="#story" v-smooth-scroll>Our Story</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <router-link class="nav-link  dropdown-toggle" data-toggle="dropdown" to="/products"> Organic Products</router-link>
+                                <a class="nav-link  dropdown-toggle" data-toggle="dropdown" href="#"> Organic Products</a>
                                 <ul class="dropdown-menu fade-up">
-                                    <li v-for="product in products" :key="product.id">
-                                         <router-link v-if="product.store_id==1" class="dropdown-item" :to="`/products/${product.slug}`">
-                                            {{ product.name | upText }}
+                                    <li v-for="category in categoryOrganic" :key="category.slug">
+                                         <router-link  class="dropdown-item" :to="`/products/${category.slug}`">
+                                            {{ category.name | upText }}
                                         </router-link>
                                     </li>
                                 </ul>
@@ -60,9 +60,9 @@
                         <ul class="navbar-nav ">
                             <li class="nav-item dropdown"> <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown"> Conventional Products </a>
                                 <ul class="dropdown-menu fade-up">
-                                     <li v-for="product in products" :key="product.id">
-                                         <router-link v-if="product.store_id==2" class="dropdown-item" :to="`/products/${product.slug}`">
-                                            {{ product.name | upText }}
+                                     <li v-for="category in categoryConventional" :key="category.slug">
+                                         <router-link  class="dropdown-item" :to="`/products/${category.slug}`">
+                                            {{ category.name | upText }}
                                         </router-link>
                                     </li>
                                 </ul>
@@ -115,17 +115,13 @@
 export default {
     data() {
         return {
-            products: {},
+            categoryOrganic: {},
+            categoryConventional: {}
         }
     },
-    methods: {
-        loadProduct(){
-             this.$Progress.start()
-            axios.get('/api/product').then(({ data }) => { this.products = data; this.$Progress.finish(); })
-        },
-    },
     created() {
-        this.loadProduct();
+        axios.get('/api/category/store/organic-products').then(({ data }) => { this.categoryOrganic = data; });
+        axios.get('/api/category/store/conventional-products').then(({ data }) => { this.categoryConventional = data; });
     }
 }
 </script>

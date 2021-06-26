@@ -37,7 +37,7 @@ const routes= [
         },
         { 
             path: '/admin/products', 
-            name: 'Products',
+            name: 'Manage Products',
             component: Products 
         },
         { 
@@ -51,13 +51,13 @@ const routes= [
             component: Contact 
         },
         { 
-            path: '/products', 
-            name: 'Product List',
+            path: '/products/:slug', 
+            name: 'Products',
             component: ProductList 
         },
         { 
-            path: '/products/:slug', 
-            name: 'Product Details',
+            path: '/product/:slug', 
+            name: 'Product',
             component: ProductDetails 
         },
         { 
@@ -88,7 +88,13 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    document.title = `${ process.env.MIX_APP_NAME } - ${ to.name }`
+    if(to.name == 'Products' || to.name == 'Product'){
+        var name = to.params.slug;
+        name = name.replace(/-/g, " ").toUpperCase();
+        document.title = `${ process.env.MIX_APP_NAME } - ${ name }`
+    }else{
+        document.title = `${ process.env.MIX_APP_NAME } - ${ to.name }`
+    }
     next()
 })
 
