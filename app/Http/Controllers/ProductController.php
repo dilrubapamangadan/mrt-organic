@@ -5,8 +5,10 @@ use DB;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Traits\UploadTrait;
 class ProductController extends Controller
 {
+    use UploadTrait;
     /**
      * Display a listing of the resource.
      *
@@ -44,12 +46,30 @@ class ProductController extends Controller
         $newProduct->name = $request["name"];
         $newProduct->description = $request["description"];
         $newProduct->status = $request["status"]?1:0;
-        if($request["img"]){
-            $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
-            \Image::make($request["img"])->save(public_path('img/product/').$name);
-            $newProduct->img = $name;
 
+        $filePath = '';        // Check if a profile image has been uploaded
+        if ($request['img']) {
+                
+            // Make a image name based on user name and current timestamp
+            $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
+
+            // Define folder path
+            $folder = 'img/product/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $name;
+            // Upload image
+            
+            $filePathVarient = 'actual_'.$filePath;
+            $this->uploadImage($request->img, $folder, $filePathVarient);
+            // $filePathVarient = 'large_'.$filePath;
+            // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);
+            // $filePathVarient = 'medium_'.$filePath;
+            // $this->uploadOne($request->product, $folder, $filePathVarient, 380, 190);
+            // $filePathVarient = 'small_'.$filePath;
+            // $this->uploadOne($request->product, $folder, $filePathVarient, 280, 140);
+            
         }
+        $newProduct->img = $filePath;
         $newProduct->save();
 
         $id = DB::getPdo()->lastInsertId();
@@ -119,13 +139,29 @@ class ProductController extends Controller
             $existingProduct->name = $request['name'];
             $existingProduct->description = $request['description'];
             $existingProduct->status = $request['status'] ? 1 : 0;
-
-            if($request["img"] != $existingProduct->img){
+            $filePath = '';
+            if ($request['img']) {
+              
+               // Make a image name based on user name and current timestamp
                 $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
-                \Image::make($request["img"])->save(public_path('img/product/').$name);
-                $existingProduct->img = $name;
-    
+
+                // Define folder path
+                $folder = 'img/product/';
+                // Make a file path where image will be stored [ folder path + file name + file extension]
+                $filePath = $name;
+                // Upload image
+                
+                $filePathVarient = 'actual_'.$filePath;
+                $this->uploadImage($request['img'], $folder, $filePathVarient);
+                // $filePathVarient = 'large_'.$filePath;
+                // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);
+                // $filePathVarient = 'medium_'.$filePath;
+                // $this->uploadOne($request->product, $folder, $filePathVarient, 380, 190);
+                // $filePathVarient = 'small_'.$filePath;
+                // $this->uploadOne($request->product, $folder, $filePathVarient, 280, 140);
+                
             }
+            $existingProduct->img = $filePath;
             $existingProduct->save();
 
             ProductCategory::where('product_id', $request['id'])

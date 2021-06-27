@@ -44,7 +44,6 @@
                                         <option v-for="item in items" v-bind:key="item.id" v-bind:value="item.id" :selected="item.id == form.store_id"> {{ item.name }} </option>
                                     </select>
                                 <!-- <has-error :form="form" field="store"></has-error> -->
-
                                 </div>
 
                                 <div class="form-group">
@@ -58,13 +57,13 @@
                                     <h6>Select an image</h6>
                                     <input type="file" @change="onFileChange">
                                 </div>
-                            
                                 <div v-else>
                                     <img v-show="!imagePreview" :src="form.img" />
-                                    <img v-show="imagePreview" :src="'/img/product/'+form.img" />
+                                    <img v-show="imagePreview" :src="'/img/product/actual_'+form.img" />
                                     <button @click.prevent="removeImage"><i class="fas fa-trash text-danger"></i>
                                     Remove image</button>
                                 </div>
+                                <p v-if="imgStatus" class="text-danger">Upload a image with dimension 100px*100px</p>
 
                                 <div class="form-group">
                                     <label for="description">Description</label>
@@ -120,7 +119,8 @@ export default {
                 img:'',
                 store_id: '',
                 category_id: ''
-            })
+            }),
+            imgStatus: false,
         }
     },
     methods: {
@@ -141,14 +141,29 @@ export default {
             this.createImage(files[0]);
         },
         createImage(file) {
-            var image = new Image();
-            var reader = new FileReader();
+            var img = new Image();
+            var imgwidth = 0;
+  		    var imgheight = 0;
             var vm = this;
+			var _URL = window.URL || window.webkitURL;
+            img.src = _URL.createObjectURL(file);
+            img.onload = function(e) {
+                imgwidth = this.width;
+                imgheight = this.height;
+                if(imgwidth < 100 || imgheight < 100){
+                    vm.imgStatus = true;
+                    setTimeout(function(){
+                       vm.imgStatus = false;
+                    }, 3000);
+                }else{
+                        var reader = new FileReader();
 
-            reader.onload = (e) => {
-                vm.form.img = e.target.result;
-            };
-            reader.readAsDataURL(file);
+                        reader.onload = (e) => {
+                            vm.form.img = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                }
+            }
         },
         removeImage: function (e) {
             if(this.editMode)
@@ -183,7 +198,12 @@ export default {
                     this.$Progress.finish()
                     this.imagePreview = false;
                 })
-                .catch(() => {
+                .catch((response) => {
+                    var str = response.responseJSON.message;
+                    toast.fire({
+                        icon: 'Error',
+                        title: str
+                    })
                     this.$Progress.fail()
                     this.$Progress.finish()
                 })
@@ -201,7 +221,7 @@ export default {
             this.getProduct(this.id);
         }
         Fire.$on('updateList',() => {
-            this.$router.push({name:"Products"})
+            this.$router.push({name:"Manage Products"})
         });
     }
 }
