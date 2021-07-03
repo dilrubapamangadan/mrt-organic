@@ -25,7 +25,9 @@
                     <h3 class="card-title">Products Table</h3>
 
                     <div class="card-tools">
-                    <button class="btn btn-success" @click="newModal()">Add New</button>
+                        <router-link :to="`/admin/product/add`" >
+                            <button class="btn btn-success">Add New</button>
+                        </router-link>
                     </div>
                 </div>
                 <div class="card-body table-responsive p-0">
@@ -58,8 +60,8 @@
                                 <td class="align-middle">
                                     <ul class="list-inline">
                                         <li class="list-inline-item" >
-                                            <img v-if="product.img" alt="Avatar" style="width:50px" class="img-fluid img-thumbnail" :src="'img/product/'+product.img">
-                                            <img v-else alt="Avatar" style="width:50px" class="img-fluid img-thumbnail" src="assets/img/empty.jpg">
+                                            <img v-if="product.img" alt="Avatar" style="width:80px" class="img-fluid img-thumbnail" :src="'/img/product/'+product.img">
+                                            <img v-else alt="Avatar" style="width:80px" class="img-fluid img-thumbnail" src="assets/img/empty.jpg">
                                         </li>
                                         
                                     </ul>
@@ -76,8 +78,8 @@
                                     <p>{{ product.store }}</p>
                                 </td>
 
-                                <td class="align-middle" >
-                                    <p>{{ product.description }}</p>
+                                <td class="align-middle" v-html="product.description">
+                                    <p></p>
                                 </td>
                                 
                                 <td class="project-state align-middle">
@@ -85,14 +87,16 @@
                                     <span v-else class="badge badge-danger">Inactive</span>
                                 </td>
                                 <td class="project-actions text-right align-middle">
-                                    <a class="btn border btn-default btn-sm" href="#">
+                                    <a @click="showModal(product)" class="btn border btn-default btn-sm" href="#">
                                         <i class="fas fa-eye text-success">
                                         </i>
                                     </a>
-                                    <a @click="editModal(product)" class="btn border btn-default  btn-sm" href="#">
+                                     <router-link :to="`/admin/product/${product.id}`" >
+                                    <a class="btn border btn-default  btn-sm" href="#">
                                         <i class="fas fa-pencil-alt text-primary">
                                         </i>
                                     </a>
+                                    </router-link>
                                     <a @click="deleteProduct(product.id)" class="btn border btn-default  btn-sm" href="#">
                                         <i class="fas fa-trash text-danger">
                                         </i>
@@ -103,86 +107,38 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- Modal -->
-                <div class="modal" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" v-show="!editMode" id="exampleModalLabel">Add New</h5>
-                            <h5 class="modal-title" v-show="editMode" id="exampleModalLabel">Edit</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <v-form @submit.prevent="editMode ? updateProduct() : createProduct()">
-
-                        <div class="modal-body">
-                        
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input v-model="form.name" type="text" class="form-control" id="name" placeholder="Name" :class="{ 'is-invalid': form.errors.has('name') }">
-                                </div>
-                                <has-error :form="form" field="name"></has-error>
-
-                                <div class="form-group">
-                                    <label for="inputState">Store</label>
-                                    <select @change="loadCategory(form.store_id)" name="store" v-model="form.store_id" class="form-control" >
-                                        <option v-for="item in items" v-bind:key="item.id" v-bind:value="item.id" :selected="item.id == form.store_id"> {{ item.name }} </option>
-                                    </select>
-                                <!-- <has-error :form="form" field="store"></has-error> -->
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="inputState">Category</label>
-                                    <select  name="category" v-model="form.category_id" class="form-control" >
-                                        <option v-for="category in categories" v-bind:key="category.id" v-bind:value="category.id" :selected="category.id == form.category_id"> {{ category.name }} </option>
-                                    </select>
-                                <!-- <has-error :form="form" field="store"></has-error> -->
-                                </div>
-                                <div v-if="!form.img">
-                                    <h6>Select an image</h6>
-                                    <input type="file" @change="onFileChange">
-                                </div>
-                            
-                                <div v-else>
-                                    <img v-show="!imagePreview" :src="form.img" />
-                                    <img v-show="imagePreview" :src="'img/product/'+form.img" />
-                                    <button @click.prevent="removeImage"><i class="fas fa-trash text-danger"></i>
-                                    Remove image</button>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <textarea v-model="form.description" class="form-control" id="description" rows="3" :class="{ 'is-invalid': form.errors.has('description') }"></textarea>
-                                </div>
-                                <has-error :form="form" field="description"></has-error>
-                        
-                            
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox"  v-model="form.status" class="custom-control-input" id="customSwitch1">
-                                    <label class="custom-control-label" v-show="form.status" for="customSwitch1">Active</label>
-                                    <label class="custom-control-label" v-show="!form.status" for="customSwitch1">Inactive</label>
-                                </div>
-
-                            
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" v-show="!editMode" class="btn btn-primary">Create</button>
-                            <button type="submit" v-show="editMode" class="btn btn-primary">Update</button>
-                        </div>
-                        </v-form>
-                            
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </div>
     </section>
     <!-- /.content -->
+
+     <!-- Modal -->
+    <div class="modal" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+            
+                    <center>
+                        <h1>{{modalData.name}}</h1>
+                        <img :src="'/img/product/'+modalData.img" />
+
+                        <p v-html="modalData.description" ></p>
+                    </center>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+                
+            </div>
+
+        </div>
+    </div>
 </div>  
 </template>
 <script>
@@ -190,86 +146,18 @@ export default {
     data() {
         return {
             Status: '',
-            editMode: false,
-            imagePreview: false,
-            categories: [],
-            items: [],
             products: {},
-            form: new Form({
-                id: '',
+            modalData: new Form({
                 name: '',
                 description: '',
-                status: true,
                 img:'',
-                store_id: '',
-                category_id: ''
             })
         }
     },
     methods: {
-        loadShop(){
-            axios.get('/api/store').then(({ data }) => { this.items = data})
-        },
-        loadCategory(id){
-             this.$Progress.start()
-            axios.get('/api/store/category/'+id).then(({ data }) => { this.categories = data; this.$Progress.finish(); })
-        },
         loadProduct(){
              this.$Progress.start()
             axios.get('/api/product').then(({ data }) => { this.products = data; this.$Progress.finish(); })
-        },
-        onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length)
-                return;
-            this.createImage(files[0]);
-        },
-        createImage(file) {
-            var image = new Image();
-            var reader = new FileReader();
-            var vm = this;
-
-            reader.onload = (e) => {
-                vm.form.img = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        },
-        removeImage: function (e) {
-            if(this.editMode)
-                this.imagePreview = false;
-            this.form.img = '';
-        },
-        editModal(product){
-            this.editMode = true;
-            this.imagePreview = true;
-            this.form.clear();
-            this.form.reset();
-            this.loadCategory(product.store_id);
-            $('#addModal').modal('show');
-            this.form.fill(product);
-        },
-        newModal(){
-            this.editMode = false;
-            this.form.clear();
-            this.form.reset();
-            $('#addModal').modal('show');
-        },
-        createProduct(){
-            this.$Progress.start()
-            this.form.post('/api/product/store')
-                .then(() => {
-                    Fire.$emit('updateList');
-                    $('#addModal').modal('hide');
-                    toast.fire({
-                        icon: 'success',
-                        title: 'Successfully created'
-                    })
-                    this.$Progress.finish()
-                })
-                .catch(() => {
-                    this.$Progress.fail()
-                    this.$Progress.finish()
-                })
         },
         deleteProduct(id){
             swal.fire({
@@ -282,7 +170,7 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if(result.value){
-                    this.form.delete('/api/product/'+id)
+                    axios.delete('/api/product/'+id)
                         .then(() => {
                              toast.fire({
                                 icon: 'success',
@@ -300,27 +188,12 @@ export default {
                 }
             });
         },
-        updateProduct(id){
-            this.$Progress.start()
-            this.form.put('/api/product/edit/'+this.form.id)
-                .then(() => {
-                    Fire.$emit('updateList')
-                    $('#addModal').modal('hide');
-                    toast.fire({
-                        icon: 'success',
-                        title: 'Successfully Updated'
-                    })
-                    this.$Progress.finish()
-                    this.imagePreview = false;
-                })
-                .catch(() => {
-                    this.$Progress.fail()
-                    this.$Progress.finish()
-                })
+        showModal(product){
+            $('#viewModal').modal('show');
+            this.modalData.fill(product);
         }
     },
     created() {
-        this.loadShop();
         this.loadProduct();
         Fire.$on('updateList',() => {
             this.loadProduct();
@@ -330,7 +203,7 @@ export default {
 </script>
 <style scoped>
 img {
-  width: 30%;
+  width: 80%;
   margin: auto;
   display: block;
   margin-bottom: 10px;

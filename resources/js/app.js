@@ -40,7 +40,7 @@ const options = {
       termination: 300
     },
     autoRevert: true,
-    location: 'left',
+    location: 'top',
     inverse: false
 }
   
@@ -71,7 +71,7 @@ const app = new Vue({
     el: '#app',
     components: {
         App,
-        Admin
+        Admin,
     },
     router,
     vuetify:Vuetify

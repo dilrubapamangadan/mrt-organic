@@ -69,7 +69,14 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $productData = DB::table('products')
+        ->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id')
+        ->leftJoin('categories', 'categories.id', '=', 'product_categories.category_id')
+        ->where('products.id',$id)
+        ->select('products.id as id','products.name as name','products.description as description','products.status as status','products.img as img','product_categories.category_id as category_id','categories.store_id as store_id')
+        ->get();
+       
+        return $productData;
     }
 
     /**

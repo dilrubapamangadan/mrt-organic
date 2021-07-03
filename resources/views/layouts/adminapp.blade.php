@@ -9,8 +9,8 @@
   <title>{{ config('app.name', 'MRT ORGANIC') }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="assets/custom/img/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="assets/custom/img/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/custom/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/custom/img/favicon.ico" type="image/x-icon">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
@@ -25,7 +25,7 @@
 
   {{-- <base href="{{ config('app.url') }}" target="_blank" /> --}}
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="{{ asset('../js/app.js') }}" defer></script>
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
