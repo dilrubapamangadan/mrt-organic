@@ -66,12 +66,12 @@ const routes= [
             component: About 
         },
         { 
-            path: '/category/add', 
+            path: '/admin/category/add', 
             name: 'Category Add',
             component: CategoryForm 
         },
         { 
-            path: '/admin/category/:id', 
+            path: '/admin/category/edit/:id', 
             name: 'Category Edit',
             component: CategoryForm 
         },

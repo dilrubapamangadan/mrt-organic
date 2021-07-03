@@ -88,7 +88,7 @@
                                         <i class="fas fa-eye text-success">
                                         </i>
                                     </a>
-                                    <router-link :to="`/admin/category/${category.id}`" >
+                                    <router-link :to="`/admin/category/edit/${category.id}`" >
                                     <a class="btn border btn-default  btn-sm" href="#">
                                         <i class="fas fa-pencil-alt text-primary">
                                         </i>

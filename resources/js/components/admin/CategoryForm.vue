@@ -182,6 +182,7 @@ data() {
     created() {
         this.loadShop();
         this.id = this.$route.params.id
+        console.log(this.id);
         if(this.id){
             this.getCategory(this.id);
             this.imagePreview = true;
