@@ -1,6 +1,6 @@
 <template>
     <section class="organic-products relative overflow-hidden" data-aos="fade-up" data-aos-once="true" data-aos-easing="ease-in-out"  data-wow-duration="3100">
-        <div class="container relative">
+        <div class="container-lg relative">
             <img src="assets/custom/img/vector-left.png" data-src="assets/custom/img/vector-left.png" width="461" height="829" alt="vector" class="vector-left">
             <img src="assets/custom/img/vector-right.png" data-src="assets/custom/img/vector-left.png" width="461" height="829" alt="vector" class="vector-right">
             <div class="box text-center">

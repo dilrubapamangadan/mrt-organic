@@ -51,7 +51,7 @@
     <script src="/assets/custom/js/modernizr.custom.js"></script>
     <script src="/assets/custom/js/jquery.dlmenu.js"></script>
     <script src="/assets/custom/js/owl.carousel.min.js"></script>
-    <script src="/assets/js/scroll.js"></script>
+    {{-- <script src="/assets/js/scroll.js"></script> --}}
     <script type="text/javascript">
     butter.init({cancelOnTouch: true});
 

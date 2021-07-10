@@ -1,6 +1,6 @@
 <template>
     <section id="story" class="SectionStory text-white relative">
-        <div class="container relative">
+        <div class="container-lg relative">
             <div class="row">
                 <div class="col-lg-6 relative " data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
                     <div class="frame relative">

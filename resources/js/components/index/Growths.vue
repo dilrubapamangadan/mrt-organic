@@ -1,7 +1,7 @@
 <template>
          <!--counter section -->
     <section class="Company-Groth" >
-        <div class="container">
+        <div class="container-lg">
             <h2 class="font-normal text-center m-0">Let the numbers speak for us:</h2>
             <div class="row justify-content-between">
                 

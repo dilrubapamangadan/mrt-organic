@@ -1,6 +1,6 @@
 <template>
     <footer data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-mirror="true" data-wow-duration="1000"  >
-            <div id="contact" class="container relative">
+            <div id="contact" class="container-lg relative">
                 <div class="pb-4 pb-md-5 logo"><img src="/assets/custom/img/brand-logo.png" data-src="/assets/custom/img/brand-logo.png" alt="MRT" width="266" height="104"></div>
                 <div class="row">
                     <div class="col-lg-4 d-none d-md-block border-right mb-4 mb-md-5">
@@ -75,7 +75,7 @@
                 <img src="/assets/custom/img/leaf-3.png" data-src="/assets/custom/img/leaf-3.png" width="364" height="301" alt="leaf" class="leaf">
             </div>
             <div class="last">
-                <div class="container">
+                <div class="container-lg">
                     <div class="row justify-content-end">
                         <div class="col-md-6 text-center text-md-left">© 2020-21 MRT Green Products. </div>
                         <div class="col-md-6 text-center text-md-right "><a href="#" class=" mr-5">Legal</a>     <a href="#" class=""> Privacy Policy</a>

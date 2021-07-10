@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+            <div class="container-lg">
                 <nav class="navbar navbar-expand-lg   row p-0 no-gutters">
                     <div class="collapse col-4 navbar-collapse d-none d-lg-block" id="main_nav">
                         <ul class="navbar-nav ml-auto">

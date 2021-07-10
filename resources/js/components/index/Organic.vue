@@ -1,6 +1,6 @@
 <template>
      <section class="pb-4 pb-md-5">
-        <div class="container">
+        <div class="container-lg">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-in" data-aos-once="true" data-wow-duration="1000"><img src="assets/custom/img/organic.jpg" data-src="assets/custom/img/organic.jpg" width="635" height="534" alt="oganic"> </div>
                 <div class="col-md-6" data-aos="fade-in" data-wow-duration="1500">

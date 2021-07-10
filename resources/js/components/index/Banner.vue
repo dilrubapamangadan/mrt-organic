@@ -7,7 +7,7 @@
            
             <div class="carousel-inner">
                 <div class="carousel-item w-100 active">
-                    <div class="container h-100">
+                    <div class="container-lg h-100">
                         <div class="d-flex justify-content-left align-items-center h-100">
                             <div class="col-6 text">
                                 <h4 class="font-normal">Reach for a healthier you</h4>
@@ -21,7 +21,7 @@
                         </div>
                     </div> </div>
                 <div class="carousel-item w-100">
-                    <div class="container h-100">
+                    <div class="container-lg h-100">
                         <div class="d-flex justify-content-left align-items-center h-100">
                             <div class="col-6 text">
                                 <h4 class="font-normal">Reach for a healthier you</h4>
