@@ -1,1 +1,6 @@
+assets/plugins_full
+backups
+/client
+/.vscode
+node_modules
 public/js/app.js
