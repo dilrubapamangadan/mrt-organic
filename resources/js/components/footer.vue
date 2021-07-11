@@ -1,5 +1,5 @@
 <template>
-    <footer data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-mirror="true" data-wow-duration="1000"  >
+    <footer>
             <div id="contact" class="container-lg relative">
                 <div class="pb-4 pb-md-5 logo"><img src="/assets/custom/img/brand-logo.png" data-src="/assets/custom/img/brand-logo.png" alt="MRT" width="266" height="104"></div>
                 <div class="row">
