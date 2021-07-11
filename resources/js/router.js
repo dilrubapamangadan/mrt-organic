@@ -70,7 +70,7 @@ const routes= [
             name: 'Category Add',
             component: CategoryForm 
         },
-        { 
+        {  
             path: '/admin/category/edit/:id', 
             name: 'Category Edit',
             component: CategoryForm 
