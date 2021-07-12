@@ -374,16 +374,19 @@ counterparts. The lack of pesticide residues is also a major
           </div>
       </div>
     </section>
+    <Certification></Certification>
     <footer1></footer1>
   </div>
 </template>
 <script>
 import header1 from './header.vue'
 import footer1 from './footer.vue'
+import Certification from './index/Certification.vue'
 export default {
         components: { 
             header1,
-            footer1
+            footer1,
+            Certification,
         }
 }
 </script>
