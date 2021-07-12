@@ -14,6 +14,10 @@
     src: url('../fonts/OrpheusPro.eot') format('embedded-opentype'), url('../fonts/OrpheusPro.woff2') format('woff2'), url('../fonts/OrpheusPro.woff') format('woff'), url('../fonts/OrpheusPro.ttf') format('truetype'), url('../fonts/OrpheusPro.svg#OrpheusPro') format('svg');
 }
 
+.font-bold {
+    font-family: 'OrpheusProBold';
+}
+
 .text-green {
     color: #276f46;
 }
@@ -1373,10 +1377,11 @@ footer .last a:hover {
 }
 .product-listing li {
     width: 33.33%;
-    padding: 0 20px 150px;
+    padding: 0 20px 40px;
+    position: relative;
 }
 .product-listing li.pull-down {
-    padding: 80px 20px 0px;
+    padding-top: 80px!important;
 }
 .product-listing li .item {
     position: relative;
@@ -1488,6 +1493,77 @@ footer .last a:hover {
     transition-delay: 0.3s;
     opacity: 1;
     top: 0;
+}
+.product-listing li.pull-down .tail {
+    position: absolute;
+    right: 110px;
+    top: calc(100% - 41px);
+}
+.product-listing li .tail {
+    position: absolute;
+    right: 110px;
+    top: calc(100% - 122px);
+}
+
+/* organic product description */
+.org-product-info {
+    background-color: #256b43;
+    padding: 68px 0 140px;
+    position: relative;
+}
+.org-product-info .wall {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    width: 100%;
+    height: 90px;
+    z-index: 5;
+    display: block;
+    background-image: url(../img/banner-wall2.png);
+    background-repeat: repeat-x;
+    background-position: 0 20%, 0 100%, 0 50%, 0 100%, 0 0;
+    animation: 150s para infinite linear;
+}
+.org-product-info .box {
+    border: 5px solid #ebce1a;
+    padding: 92px 140px 107px;
+    position: relative;
+}
+.org-product-info .vector1 {
+    position: absolute;
+    left: -150px;
+    bottom: -90px;
+    pointer-events: none;
+    max-width: 70%;
+}
+.org-product-info .vector2 {
+    position: absolute;
+    right: -144px;
+    bottom: -84px;
+    pointer-events: none;
+    max-width: 30%;
+}
+.org-product-info .box .icon {
+    margin: 0 auto 20px;
+    position: relative;
+    width: 70px;
+    text-align: center;
+}
+.org-product-info .box .icon::after,
+.org-product-info .box .icon::before {
+    display: block;
+    width: 100px;
+    height: 1px;
+    background: #d2bd48;
+    position: absolute;
+    top: 30px;
+    content: "";
+}
+.org-product-info .box .icon::after {
+    left: 100%;
+}
+.org-product-info .box .icon::before {
+    right: 100%;
 }
 @media (min-width:1400px) {
     .container,

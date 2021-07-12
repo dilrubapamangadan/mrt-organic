@@ -100,6 +100,14 @@
                 height="521"
               />
             </div>
+             <img
+                  src="/assets/custom/img/vector-attachment-1.png"
+                  data-src="/assets/custom/img/vector-attachment-1.png"
+                  alt="leaf"
+                  class="tail"
+                 
+                />
+            
           </li>
           <li class="pull-down">
             <div class="item">
@@ -139,6 +147,13 @@
                 height="521"
               />
             </div>
+             <img
+                  src="/assets/custom/img/vector-attachment-2.png"
+                  data-src="/assets/custom/img/vector-attachment-2.png"
+                  alt="leaf"
+                  class="tail"
+                 
+                />
           </li>
           <li>
             <div class="item">
@@ -178,6 +193,13 @@
                 height="521"
               />
             </div>
+             <img
+                  src="/assets/custom/img/vector-attachment-3.png"
+                  data-src="/assets/custom/img/vector-attachment-3.png"
+                  alt="leaf"
+                  class="tail"
+                 
+                />
           </li>
           <li>
             <div class="item">
@@ -217,6 +239,13 @@
                 height="521"
               />
             </div>
+             <img
+                  src="/assets/custom/img/vector-attachment-4.png"
+                  data-src="/assets/custom/img/vector-attachment-4.png"
+                  alt="leaf"
+                  class="tail"
+                 
+                />
           </li>
           <li class="pull-down">
             <div class="item">
@@ -256,6 +285,13 @@
                 height="521"
               />
             </div>
+             <img
+                  src="/assets/custom/img/vector-attachment-5.png"
+                  data-src="/assets/custom/img/vector-attachment-5.png"
+                  alt="leaf"
+                  class="tail"
+                 
+                />
           </li>
           <li>
             <div class="item">
@@ -295,8 +331,47 @@
                 height="521"
               />
             </div>
+             <img
+                  src="/assets/custom/img/vector-attachment-6.png"
+                  data-src="/assets/custom/img/vector-attachment-6.png"
+                  alt="leaf"
+                  class="tail"
+                 
+                />
           </li>
         </ul>
+      </div>
+    </section>
+    <section class="org-product-info position-relative">
+    <div class="wall"></div>
+      <div class="container-lg">
+          <div class="box text-center text-light">
+          <p>
+           <img
+            src="/assets/custom/img/mrt-logo-yellow.png"
+            width="440"
+            height="339"
+            class="logo"
+          />
+          </p>
+     <h2 class="font-bold">A shop for good people by good people</h2>
+     <div class="icon mx-auto my-3"><img src="/assets/custom/img/icon-leaf.png" data-src="/assets/custom/img/icon-leaf.png" alt="leaf" width="48" height="54"></div>
+<h3 class="font-bold mb-3">Why are organic oils superior to non-organic Oils?</h3>
+<p>Essential oils are highly concentrated plant medicines. As such, they are 
+subject to retaining high concentrations of contaminants if the plants they 
+are derived from are grown with chemical agricultural methods. When you think 
+about residues in this way, the benefits for those using organic oils vs. non 
+organic oils is fairly obvious.</p>
+<p>Many aroma therapists prefer to use organic essential oils in their clinical treatments because 
+they believe organic agriculture yields oils that are more therapeutically active than their non-organic 
+counterparts. The lack of pesticide residues is also a major
+ benefit when using organic essential oils since these unwanted toxic chemicals have far-reaching effects on our bodies, wildlife, and the environment.</p>
+
+
+<img src="/assets/custom/img/vector2.png" data-src="/assets/custom/img/vector2.png" alt="leaf" class="vector1" >
+<img src="/assets/custom/img/vector3.png" data-src="/assets/custom/img/vector2.png" alt="leaf" class="vector2" >
+
+          </div>
       </div>
     </section>
     <footer1></footer1>
