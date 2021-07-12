@@ -1,5 +1,5 @@
 <template>
-    <section class="home-banner"> <img src="assets/custom/img/banner-vector.png" data-src="assets/custom/img/banner-vector.png" width="978" height="576" alt="banner-vector" class="flower"> <img src="assets/custom/img/leaf.png" data-src="assets/custom/img/leaf.png" width="370" height="306" alt="leaf" class="leaf">
+    <section class="home-banner"> <img src="/assets/custom/img/banner-vector.png" data-src="/assets/custom/img/banner-vector.png" width="978" height="576" alt="banner-vector" class="flower"> <img src="/assets/custom/img/leaf.png" data-src="/assets/custom/img/leaf.png" width="370" height="306" alt="leaf" class="leaf">
         <div class="wall"></div>
 
      <carousel  class="carousel site-banner" >
@@ -16,7 +16,7 @@
                                 Venture</h2> 
                                 </div>
                                 <div class ="col-6">
-                                 <img src="assets/custom/img/banner-image-1.jpg" width="1044" height="519" class="">
+                                 <img src="/assets/custom/img/banner-image-1.jpg" width="1044" height="519" class="">
                                 </div>
                         </div>
                     </div> </div>
@@ -28,7 +28,7 @@
                                 <h2 class="font-bold">A Sustainable  Development Venture</h2>
                               </div>
                               <div class ="col-6">
-                                   <img src="assets/custom/img/banner-image-2.jpg" width="956" height="647" class="">
+                                   <img src="/assets/custom/img/banner-image-2.jpg" width="956" height="647" class="">
                                </div>
                         </div>
                     </div>  </div>

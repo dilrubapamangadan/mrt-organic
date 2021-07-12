@@ -24,7 +24,7 @@
         src="/assets/custom/img/assets.png"
         width="440"
         height="339"
-        class="assets"
+        class="/assets"
       />
     </section>
 
