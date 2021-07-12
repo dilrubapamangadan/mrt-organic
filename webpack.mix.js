@@ -27,3 +27,12 @@ mix.webpackConfig( webpackConfig );
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
+  //  if (mix.inProduction()) {
+  //     mix.version()
+  //     mix.webpackConfig({
+  //       output: {
+  //         publicPath: '/test/mrt/'
+  //       }
+  //     })
+  //     mix.setResourceRoot('/test/mrt/')
+  //   }

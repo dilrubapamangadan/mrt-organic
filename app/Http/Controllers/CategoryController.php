@@ -49,7 +49,7 @@ class CategoryController extends Controller
         $newCategory->store_id = $request["store_id"];
         if($request["img"]){
             $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
-            \Image::make($request["img"])->save(public_path('img/category/').$name);
+            \Image::make($request["img"])->save('/img/category/'.$name);
             $newCategory->img = $name;
 
         }
@@ -113,7 +113,7 @@ class CategoryController extends Controller
 
             if($request["img"] != $existingCategory->img){
                 $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
-                \Image::make($request["img"])->save(public_path('img/category/').$name);
+                \Image::make($request["img"])->save('/img/category/'.$name);
                 $existingCategory->img = $name;
     
             }
