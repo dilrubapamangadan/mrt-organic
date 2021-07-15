@@ -10,12 +10,12 @@
                             <a href="#" class="more">Read more</a> </div> <img src="/assets/custom/img/zooom-img.jpg" data-src="/assets/custom/img/zooom-img.jpg" width="557" height="680" alt="/assets/custom/img/zooom-img.jpg" class="w-100 zoom-image"> </div>  </div>
                  <img src="/assets/custom/img/vector.png" data-src="/assets/custom/img/vector.png" width="755" height="601" alt="vector image" class="vector zoomIn" data-aos="zoom-in" data-aos-once="true" data-aos-duration="3000">
                
-                <div class="col-lg-6 " data-aos="fade-up" data-aos-once="true" data-aos-duration="2000">
-                    <div class="content-2 text-center " data-aos="fade-up" data-aos-once="true" data-aos-duration="1500"> <img src="/assets/custom/img/logo-white.png" data-src="/assets/custom/img/logo-white.png" width="300" height="58" alt="logo" class="logo">
-                        <h3 class="font-bold " data-aos="fade-up" data-aos-once="true" data-aos-duration="2500">Farmer</h3>
-                        <h4 class="font-normal " data-aos="fade-up" data-aos-once="true" data-aos-duration="2800">The Backbone  of our nation</h4>
-                        <div class="icon " data-aos="fade-up" data-aos-once="true" data-aos-duration="3100"><img src="/assets/custom/img/icon-leaf.png" data-src="/assets/custom/img/icon-leaf.png" width="48" height="54" alt="leaf"> </div>
-                        <div class="large font-bold " data-aos="fade-up" data-aos-once="true" data-aos-duration="3500">MRT Organic salutes farmers whose sweat awakens the sleeping soul of earth</div>
+                <div class="col-lg-6 ">
+                    <div class="content-2 text-center "> <img src="/assets/custom/img/logo-white.png" data-src="/assets/custom/img/logo-white.png" width="300" height="58" alt="logo" class="logo">
+                        <h3 class="font-bold " >Farmer</h3>
+                        <h4 class="font-normal " >The Backbone  of our nation</h4>
+                        <div class="icon " ><img src="/assets/custom/img/icon-leaf.png" data-src="/assets/custom/img/icon-leaf.png" width="48" height="54" alt="leaf"> </div>
+                        <div class="large font-bold ">MRT Organic salutes farmers whose sweat awakens the sleeping soul of earth</div>
                     </div>
                 </div>
             </div>
