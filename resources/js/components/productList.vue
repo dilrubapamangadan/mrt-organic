@@ -349,8 +349,8 @@
           <p>
            <img
             src="/assets/custom/img/mrt-logo-yellow.png"
-            width="440"
-            height="339"
+            width="300"
+            height="58"
             class="logo"
           />
           </p>

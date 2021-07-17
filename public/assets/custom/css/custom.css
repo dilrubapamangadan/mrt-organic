@@ -1620,14 +1620,16 @@ footer .last a:hover {
     }
 }
 @media screen and (max-width: 1400px) {
+    .home-banner .assets{bottom:-35px}
     .product-listing li .item .textHV .description{padding: 0}
+    .org-product-info .vector2{max-width: 35%;}
     .product-listing li .item .textHV .description{height: 93px;overflow: hidden;}
     .product-listing li .item .textHV img{max-width: 27px;}
     .org-product-info .box .vector-top{width: 230px;left: calc(50% - 115px);top: -156px;}
     .section-about .box{padding: 50px 50px 34px;}
     .history .vector-about{max-width: 233px;bottom: -121px;}
     .org-product-info .box{margin: 0;padding: 92px 72px 75px;}
-    .org-product-info .vector1{max-width: 55%;left: -102px;}
+    .org-product-info .vector1{max-width:75%;left: -102px;}
     .org-product-info .vector2{right: -105px;}
     .product-listing li {
         padding: 0 7px 23px;
