@@ -33,8 +33,8 @@
         <div class="box">
           <img
             src="/assets/custom/img/product-img.png"
-            width="440"
-            height="339"
+            width="633"
+            height="646"
             class="product-img"
           />
           <div class="display-3 font-bold text-green">Spice Oils</div>

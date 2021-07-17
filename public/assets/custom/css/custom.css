@@ -1620,6 +1620,9 @@ footer .last a:hover {
     }
 }
 @media screen and (max-width: 1400px) {
+    .product-listing li .item .textHV .description{padding: 0}
+    .product-listing li .item .textHV .description{height: 93px;overflow: hidden;}
+    .product-listing li .item .textHV img{max-width: 27px;}
     .org-product-info .box .vector-top{width: 230px;left: calc(50% - 115px);top: -156px;}
     .section-about .box{padding: 50px 50px 34px;}
     .history .vector-about{max-width: 233px;bottom: -121px;}
