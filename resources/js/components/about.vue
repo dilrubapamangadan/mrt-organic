@@ -101,7 +101,7 @@
     <!-- end: history -->
     <!-- begin: ceo -->
     <section class="ceo">
-      <div class="container relative">
+      <div class="container-lg relative">
         <div class="row">
           <div class="col-lg-4 left">
             <div class="border-inner h-100">
@@ -136,20 +136,28 @@
     <div class="wall"></div>
       <div class="container-lg">
           <div class="box text-center text-light">
+          <img src="/assets/custom/img/pathri.png" data-src="/assets/custom/img/pathri.png" alt="leaf" class="vector-top2" >
+           <img src="/assets/custom/img/leaf-2.png" data-src="/assets/custom/img/leaf-2.png" alt="leaf" class="vector-top" >
+
         
      <h3 class="font-bold">With a rising demand in the world for pesticide-free and GMO-free pure natural 
      food products, MRT was among the first to take up the initiative of organic methods of cultivation 
      through its  group of farmers.</h3>
      <div class="icon mx-auto my-3"><img src="/assets/custom/img/icon-leaf.png" data-src="/assets/custom/img/icon-leaf.png" alt="leaf" width="48" height="54"></div>
-<h3 class="font-bold mb-3">We have farmers growing, rarest and finest spices, herbs and various other crops in the majestic valleys of Kashmir that are located at an altitude of about 10,000 ft to the foothills of the mystic mountains of western ghats, which is well known for its biological diversity and endemism.  Our organic range of product includes Spices, Herbs, Essential oils,  Ayurvedic Oils, Herbs & Herbal Powders, Glycerin, Vegetable Oils, Ghee& Honey, Organic Foods,  Herbal Extracts, C02 Extracts, Floral Waters, Butters & Waxes etc.</h3>
+<p>We have farmers growing, rarest and finest spices, herbs and various other crops in the majestic valleys of Kashmir that 
+are located at an altitude of about 10,000 ft to the foothills of the mystic mountains of western ghats, which 
+is well known for its biological diversity and endemism.  Our organic range of product includes Spices, Herbs, 
+Essential oils,  Ayurvedic Oils, Herbs & Herbal Powders, Glycerin, Vegetable Oils, Ghee& Honey, Organic Foods,  
+Herbal Extracts, C02 Extracts, Floral Waters, Butters & Waxes etc.</p>
 
 
 <img src="/assets/custom/img/vector2.png" data-src="/assets/custom/img/vector2.png" alt="leaf" class="vector1" >
-<img src="/assets/custom/img/vector3.png" data-src="/assets/custom/img/vector2.png" alt="leaf" class="vector2" >
+<img src="/assets/custom/img/vector3.png" data-src="/assets/custom/img/vector3.png" alt="leaf" class="vector2" >
 
           </div>
       </div>
     </section>
+    <Certification></Certification>
     <footer1></footer1>
   </section>
 </template>
