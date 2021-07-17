@@ -45,8 +45,10 @@ class CategoryController extends Controller
         $newCategory = new Category;
         $newCategory->name = $request["name"];
         $newCategory->description = $request["description"];
-        $newCategory->status = $request["status"]?1:0;
+        $newCategory->status = 1;
         $newCategory->store_id = $request["store_id"];
+        $newCategory->sub_header = $request["sub_header"];
+        $newCategory->short_description = $request["short_description"];
         if($request["img"]){
             $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
             \Image::make($request["img"])->save('/img/category/'.$name);
@@ -108,8 +110,10 @@ class CategoryController extends Controller
         if( $existingCategory ){
             $existingCategory->name = $request['name'];
             $existingCategory->description = $request['description'];
-            $existingCategory->status = $request['status'] ? 1 : 0;
+            $existingCategory->status = 1;
             $existingCategory->store_id = $request['store_id'];
+            $existingCategory->sub_header = $request['sub_header'];
+            $existingCategory->short_description = $request['short_description'];
 
             if($request["img"] != $existingCategory->img){
                 $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];

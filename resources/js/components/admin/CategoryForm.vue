@@ -39,6 +39,12 @@
                                 <has-error :form="form" field="name"></has-error>
 
                                 <div class="form-group">
+                                    <label for="name">Sub Header</label>
+                                    <input v-model="form.sub_header" type="text" class="form-control" id="sub_header" placeholder="Sub Header" :class="{ 'is-invalid': form.errors.has('sub_header') }">
+                                </div>
+                        
+
+                                <div class="form-group">
                                     <label for="inputState">Store</label>
                                     <select name="store" v-model="form.store_id" class="form-control" >
                                         <option v-for="shop in shops" v-bind:key="shop.id" v-bind:value="shop.id" :selected="shop.id == form.store_id"> {{ shop.name }} </option>
@@ -60,17 +66,22 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="short description">Short Description</label>
+                                    <vue-editor v-model="form.short_description" ></vue-editor>
+
+                                </div>
+                                <div class="form-group">
                                     <label for="description">Description</label>
                                     <vue-editor v-model="form.description" ></vue-editor>
 
                                 </div>
                                 <!-- <has-error :form="form" field="description"></has-error> -->
                             
-                                <div class="custom-control custom-switch">
+                                <!-- <div class="custom-control custom-switch">
                                     <input type="checkbox"  v-model="form.status" class="custom-control-input" id="customSwitch1">
                                     <label class="custom-control-label" v-show="form.status" for="customSwitch1">Active</label>
                                     <label class="custom-control-label" v-show="!form.status" for="customSwitch1">Inactive</label>
-                                </div>
+                                </div> -->
 
                             
 
@@ -109,7 +120,8 @@ data() {
                 description: '',
                 status: true,
                 img:'',
-                store_id:''
+                sub_header:'',
+                short_description:''
             })
         }
     },
