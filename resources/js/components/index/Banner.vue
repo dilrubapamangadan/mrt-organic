@@ -9,13 +9,13 @@
                 <div class="carousel-item w-100 active">
                     <div class="container-lg h-100">
                         <div class="d-flex justify-content-left align-items-center h-100">
-                            <div class="col-6 text">
+                            <div class="col-5 text">
                                 <h4 class="font-normal">Reach for a healthier you</h4>
                                 <h2 class="font-bold">A Sustainable
                                 Development
                                 Venture</h2> 
                                 </div>
-                                <div class ="col-6">
+                                <div class ="col-7">
                                  <img src="/assets/custom/img/banner-image-1.jpg" width="1044" height="519" class="">
                                 </div>
                         </div>

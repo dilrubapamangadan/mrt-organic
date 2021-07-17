@@ -196,10 +196,5 @@ data() {
 </script>
 
 <style>
-img {
-  width: 30%;
-  margin: auto;
-  display: block;
-  margin-bottom: 10px;
-}
+
 </style>
