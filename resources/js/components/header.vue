@@ -44,7 +44,8 @@
                                 <a class="nav-link  dropdown-toggle" data-toggle="dropdown" href="#"> Organic Products</a>
                                 <ul class="dropdown-menu fade-up">
                                     <li v-for="category in categoryOrganic" :key="category.slug">
-                                         <router-link  class="dropdown-item" :to="`/products/${category.slug}`">
+                                         <!-- <router-link  class="dropdown-item" :to="`/products/${category.slug}`"> -->
+                                         <router-link  class="dropdown-item" :to="{ name:`Products`,params:{slug:category.slug,id:category.id}}">
                                             {{ category.name | upText }}
                                         </router-link>
                                     </li>

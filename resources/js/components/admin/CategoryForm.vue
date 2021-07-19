@@ -46,23 +46,48 @@
 
                                 <div class="form-group">
                                     <label for="inputState">Store</label>
-                                    <select name="store" v-model="form.store_id" class="form-control" >
+                                   
+
+                                     <select  name="store" v-model="form.store_id" class="form-control" :class="{ 'is-invalid': form.errors.has('store_id') }">
+                                     <option disabled value="">Select a store</option>
                                         <option v-for="shop in shops" v-bind:key="shop.id" v-bind:value="shop.id" :selected="shop.id == form.store_id"> {{ shop.name }} </option>
                                     </select>
                                 <!-- <has-error :form="form" field="store"></has-error> -->
 
                                 </div>
                                 
-                                <div v-if="!form.img">
-                                    <h6>Select an image</h6>
-                                    <input type="file" @change="onFileChange">
+                                <div class="form-group">
+                                    <label for="inputState">Category Image</label>
+                                    <div v-if="!form.img">
+                                        <h6>Select an image</h6>
+                                        <input type="file" ref="file" @change="onCategoryChange">
+                                         <p v-if="imgStatus" class="text-danger">Upload a image with dimension 100px*100px</p>
+                                    <p v-else class="text-hint">Upload a image with dimension 100px*100px</p>
+                                    </div>
+                                    <div v-else>
+                                        <img v-show="!imagePreview" :src="form.img" />
+                                        <img v-show="imagePreview" :src="'/img/category/'+form.img" />
+                                        <button @click.prevent="removeImage"><i class="fas fa-trash text-danger"></i>
+                                        Remove image</button>
+                                    </div>
+                                   
                                 </div>
-                            
-                                <div v-else>
-                                    <img v-show="!imagePreview" :src="form.img" />
-                                    <img v-show="imagePreview" :src="'/img/category/'+form.img" />
-                                    <button @click.prevent="removeImage"><i class="fas fa-trash text-danger"></i>
-                                    Remove image</button>
+
+                                <div class="form-group">
+                                    <label for="inputState">Banner Image</label>
+                                    <div v-if="!form.banner">
+                                        <h6>Select an image</h6>
+                                        <input type="file" ref="banner" @change="onBannerChange">
+                                        <p v-if="bannerStatus" class="text-danger">Upload a image with dimension 100px*100px</p>
+                                    <p v-else class="text-hint">Upload a image with dimension 100px*100px</p>
+                                    </div>
+                                    <div v-else>
+                                        <img v-show="!bannerPreview" :src="form.banner" />
+                                        <img v-show="bannerPreview" :src="'/img/category/'+form.banner" />
+                                        <button @click.prevent="removeBanner"><i class="fas fa-trash text-danger"></i>
+                                        Remove image</button>
+                                    </div>
+                                    
                                 </div>
 
                                 <div class="form-group">
@@ -114,15 +139,20 @@ data() {
             text:'',
             editMode: false,
             imagePreview: false,
+            bannerPreview: false,
             form: new Form({
                 id: '',
                 name: '',
                 description: '',
                 status: true,
                 img:'',
+                banner:'',
                 sub_header:'',
-                short_description:''
-            })
+                short_description:'',
+                store_id: ''
+            }),
+            imgStatus: false,
+            bannerStatus: false
         }
     },
     methods: {
@@ -132,26 +162,67 @@ data() {
         getCategory(id){
             axios.get('/api/category/'+id).then(({ data }) => { this.form.fill(data); })
         },
-        onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length)
+        onCategoryChange(e) {
+            var refStr = "file";
+            if (this.$refs[refStr].files[0] == undefined)
                 return;
-            this.createImage(files[0]);
+            console.log(this.$refs[refStr].files[0]);
+            this.createImage(this.$refs[refStr].files[0],refStr,100,100);
         },
-        createImage(file) {
-            var image = new Image();
-            var reader = new FileReader();
+        onBannerChange(e) {
+            var refStr = "banner";
+            if (this.$refs[refStr].files[0] == undefined)
+                return;
+            console.log(this.$refs[refStr].files[0]);
+            this.createImage(this.$refs[refStr].files[0],refStr,100,100);
+        },
+        createImage(file,refStr,w,h) {
+            var img = new Image();
+            var imgwidth = 0;
+  		    var imgheight = 0;
             var vm = this;
+			var _URL = window.URL || window.webkitURL;
+            img.src = _URL.createObjectURL(file);
+            img.onload = function(e) {
+                imgwidth = this.width;
+                imgheight = this.height;
+                if(imgwidth < w || imgheight < h){
+                    
+                    if( refStr == "file")
+                        vm.imgStatus = true;
+                    else
+                        vm.bannerStatus = true;
 
-            reader.onload = (e) => {
-                vm.form.img = e.target.result;
-            };
-            reader.readAsDataURL(file);
+                    setTimeout(function(){
+                       if( refStr == "file")
+                            vm.imgStatus = false;
+                        else
+                            vm.bannerStatus = false;
+                       vm.$refs[refStr].value = "";
+                    }, 3000);
+                }else{
+                        var reader = new FileReader();
+                        reader.onload = (e) => {
+                            if( refStr == "file")
+                            vm.form.img = e.target.result;
+                            else
+                            vm.form.banner = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                }
+            }
         },
         removeImage: function (e) {
-            if(this.editMode)
+            if(this.editMode){
                 this.imagePreview = false;
+            }
             this.form.img = '';
+        },
+        removeBanner: function (e) {
+            if(this.editMode){
+                this.bannerPreview = false;
+            }
+            this.form.banner = '';
         },
         createCategory(){
             this.$Progress.start()
@@ -181,6 +252,7 @@ data() {
 
                     this.$Progress.finish()
                     this.imagePreview = false;
+                    this.bannerPreview = false;
                 })
                 .catch(() => {
                     this.$Progress.fail()
@@ -198,6 +270,7 @@ data() {
         if(this.id){
             this.getCategory(this.id);
             this.imagePreview = true;
+            this.bannerPreview = true;
             this.editMode = true;
         }
         Fire.$on('updateList',() => {

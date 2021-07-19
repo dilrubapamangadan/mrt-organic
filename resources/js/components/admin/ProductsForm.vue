@@ -39,8 +39,14 @@
                                 <has-error :form="form" field="name"></has-error>
 
                                 <div class="form-group">
+                                    <label for="name">Sub Header</label>
+                                    <input v-model="form.sub_header" type="text" class="form-control" id="sub_header" placeholder="Sub Header" :class="{ 'is-invalid': form.errors.has('sub_header') }">
+                                </div>
+
+                                <div class="form-group">
                                     <label for="inputState">Store</label>
-                                    <select @change="loadCategory(form.store_id)" name="store" v-model="form.store_id" class="form-control" >
+                                    <select @change="loadCategory(form.store_id)" name="store" v-model="form.store_id" class="form-control" :class="{ 'is-invalid': form.errors.has('store_id') }">
+                                     <option disabled value="">Select a store</option>
                                         <option v-for="item in items" v-bind:key="item.id" v-bind:value="item.id" :selected="item.id == form.store_id"> {{ item.name }} </option>
                                     </select>
                                 <!-- <has-error :form="form" field="store"></has-error> -->
@@ -48,23 +54,52 @@
 
                                 <div class="form-group">
                                     <label for="inputState">Category</label>
-                                    <select  name="category" v-model="form.category_id" class="form-control" >
+                                    <select  name="category" v-model="form.category_id" class="form-control" :class="{ 'is-invalid': form.errors.has('category') }">
+                                        <option disabled value="">Select a category</option>
                                         <option v-for="category in categories" v-bind:key="category.id" v-bind:value="category.id" :selected="category.id == form.category_id"> {{ category.name }} </option>
                                     </select>
                                 <!-- <has-error :form="form" field="store"></has-error> -->
                                 </div>
-                                <div v-if="!form.img">
-                                    <h6>Select an image</h6>
-                                    <input type="file" @change="onFileChange">
-                                </div>
-                                <div v-else>
-                                    <img v-show="!imagePreview" :src="form.img" />
-                                    <img v-show="imagePreview" :src="'/img/product/actual_'+form.img" />
-                                    <button @click.prevent="removeImage"><i class="fas fa-trash text-danger"></i>
-                                    Remove image</button>
-                                </div>
-                                <p v-if="imgStatus" class="text-danger">Upload a image with dimension 100px*100px</p>
 
+                                <div class="form-group">
+                                    <label for="inputState">Product Image</label>
+                                    <div v-if="!form.img">
+                                        <h6>Select an image</h6>
+                                        <input type="file" ref="file" @change="onProductChange">
+                                         <p v-if="imgStatus" class="text-danger">Upload a image with dimension 100px*100px</p>
+                                    <p v-else class="text-hint">Upload a image with dimension 100px*100px</p>
+                                    </div>
+                                    <div v-else>
+                                        <img v-show="!imagePreview" :src="form.img" />
+                                        <img v-show="imagePreview" :src="'/img/product/'+form.img" />
+                                        <button @click.prevent="removeImage"><i class="fas fa-trash text-danger"></i>
+                                        Remove image</button>
+                                    </div>
+                                   
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputState">Banner Image</label>
+                                    <div v-if="!form.banner">
+                                        <h6>Select an image</h6>
+                                        <input type="file" ref="banner" @change="onBannerChange">
+                                        <p v-if="bannerStatus" class="text-danger">Upload a image with dimension 100px*100px</p>
+                                    <p v-else class="text-hint">Upload a image with dimension 100px*100px</p>
+                                    </div>
+                                    <div v-else>
+                                        <img v-show="!bannerPreview" :src="form.banner" />
+                                        <img v-show="bannerPreview" :src="'/img/product/'+form.banner" />
+                                        <button @click.prevent="removeBanner"><i class="fas fa-trash text-danger"></i>
+                                        Remove image</button>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="short description">Short Description</label>
+                                    <vue-editor v-model="form.short_description" ></vue-editor>
+
+                                </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <!-- <textarea v-model="form.description" class="form-control" id="description" rows="3" :class="{ 'is-invalid': form.errors.has('description') }"></textarea> -->
@@ -74,11 +109,11 @@
                                 <has-error :form="form" field="description"></has-error>
                         
                             
-                                <div class="custom-control custom-switch">
+                                <!-- <div class="custom-control custom-switch">
                                     <input type="checkbox"  v-model="form.status" class="custom-control-input" id="customSwitch1">
                                     <label class="custom-control-label" v-show="form.status" for="customSwitch1">Active</label>
                                     <label class="custom-control-label" v-show="!form.status" for="customSwitch1">Inactive</label>
-                                </div>
+                                </div> -->
 
                             
 
@@ -108,6 +143,7 @@ export default {
         return {
             editMode: false,
             imagePreview: false,
+            bannerPreview: false,
             categories: [],
             items: [],
             products: {},
@@ -117,10 +153,14 @@ export default {
                 description: '',
                 status: true,
                 img:'',
+                banner:'',
                 store_id: '',
-                category_id: ''
+                category_id: '',
+                short_description: '',
+                sub_header: ''
             }),
             imgStatus: false,
+            bannerStatus: false
         }
     },
     methods: {
@@ -134,13 +174,24 @@ export default {
         getProduct(id){
             axios.get('/api/product/'+id).then(({ data }) => { this.form.fill(data[0]);this.loadCategory(data[0].store_id); })
         },
-        onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length)
-                return;
-            this.createImage(files[0]);
+        onProductChange(e) {
+            // var files = this.$refs[refStr].files[0];
+            // if (!files.length)
+            //     return;
+            var refStr = "file";
+            console.log(this.$refs[refStr].files[0]);
+            this.createImage(this.$refs[refStr].files[0],refStr,100,100);
         },
-        createImage(file) {
+        onBannerChange(e) {
+            // var files = e.target.files || e.dataTransfer.files;
+            
+            // if (!this.$refs[refStr].files[0].length)
+            //     return;
+            var refStr = "banner";
+            console.log(this.$refs[refStr].files[0]);
+            this.createImage(this.$refs[refStr].files[0],refStr,100,100);
+        },
+        createImage(file,refStr,w,h) {
             var img = new Image();
             var imgwidth = 0;
   		    var imgheight = 0;
@@ -150,25 +201,43 @@ export default {
             img.onload = function(e) {
                 imgwidth = this.width;
                 imgheight = this.height;
-                if(imgwidth < 100 || imgheight < 100){
-                    vm.imgStatus = true;
+                if(imgwidth < w || imgheight < h){
+                    
+                    if( refStr == "file")
+                        vm.imgStatus = true;
+                    else
+                        vm.bannerStatus = true;
+
                     setTimeout(function(){
-                       vm.imgStatus = false;
+                       if( refStr == "file")
+                            vm.imgStatus = false;
+                        else
+                            vm.bannerStatus = false;
+                       vm.$refs[refStr].value = "";
                     }, 3000);
                 }else{
                         var reader = new FileReader();
-
                         reader.onload = (e) => {
+                            if( refStr == "file")
                             vm.form.img = e.target.result;
+                            else
+                            vm.form.banner = e.target.result;
                         };
                         reader.readAsDataURL(file);
                 }
             }
         },
         removeImage: function (e) {
-            if(this.editMode)
+            if(this.editMode){
                 this.imagePreview = false;
+            }
             this.form.img = '';
+        },
+        removeBanner: function (e) {
+            if(this.editMode){
+                this.bannerPreview = false;
+            }
+            this.form.banner = '';
         },
         createProduct(){
             this.$Progress.start()
@@ -197,6 +266,7 @@ export default {
                     })
                     this.$Progress.finish()
                     this.imagePreview = false;
+                    this.bannerPreview = false;
                 })
                 .catch((response) => {
                     var str = response.responseJSON.message;
@@ -217,6 +287,7 @@ export default {
         this.id = this.$route.params.id
         if(this.id){
             this.imagePreview = true;
+            this.bannerPreview = true;
             this.editMode = true;
             this.getProduct(this.id);
         }
