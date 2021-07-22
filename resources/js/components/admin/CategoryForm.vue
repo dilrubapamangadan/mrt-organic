@@ -167,14 +167,14 @@ data() {
             if (this.$refs[refStr].files[0] == undefined)
                 return;
             console.log(this.$refs[refStr].files[0]);
-            this.createImage(this.$refs[refStr].files[0],refStr,100,100);
+            this.createImage(this.$refs[refStr].files[0],refStr,617,521);
         },
         onBannerChange(e) {
             var refStr = "banner";
             if (this.$refs[refStr].files[0] == undefined)
                 return;
             console.log(this.$refs[refStr].files[0]);
-            this.createImage(this.$refs[refStr].files[0],refStr,100,100);
+            this.createImage(this.$refs[refStr].files[0],refStr,663,646);
         },
         createImage(file,refStr,w,h) {
             var img = new Image();

@@ -3,7 +3,8 @@
     <header1></header1>
     <section class="home-banner inner-banner">
       <div class="container-lg position-relative">
-        <h2 class="font-bold page-title text-center">{{ category.store }}</h2>
+        <h2 v-if="category == 1" class="font-bold page-title text-center">Organic Products</h2>
+        <h2 v-else class="font-bold page-title text-center">Conventional Products</h2>
 
         <img
           src="/assets/custom/img/bottle-n-leaf.png"
@@ -28,7 +29,7 @@
       />
     </section>
 
-    <section class="category-description">
+    <section v-if="category == 1" class="category-description">
       <div class="container-lg">
         <div class="box">
           <img
@@ -37,9 +38,9 @@
             height="646"
             class="product-img"
           />
-          <div class="display-3 font-bold text-green">{{ category.name }}</div>
-          <div class="h3 text-green pb-4">{{ category.sub_header }}</div>
-		  <div v-html="category.short_description"></div>
+          <div class="display-3 font-bold text-green">Organic Products</div>
+          <div class="h3 text-green pb-4">Move your spirit & body</div>
+		  MRT Organic essential oils are produced from plants that are grown without the use of pesticides or herbicides in accordance with organic agricultural standards. In addition, there are oils distilled from wild-crafted plants.
          	
           <div class="load py-0">
             <a href="#" class="load-all-btn"
@@ -49,12 +50,35 @@
         </div>
       </div>
     </section>
+
+    <section v-else class="category-description">
+      <div class="container-lg">
+        <div class="box">
+          <img
+            src="/assets/custom/img/product-img.png"
+            width="633"
+            height="646"
+            class="product-img"
+          />
+          <div class="display-3 font-bold text-green">Conventional Products</div>
+          <div class="h3 text-green pb-4">Move your spirit & body</div>
+		  MRT Organic essential oils are produced from plants that are grown without the use of pesticides or herbicides in accordance with organic agricultural standards. In addition, there are oils distilled from wild-crafted plants.
+         	
+          <div class="load py-0">
+            <a href="#" class="load-all-btn"
+              ><span>Read Morea</span> <i class="las la-angle-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="product-liting py-4 py-md-5">
       <div class="container">
         <ul class="d-flex product-listing row">
 
           <li v-for="(product,index) in products" :key="index">
-            <router-link :to="{ name:`Product`,params:{slug:product.slug}}">
+            <router-link :to="{ name:`Products`,params:{slug:product.slug,id:product.id}}">
             <div class="item">
               <div class="border"></div>
 
@@ -83,7 +107,7 @@
                 <h3 class="font-bold">{{ product.name }}</h3>
               </div>
               <img
-                :src="`/img/product/${product.img}`"
+                :src="`/img/category/${product.img}`"
                 alt="organic essential"
                 width="617"
                 height="521"
@@ -91,7 +115,7 @@
             </div>
             </router-link>
             <img
-              :src="`/assets/custom/img/vector-attachment-${(index+1)>6?(index+1)%6?(index+1)%6:6:(index+1)}.png`"
+              :src="`/assets/custom/img/vector-attachment-${index+1}.png`"
               data-src="/assets/custom/img/vector-attachment-1.png"
               alt="leaf"
               class="tail"
@@ -175,15 +199,19 @@ export default {
   },
   data() {
     return {
-      category: {},
+      category: 0,
       products: [],
       slug: "",
     };
   },
   methods: {
     loadProduct(slug) {
-		axios.get('/api/category/details/'+ slug).then(({ data }) => { this.category = data[0]; });
-		axios.get("/api/product/category/" + slug).then(({ data }) => {
+      if(slug == 'conventional-products'){
+        this.category = 2;
+      }else{
+        this.category = 1;
+      }
+    axios.get('/api/category/store/'+ slug).then(({ data }) => { 
 			this.products = data;
 		});
 	  

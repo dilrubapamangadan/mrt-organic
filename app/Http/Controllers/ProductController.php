@@ -60,7 +60,7 @@ class ProductController extends Controller
             $filePath = $name;
             // Upload image
             $filePathVarient = $filePath;
-            $this->uploadImage($request->img, $folder, $filePathVarient);
+            $this->uploadImage($request->img, $folder, $filePathVarient,617,521);
             // $filePathVarient = 'large_'.$filePath;
             // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);   
         }
@@ -75,7 +75,7 @@ class ProductController extends Controller
             $bannerPath = $name;
             // Upload image
             $filePathVarient = $bannerPath;
-            $this->uploadImage($request->banner, $folder, $filePathVarient);
+            $this->uploadImage($request->banner, $folder, $filePathVarient,663,646);
             // $filePathVarient = 'large_'.$filePath;
             // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);   
         }
@@ -115,7 +115,7 @@ class ProductController extends Controller
         ->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id')
         ->leftJoin('categories', 'categories.id', '=', 'product_categories.category_id')
         ->where('categories.slug','LIKE','%'.$slug.'%')
-        ->select('products.id as id','products.name as name','products.description as description','categories.short_description as short_description','products.status as status','products.img as img','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id')
+        ->select('products.id as id','products.name as name','products.slug as slug','products.description as description','categories.short_description as short_description','products.status as status','products.img as img','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id')
         ->get();
        
         return $productData;
@@ -164,7 +164,7 @@ class ProductController extends Controller
                 // Upload image
                 
                 $filePathVarient = 'actual_'.$filePath;
-                $this->uploadImage($request['img'], $folder, $filePathVarient);
+                $this->uploadImage($request['img'], $folder, $filePathVarient,617,521);
                 // $filePathVarient = 'large_'.$filePath;
                 // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);
                
@@ -180,7 +180,7 @@ class ProductController extends Controller
                 $bannerPath = $name;
                 // Upload image
                 $filePathVarient = $bannerPath;
-                $this->uploadImage($request->banner, $folder, $filePathVarient);
+                $this->uploadImage($request->banner, $folder, $filePathVarient,663,646);
                 // $filePathVarient = 'large_'.$filePath;
                 // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);   
             }

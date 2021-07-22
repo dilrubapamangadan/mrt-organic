@@ -61,7 +61,7 @@ class CategoryController extends Controller
             $filePath = $name;
             // Upload image
             $filePathVarient = $filePath;
-            $this->uploadImage($request->img, $folder, $filePathVarient);
+            $this->uploadImage($request->img, $folder, $filePathVarient,617,521);
             // $filePathVarient = 'large_'.$filePath;
             // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);   
         $newCategory->img = $filePath;
@@ -76,7 +76,7 @@ class CategoryController extends Controller
             $bannerPath = $name;
             // Upload image
             $filePathVarient = $bannerPath;
-            $this->uploadImage($request->banner, $folder, $filePathVarient);
+            $this->uploadImage($request->banner, $folder, $filePathVarient,663,646);
             // $filePathVarient = 'large_'.$filePath;
             // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);   
         $newCategory->banner = $bannerPath;
@@ -103,7 +103,7 @@ class CategoryController extends Controller
         $categoryData = DB::table('categories')
         ->Join('stores', 'stores.id', '=', 'categories.store_id')
         ->where('stores.slug',$slug)
-        ->select('categories.name as name','categories.img as img','categories.banner as banner','categories.sub_header as sub_header','categories.description as description','categories.slug as slug','categories.id as id')
+        ->select('categories.name as name','categories.img as img','categories.banner as banner','categories.sub_header as sub_header','categories.description as description','categories.short_description as short_description','categories.slug as slug','categories.id as id')
         ->get();
        
         return $categoryData;
@@ -166,7 +166,7 @@ class CategoryController extends Controller
                 $filePath = $name;
                 // Upload image
                 $filePathVarient = $filePath;
-                $this->uploadImage($request->img, $folder, $filePathVarient);
+                $this->uploadImage($request->img, $folder, $filePathVarient,617,521);
                 // $filePathVarient = 'large_'.$filePath;
                 // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);
             $existingCategory->img = $filePath;
@@ -184,7 +184,7 @@ class CategoryController extends Controller
                 $bannerPath = $name;
                 // Upload image
                 $filePathVarient = $bannerPath;
-                $this->uploadImage($request->banner, $folder, $filePathVarient);
+                $this->uploadImage($request->banner, $folder, $filePathVarient,663,646);
                 // $filePathVarient = 'large_'.$filePath;
                 // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);   
             $existingCategory->banner = $bannerPath;

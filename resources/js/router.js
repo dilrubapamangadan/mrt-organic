@@ -10,6 +10,7 @@ import Index from "./components/index"
 import Contact from "./components/contact"
 import About from "./components/about"
 import ProductList from "./components/productList"
+import CategoryList from "./components/categoryList"
 import ProductDetails from "./components/productDetails"
 
 Vue.use(VueRouter);
@@ -59,6 +60,11 @@ const routes= [
             path: '/product/:slug', 
             name: 'Product',
             component: ProductDetails 
+        },
+        { 
+            path: '/categories/:slug',
+            name: 'Categories',
+            component: CategoryList 
         },
         { 
             path: '/about', 
