@@ -37,6 +37,7 @@ Route::prefix('product')->group(function () {
     Route::put('/{id}', 'ProductController@update')->middleware('auth:api');
     Route::get('/{id}', 'ProductController@show');
     Route::get('/category/{slug}', 'ProductController@categoryProduct');
+    Route::get('/bySlug/{slug}', 'ProductController@productBySlug');
     // Route::put('/edit/{id}', 'ProductController@update');
     Route::delete('/{id}', 'ProductController@destroy')->middleware('auth:api');
 });

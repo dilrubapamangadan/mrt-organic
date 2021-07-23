@@ -39,8 +39,13 @@
                                 <has-error :form="form" field="name"></has-error>
 
                                 <div class="form-group">
-                                    <label for="name">Sub Header</label>
+                                    <label for="sub">Sub Header</label>
                                     <input v-model="form.sub_header" type="text" class="form-control" id="sub_header" placeholder="Sub Header" :class="{ 'is-invalid': form.errors.has('sub_header') }">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="url">Shop Online Link</label>
+                                    <input v-model="form.url" type="text" class="form-control" id="sub_header" placeholder="Shop Link">
                                 </div>
 
                                 <div class="form-group">
@@ -66,8 +71,8 @@
                                     <div v-if="!form.img">
                                         <h6>Select an image</h6>
                                         <input type="file" ref="file" @change="onProductChange">
-                                         <p v-if="imgStatus" class="text-danger">Upload a image with dimension 100px*100px</p>
-                                    <p v-else class="text-hint">Upload a image with dimension 100px*100px</p>
+                                         <p v-if="imgStatus" class="text-danger">Upload a image with dimension 617px*521px</p>
+                                    <p v-else class="text-hint">Upload a image with minimum dimension 617px*521px</p>
                                     </div>
                                     <div v-else>
                                         <img v-show="!imagePreview" :src="form.img" />
@@ -83,8 +88,8 @@
                                     <div v-if="!form.banner">
                                         <h6>Select an image</h6>
                                         <input type="file" ref="banner" @change="onBannerChange">
-                                        <p v-if="bannerStatus" class="text-danger">Upload a image with dimension 100px*100px</p>
-                                    <p v-else class="text-hint">Upload a image with dimension 100px*100px</p>
+                                        <p v-if="bannerStatus" class="text-danger">Upload a image with dimension 520px*272px</p>
+                                    <p v-else class="text-hint">Upload a image with minimum dimension 520px*272px</p>
                                     </div>
                                     <div v-else>
                                         <img v-show="!bannerPreview" :src="form.banner" />
@@ -157,7 +162,8 @@ export default {
                 store_id: '',
                 category_id: '',
                 short_description: '',
-                sub_header: ''
+                sub_header: '',
+                url: ''
             }),
             imgStatus: false,
             bannerStatus: false
@@ -189,7 +195,7 @@ export default {
             //     return;
             var refStr = "banner";
             console.log(this.$refs[refStr].files[0]);
-            this.createImage(this.$refs[refStr].files[0],refStr,663,646);
+            this.createImage(this.$refs[refStr].files[0],refStr,520,272);
         },
         createImage(file,refStr,w,h) {
             var img = new Image();

@@ -30,41 +30,33 @@
                             <div class="col-md-4  d-none d-md-block">
                                 <h2  class="pb-3 font-bold">Organic<br/> Products</h2>
                                 <ul class="links">
-                                    <li><a href="#">Organic Essential Oils</a> </li>
-                                    <li><a href="#">Organic Carrier Oils</a> </li>
-                                    <li><a href="#">Organic Herbs</a> </li>
-                                    <li><a href="#">Organic Herbal Extracts</a> </li>
-                                    <li><a href="#">Organic Spices</a> </li>
-                                    <li><a href="#">Organic Isolates</a> </li>
-                                    <li><a href="#">Organic Food Products</a> </li>
-                                    <li><a href="#">Organic Co2 Extracts</a> </li>
-                                    <li><a href="#">Organic Nutraceuticals</a> </li>
-                                    <li><a href="#">Organic Butter &amp; Waxes</a> </li>
-                                    <li><a href="#">Oraginic Textiles &amp; Garments</a> </li>
+                                   <li v-for="category in categoryOrganic" :key="category.slug">
+                                         <!-- <router-link  class="dropdown-item" :to="`/products/${category.slug}`"> -->
+                                         <router-link  :to="{ name:`Products`,params:{slug:category.slug,id:category.id}}">
+                                            {{ category.name | upText }}
+                                        </router-link>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-md-4  d-none d-md-block">
                                 <h2  class="pb-3 font-bold">Conventional <br/>Products</h2>
                                 <ul class="links">
-                                    <li><a href="#">Essential Oils</a> </li>
-                                    <li><a href="#">Co2 Extracts</a> </li>
-                                    <li><a href="#">Floral Extracts</a> </li>
-                                    <li><a href="#">Oleoresin</a> </li>
-                                    <li><a href="#">Herbal Extracts</a> </li>
-                                    <li><a href="#">Mints</a> </li>
-                                    <li><a href="#">Nutraceuticals</a> </li>
-                                    <li><a href="#">Isolates</a> </li>
+                                   <li v-for="category in categoryConventional" :key="category.slug">
+                                         <router-link  :to="`/products/${category.slug}`">
+                                            {{ category.name | upText }}
+                                        </router-link>
+                                    </li>
                                 </ul>
                                 <div class="spacer-1"></div>
                             </div>
                             <div class="col-md-4">
                                 <h2  class="pb-3 font-bold">Quick<br/>Links</h2>
                                 <ul class="links">
-                                    <li><a href="#">Home  </a> </li>
-                                    <li><a href="#">Our Story </a> </li>
-                                    <li><a href="#">Organic Products  </a> </li>
-                                    <li><a href="#">Conventional Products </a> </li>
-                                    <li><a href="#">Contact Us</a> </li>
+                                    <li><router-link to="/">Home  </router-link> </li>
+                                    <li><router-link to="/about">Our Story </router-link> </li>
+                                    <li><router-link :to="{ name:`Categories`,params:{slug:`organic-products`}}">Organic Products  </router-link> </li>
+                                    <li><router-link :to="{ name:`Categories`,params:{slug:`conventional-products`}}">Conventional Products </router-link> </li>
+                                    <li><router-link to="/contact">Contact Us</router-link> </li>
                                     <li><a href="#">Online Store</a> </li>
                                 </ul>
                                 <div class="spacer-2"></div>
@@ -87,6 +79,15 @@
 </template>
 <script>
 export default {
-    
+     data() {
+        return {
+            categoryOrganic: {},
+            categoryConventional: {}
+        }
+    },
+    created() {
+        axios.get('/api/category/store/organic-products').then(({ data }) => { this.categoryOrganic = data; });
+        axios.get('/api/category/store/conventional-products').then(({ data }) => { this.categoryConventional = data; });
+    }
 }
 </script>

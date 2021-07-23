@@ -50,6 +50,7 @@ class ProductController extends Controller
         // $newProduct->status = $request["status"]?1:0;
         $newProduct->sub_header = $request["sub_header"];
         $newProduct->short_description = $request["short_description"];
+        $newProduct->url = $request["url"];
         $filePath = '';        // Check if a profile image has been uploaded
         if ($request['img']  != $newProduct->img) {
             // Make a image name based on user name and current timestamp
@@ -74,8 +75,7 @@ class ProductController extends Controller
             // Make a file path where image will be stored [ folder path + file name + file extension]
             $bannerPath = $name;
             // Upload image
-            $filePathVarient = $bannerPath;
-            $this->uploadImage($request->banner, $folder, $filePathVarient,663,646);
+            $this->uploadImage($request->banner, $folder, $bannerPath,520,272);
             // $filePathVarient = 'large_'.$filePath;
             // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);   
         }
@@ -103,7 +103,7 @@ class ProductController extends Controller
         ->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id')
         ->leftJoin('categories', 'categories.id', '=', 'product_categories.category_id')
         ->where('products.id',$id)
-        ->select('products.id as id','products.name as name','products.description as description','products.status as status','products.img as img','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id')
+        ->select('products.id as id','products.name as name','products.url as url','products.description as description','products.status as status','products.img as img','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id')
         ->get();
        
         return $productData;
@@ -115,7 +115,7 @@ class ProductController extends Controller
         ->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id')
         ->leftJoin('categories', 'categories.id', '=', 'product_categories.category_id')
         ->where('categories.slug','LIKE','%'.$slug.'%')
-        ->select('products.id as id','products.name as name','products.slug as slug','products.description as description','categories.short_description as short_description','products.status as status','products.img as img','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id')
+        ->select('products.id as id','products.name as name','products.slug as slug','products.url as url','products.description as description','categories.short_description as short_description','products.status as status','products.img as img','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id')
         ->get();
        
         return $productData;
@@ -151,11 +151,12 @@ class ProductController extends Controller
             // $existingProduct->status = $request['status'] ? 1 : 0;
             $existingProduct->sub_header = $request["sub_header"];
             $existingProduct->short_description = $request["short_description"];
+            $existingProduct->url = $request["url"];
             $filePath = '';
             if ($request['img'] != $existingProduct->img) {
               
                // Make a image name based on user name and current timestamp
-                $name = time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
+                $name = 'product_'.time(). '.' .explode('/', explode(':', substr($request["img"], 0, strpos($request["img"], ';')))[1])[1];
 
                 // Define folder path
                 $folder = 'img/product/';
@@ -163,13 +164,12 @@ class ProductController extends Controller
                 $filePath = $name;
                 // Upload image
                 
-                $filePathVarient = 'actual_'.$filePath;
-                $this->uploadImage($request['img'], $folder, $filePathVarient,617,521);
+    
+                $this->uploadImage($request['img'], $folder, $filePath,617,521);
                 // $filePathVarient = 'large_'.$filePath;
                 // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);
-               
+                $existingProduct->img = $filePath;
             }
-            $existingProduct->img = $filePath;
             $bannerPath = '';        // Check if a profile image has been uploaded
             if ($request['banner']  != $existingProduct->banner) {
                 // Make a image name based on user name and current timestamp
@@ -180,11 +180,11 @@ class ProductController extends Controller
                 $bannerPath = $name;
                 // Upload image
                 $filePathVarient = $bannerPath;
-                $this->uploadImage($request->banner, $folder, $filePathVarient,663,646);
+                $this->uploadImage($request->banner, $folder, $filePathVarient,520,272);
                 // $filePathVarient = 'large_'.$filePath;
-                // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);   
+                // $this->uploadOne($request->product, $folder, $filePathVarient,600,300);  
+                $existingProduct->banner = $bannerPath;
             }
-            $existingProduct->banner = $bannerPath;
             $existingProduct->save();
 
             ProductCategory::where('product_id', $request['id'])
@@ -218,5 +218,18 @@ class ProductController extends Controller
         }
 
         return 'Item not found.';
+    }
+
+    public function productBySlug($slug)
+    {
+        $productData = DB::table('products')
+        ->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id')
+        ->leftJoin('categories', 'categories.id', '=', 'product_categories.category_id')
+        ->Join('stores', 'stores.id', '=', 'categories.store_id')
+        ->where('products.slug','LIKE','%'.$slug.'%')
+        ->select('products.id as id','products.name as name','products.url as url','products.description as description','products.status as status','products.img as img','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id','stores.name as store')
+        ->get();
+       
+        return $productData;
     }
 }

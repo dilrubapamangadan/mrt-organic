@@ -46,8 +46,8 @@
                                 <th style="width: 15%">
                                     Store
                                 </th>
-                                <th>
-                                    Description
+                                <th style="width: 10%">
+                                    Status
                                 </th>
                                 <th style="width: 10%">
                                     
@@ -78,11 +78,11 @@
                                     <p>{{ product.store }}</p>
                                 </td>
 
-                                <td class="align-middle" v-html="product.description">
+                                <!-- <td class="align-middle" v-html="product.description">
                                     <p></p>
                                 </td>
-                                
-                                <td class="project-state align-middle">
+                                 -->
+                                <td class="align-middle">
                                     <span v-if="product.status" class="badge badge-success">Active</span>
                                     <span v-else class="badge badge-danger">Inactive</span>
                                 </td>

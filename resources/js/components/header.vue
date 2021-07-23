@@ -38,7 +38,7 @@
                                 <router-link class="nav-link" to="/"><i class="las la-home"></i></router-link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#story" v-smooth-scroll>Our Story</a>
+                                <router-link class="nav-link" to="/about">Our Story</router-link>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link  dropdown-toggle" data-toggle="dropdown" href="#"> Organic Products</a>
@@ -79,29 +79,20 @@
                                 <li> 
                                     <router-link class="has-sub" to="/products"> Organic Products<i class="las la-angle-right ml-auto float-right"></i></router-link>
                                     <ul class="dl-submenu">
-                                        <li><a href="#">ORGANIC ESSENTIAL OILS</a></li>
-                                        <li><a href="#">ORGANIC CARRIER OILS</a></li>
-                                        <li><a href="#">ORGANIC HERBS</a></li>
-                                        <li><a href="#">ORGANIC HERBAL EXTRACTS</a></li>
-                                        <li><a href="#">ORGANIC SPICES</a></li>
-                                        <li><a href="#">ORGANIC ISOLATES</a></li>
-                                        <li><a href="#">ORGANIC FOOD PRODUCTS</a></li>
-                                        <li><a href="#">ORGANIC CO2 EXTRACTS</a></li>
-                                        <li><a href="#">ORGANIC NUTRACEUTICALS</a></li>
-                                        <li><a href="#">ORGANIC BUTTER &amp; WAXES</a></li>
-                                        <li><a href="#">ORAGINIC TEXTILES &amp; GARMENTS</a></li>
+                                        <li v-for="category in categoryOrganic" :key="category.slug">
+                                            <router-link  :to="{ name:`Products`,params:{slug:category.slug,id:category.id}}">
+                                                {{ category.name | upText }}
+                                            </router-link>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li> <a href="#">Convetional Products <i class="las la-angle-right ml-auto float-right"></i></a>
                                     <ul class="dl-submenu">
-                                        <li><a href="#">ESSENTIAL OILS</a></li>
-                                        <li><a href="#">CO2 EXTRACTS</a></li>
-                                        <li><a href="#">OLEORESIN</a></li>
-                                        <li><a href="#">FLORAL EXTRACTS</a></li>
-                                        <li><a href="#">HERBAL EXTRACTS</a></li>
-                                        <li><a href="#">MINTS</a></li>
-                                        <li><a href="#">NUTRACEUTICALS</a></li>
-                                        <li><a href="#">ISOLATES</a></li>
+                                       <li v-for="category in categoryConventional" :key="category.slug">
+                                         <router-link  :to="`/products/${category.slug}`">
+                                            {{ category.name | upText }}
+                                        </router-link>
+                                    </li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Contact us</a></li>
