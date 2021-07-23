@@ -99,6 +99,13 @@
           </li>
 
         </ul>
+
+       <div class="border rounded my-4 mb-5 p-md-5 p-4 text-center bg-white shadow">
+           <h3 class="font-bold pb-3"> Click here for updated product list</h3>
+         <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn-green">Download Brochure</a>
+       </div>
+
+
       </div>
     </section>
     <section class="org-product-info position-relative">
