@@ -5,7 +5,7 @@
     <div class="modal-content">
       
       <div class="modal-body p-4 p-md-5">
-             <h3  class="font-bold text-green pb-3 mb-0">Download brochure</h3>
+             <h3  class="font-bold text-green pb-3 mb-0">Enter your contact details</h3>
 
              <div class="alert alert-info mb-4 small">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy 
@@ -21,7 +21,7 @@
       <div class="d-flex">
      
         <button type="button" class="btn btn-default border text-dark px-4 rounded-0" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-green btn-green-sm ml-auto">Download</button>
+        <button type="button" class="btn btn-green btn-green-sm ml-auto">Submit</button>
       </div>
        </div>
     </div>
@@ -158,7 +158,7 @@
             <a href="#" class="btn-green">Shop online</a>
           </div>
           <div class="col-md-6 text-right">
-            <a href="#" class="btn-green"  data-toggle="modal" data-target="#exampleModal">Download Brochure</a>
+            <a href="#" class="btn-green"  data-toggle="modal" data-target="#exampleModal">Bulk Order</a>
           </div>
         </div>
       </div>
