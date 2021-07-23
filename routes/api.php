@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/dashboard', 'DashboardController@index');
+Route::post('/enquire', 'EnquiryController@store');
 
 Route::prefix('category')->group(function () {
     Route::get('/', 'CategoryController@index');    

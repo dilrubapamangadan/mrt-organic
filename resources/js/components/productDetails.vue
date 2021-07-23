@@ -18,34 +18,37 @@
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy
             </div>
+            <v-form @submit.prevent="submitEnquiry()">
+              <div class="form-group">
+                <input
+                 v-model="form.email"
+                  type="text" name="email"
+                  placeholder="Enter email"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                 v-model="form.phone"
+                  type="text" name="phone"
+                  placeholder="Phone Number"
+                  class="form-control"
+                />
+              </div>
 
-            <div class="form-group">
-              <input
-                type="text"
-                placeholder="Enter email"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="text"
-                placeholder="Phone Number"
-                class="form-control"
-              />
-            </div>
-
-            <div class="d-flex">
-              <button
-                type="button"
-                class="btn btn-default border text-dark px-4 rounded-0"
-                data-dismiss="modal"
-              >
-                Cancel
-              </button>
-              <button type="button" class="btn btn-green btn-green-sm ml-auto">
-                Submit
-              </button>
-            </div>
+              <div class="d-flex">
+                <button
+                  type="button"
+                  class="btn btn-default border text-dark px-4 rounded-0"
+                  data-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-green btn-green-sm ml-auto">
+                  Submit
+                </button>
+              </div>
+            </v-form>
           </div>
         </div>
       </div>
@@ -259,6 +262,11 @@ export default {
   data() {
     return {
       products: {},
+      form: new Form({
+                id: '',
+                email: '',
+                phone: ''
+            }),
     };
   },
   methods: {
@@ -266,6 +274,21 @@ export default {
       axios.get("/api/product/bySlug/" + slug).then(({ data }) => {
         this.products = data[0];
       });
+    },
+    submitEnquiry(){
+          this.$Progress.start()
+          this.form.post('/api/enquire')
+          .then(() => {
+              toast.fire({
+                  icon: 'success',
+                  title: 'Successfully created'
+              })
+              this.$Progress.finish()
+          })
+          .catch(() => {
+              this.$Progress.fail()
+              this.$Progress.finish()
+          })
     },
   },
   created() {
