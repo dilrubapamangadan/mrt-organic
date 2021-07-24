@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\models\Enquiry;
+use App\Models\Enquiry;
 use Illuminate\Http\Request;
-
+use App\Mail\EnquiryMail;
+use Illuminate\Support\Facades\Mail;
+use DB;
 class EnquiryController extends Controller
 {
     /**
@@ -43,7 +45,9 @@ class EnquiryController extends Controller
         $newEnquiry = new Enquiry;
         $newEnquiry->email = $request['email'];
         $newEnquiry->phone = $request['phone'];
+        $newEnquiry->product_id = $request['id'];
         $newEnquiry->save();
+        Mail::to(env('MAIL_TO'))->send(new EnquiryMail($request));
         return 1;
     }
 
@@ -55,7 +59,12 @@ class EnquiryController extends Controller
      */
     public function show(Enquiry $enquiry)
     {
-        //
+        $enquiries = DB::table('enquiries')
+        ->leftJoin('products', 'products.id', '=', 'enquiries.product_id')
+        ->select('enquiries.id as id','enquiries.email as email','enquiries.phone as phone','products.name as product')
+        ->get();
+
+        return $enquiries;
     }
 
     /**

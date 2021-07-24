@@ -2,7 +2,7 @@
   <section>
     <div
       class="modal fade"
-      id="exampleModal"
+      id="enquiryModal"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -19,6 +19,11 @@
               industry. Lorem Ipsum has been the industry's standard dummy
             </div>
             <v-form @submit.prevent="submitEnquiry()">
+              <input
+                 v-model="form.id"
+                  type="text" 
+                  hidden
+                />
               <div class="form-group">
                 <input
                  v-model="form.email"
@@ -40,11 +45,11 @@
                 <button
                   type="button"
                   class="btn btn-default border text-dark px-4 rounded-0"
-                  data-dismiss="modal"
+                  data-dismiss="modal" ref="Close"
                 >
                   Cancel
                 </button>
-                <button type="submit" class="btn btn-green btn-green-sm ml-auto">
+                <button type="submit" id="submit" class="btn btn-green btn-green-sm ml-auto">
                   Submit
                 </button>
               </div>
@@ -100,7 +105,7 @@
                 <div class="h5 text-dark font-medium pb-4">
                   {{ products.sub_header }}
                 </div>
-                {{ products.short_description }}
+                <div v-html="products.short_description"></div>
               </div>
             </div>
           </div>
@@ -120,7 +125,7 @@
               href="#"
               class="btn-green"
               data-toggle="modal"
-              data-target="#exampleModal"
+              data-target="#enquiryModal"
               >Bulk Order</a
             >
           </div>
@@ -273,21 +278,27 @@ export default {
     loadProduct(slug) {
       axios.get("/api/product/bySlug/" + slug).then(({ data }) => {
         this.products = data[0];
+        this.form.id = this.products.id;
       });
     },
     submitEnquiry(){
-          this.$Progress.start()
+          $('#submit').text('Please Wait...').attr('disabled','true');
           this.form.post('/api/enquire')
           .then(() => {
-              toast.fire({
+              this.form.reset();
+              this.$refs.Close.click();
+              swal.fire({
                   icon: 'success',
-                  title: 'Successfully created'
+                  title: 'Thank You,Our executives will contact you shortly!'
               })
-              this.$Progress.finish()
           })
           .catch(() => {
-              this.$Progress.fail()
-              this.$Progress.finish()
+              this.form.reset();
+              this.$refs.Close.click();
+              swal.fire({
+                  icon: 'error',
+                  title: 'Something went wrong,Please try after sometime!'
+              })
           })
     },
   },

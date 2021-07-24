@@ -61,8 +61,8 @@
                                     <div v-if="!form.img">
                                         <h6>Select an image</h6>
                                         <input type="file" ref="file" @change="onCategoryChange">
-                                         <p v-if="imgStatus" class="text-danger">Upload a image with dimension 100px*100px</p>
-                                    <p v-else class="text-hint">Upload a image with dimension 100px*100px</p>
+                                         <p v-if="imgStatus" class="text-danger">Upload a image with dimension 617px*521px</p>
+                                    <p v-else class="text-hint">Upload a image with dimension 617px*521px</p>
                                     </div>
                                     <div v-else>
                                         <img v-show="!imagePreview" :src="form.img" />
@@ -78,8 +78,8 @@
                                     <div v-if="!form.banner">
                                         <h6>Select an image</h6>
                                         <input type="file" ref="banner" @change="onBannerChange">
-                                        <p v-if="bannerStatus" class="text-danger">Upload a image with dimension 100px*100px</p>
-                                    <p v-else class="text-hint">Upload a image with dimension 100px*100px</p>
+                                        <p v-if="bannerStatus" class="text-danger">Upload a image with dimension 633px*646px</p>
+                                    <p v-else class="text-hint">Upload a image with dimension 633px*646px</p>
                                     </div>
                                     <div v-else>
                                         <img v-show="!bannerPreview" :src="form.banner" />
@@ -174,7 +174,7 @@ data() {
             if (this.$refs[refStr].files[0] == undefined)
                 return;
             console.log(this.$refs[refStr].files[0]);
-            this.createImage(this.$refs[refStr].files[0],refStr,663,646);
+            this.createImage(this.$refs[refStr].files[0],refStr,633,646);
         },
         createImage(file,refStr,w,h) {
             var img = new Image();

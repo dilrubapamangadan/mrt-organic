@@ -4,6 +4,7 @@ import Dashboard from "./components/admin/Dashboard"
 import Category from "./components/admin/Category"
 import CategoryForm from "./components/admin/CategoryForm"
 import Products from "./components/admin/Products"
+import Enquiry from "./components/admin/Enquiry"
 import ProductsForm from "./components/admin/ProductsForm"
 import NotFound from "./components/NotFound"
 import Index from "./components/index"
@@ -20,6 +21,11 @@ const routes= [
             path: '/admin/dashboard', 
             name: 'Dashboard',
             component:  Dashboard
+        },
+        { 
+            path: '/admin/enquiry', 
+            name: 'Enquiry',
+            component: Enquiry 
         },
         { 
             path: '/admin/category',

@@ -14,57 +14,55 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-shopping-cart"></i></span>
+        <div class="row">
+          
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ items.enquiry }}<sup style="font-size: 20px"></sup></h3>
 
-              <div class="info-box-content">
-                <span class="info-box-text">Enquiry</span>
-                <span class="info-box-number">
-                  {{ items.enquiry }}
-                  <small>%</small>
-                </span>
+                <p>Enquiries</p>
               </div>
-              <!-- /.info-box-content -->
+              <div class="icon">
+                <i class="fas fa-envelope-open"></i>
+              </div>
+              <router-link to="/admin/enquiry" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></router-link>
             </div>
-            <!-- /.info-box -->
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ items.category }}<sup style="font-size: 20px"></sup></h3>
+
+                <p>Categories</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-tags"></i>
+              </div>
+              <router-link to="/admin/category" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></router-link>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ items.products }}<sup style="font-size: 20px"></sup></h3>
+
+                <p>Products</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <router-link to="/admin/products" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></router-link>
+            </div>
+          </div>
+          
         </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-tags"></i></span>
-
-              <div class="info-box-content">
-                <router-link to="/admin/category">
-                  <span class="info-box-text">Categories</span>
-                </router-link>
-                <span class="info-box-number">{{ items.category }}</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
-
-              <div class="info-box-content">
-                 <router-link to="/admin/products">
-                <span class="info-box-text">Products</span>
-                 </router-link>
-                <span class="info-box-number">{{ items.products }}</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-      </div>
 	  </div>
     </section>
     <!-- /.content -->

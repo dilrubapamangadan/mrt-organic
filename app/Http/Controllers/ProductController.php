@@ -227,7 +227,7 @@ class ProductController extends Controller
         ->leftJoin('categories', 'categories.id', '=', 'product_categories.category_id')
         ->Join('stores', 'stores.id', '=', 'categories.store_id')
         ->where('products.slug','LIKE','%'.$slug.'%')
-        ->select('products.id as id','products.name as name','products.url as url','products.description as description','products.status as status','products.img as img','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id','stores.name as store')
+        ->select('products.id as id','products.name as name','products.sub_header as sub_header','products.url as url','products.description as description','products.short_description as short_description','products.status as status','products.img as img','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id','stores.name as store')
         ->get();
        
         return $productData;
