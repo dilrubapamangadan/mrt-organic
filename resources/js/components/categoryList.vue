@@ -38,7 +38,7 @@
             height="646"
             class="product-img"
           />
-          <div class="display-3 font-bold text-green">Organic Products</div>
+          <div class="display-4 font-bold text-green">Organic Products</div>
           <div class="h3 text-green pb-4">Move your spirit & body</div>
 		  MRT Organic essential oils are produced from plants that are grown without the use of pesticides or herbicides in accordance with organic agricultural standards. In addition, there are oils distilled from wild-crafted plants.
          	

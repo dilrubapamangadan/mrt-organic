@@ -5,7 +5,7 @@
                 <h2 class="font-bold sub-title" >Organic Products</h2> 
                <span class="d-block" > Experience all Organic Products </span>
             </div>
-            <carousel :autoplay="true" :center="true" :dots="false" :responsive="{0: {items: 1,nav: true},600: {items: 2, },900: {items: 3,},1000: {items: 3,loop: true,margin: 20}}" v-for="category in categoryOrganic" :key="category.slug">
+            <carousel :autoplay="true" :center="true" :dots="false" :responsive="{0: {items: 1,nav: true},600: {items: 2, },900: {items: 3,},1000: {items: 3,loop:false,margin: 20}}" v-for="category in categoryOrganic" :key="category.slug">
             <!-- <div class="owl-carousel wow" data-aos-duration="2500"> -->
                <router-link :to="{ name:`Products`,params:{slug:category.slug,id:category.id}}">
                 <div class="item" >
@@ -28,7 +28,7 @@
                 <h2 class="font-bold sub-title" >Conventional Products</h2> 
                 <span class="d-block">Experience all Conventional Products</span> </div>
             <!-- <div class="owl-carousel wow" data-aos-duration="2000"> -->
-            <carousel :autoplay="true" :center="true" :dots="false" :responsive="{0: {items: 1,nav: true},600: {items: 2, },900: {items: 3,},1000: {items: 3,loop: true,margin: 20}}" v-for="category in categoryConventional" :key="category.slug">
+            <carousel :autoplay="true" :center="true" :dots="false" :responsive="{0: {items: 1,nav: true},600: {items: 2, },900: {items: 3,},1000: {items: 3,loop: false,margin: 20}}" v-for="category in categoryConventional" :key="category.slug">
                 <router-link :to="{ name:`Products`,params:{slug:category.slug,id:category.id}}">
                 <div class="item" >
                     <div class="border"></div>
