@@ -37,15 +37,15 @@
             height="646"
             class="product-img"
           />
-          <div class="display-3 font-bold text-green">{{ category.name }}</div>
-          <div class="h3 text-green pb-4">{{ category.sub_header }}</div>
+          <div class="display-4 font-bold text-green">{{ category.name }}</div>
+          <div class="h4 text-green pb-4">{{ category.sub_header }}</div>
 		  <div v-html="category.short_description"></div>
          	
-          <div class="load py-0">
+          <!-- <div class="load py-0">
             <a href="#" class="load-all-btn"
               ><span>Read Morea</span> <i class="las la-angle-right"></i
             ></a>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -66,7 +66,7 @@
                   class="pb-4 w-100"
                   width="30"
                 />
-                <h3 class="font-bold">{{ product.name }}</h3>
+                <h4 class="font-bold">{{ product.name }}</h4>
                 <div class="description" v-html="product.short_description">
                  
                 </div>
@@ -80,7 +80,7 @@
                   class="pb-4 w-100"
                   width="30"
                 />
-                <h3 class="font-bold">{{ product.name }}</h3>
+                <h4 class="font-bold">{{ product.name }}</h4>
               </div>
               <img
                 :src="`/img/product/${product.img}`"
@@ -100,7 +100,7 @@
 
         </ul>
 
-       <div class="border rounded my-4 mb-5 p-md-5 p-4 text-center bg-white shadow">
+       <div class=" rounded my-4 mb-5 p-md-5 p-4 text-center">
            <h3 class="font-bold pb-3"> Click here for updated product list</h3>
          <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn-green">Download Brochure</a>
        </div>
