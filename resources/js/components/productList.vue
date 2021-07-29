@@ -32,14 +32,14 @@
       <div class="container-lg">
         <div class="box">
           <img
-            src="/assets/custom/img/product-img.png"
+            :src="`/img/category/${category.banner}`"
             width="633"
             height="646"
             class="product-img"
           />
           <div class="display-4 font-bold text-green">{{ category.name }}</div>
           <div class="h4 text-green pb-4">{{ category.sub_header }}</div>
-		  <div v-html="category.short_description"></div>
+		  <div v-html="category.description"></div>
          	
           <!-- <div class="load py-0">
             <a href="#" class="load-all-btn"

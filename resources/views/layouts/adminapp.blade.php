@@ -63,7 +63,7 @@
     <!-- Brand Logo -->
     <a href="{{ url('/admin/dashboard') }}" class="brand-link">
       <img src="{{ asset('assets/img/logo.png') }}"
-           alt="AdminLTE Logo"
+           alt="Mrt"
            class="brand-image img-circle elevation-3"
            style="margin-left: -0.2rem;max-height: 25px;">
       <span class="brand-text font-weight-light">Organic</span>
