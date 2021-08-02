@@ -116,19 +116,23 @@
       <div class="container-lg">
         <div v-html="products.description"></div>
 
-        <div class="pt-4 mt-3 row">
-          <div class="col-md-6" >
-            <a v-if="products.url" target="_blank" :href="products.url"  class="btn-green">Shop online</a>
-          </div>
-          <div class="col-md-6 text-right">
-            <a
+<div class="row align-items-center border-bottom">
+   <div class="col-md-6">Available bulk packing 5Kg, 10Kg, 50Kg</div>
+    <div class="col-md-6 text-right"> 
+     <a v-if="products.url" target="_blank" :href="products.url"  class="btn btn-default border font-bold">Shop online </a></div>
+</div>
+<div class="row align-items-center border-bottom">
+   <div class="col-md-6">Available retail packing 15ml, 50ml, 100ml</div>
+    <div class="col-md-6 text-right"> <a
               href="#"
-              class="btn-green"
+              class="btn btn-default border font-bold"
               data-toggle="modal"
               data-target="#enquiryModal"
               >Bulk Order</a
-            >
-          </div>
+            ></div>
+</div>
+
+    >
         </div>
       </div>
     </section>
