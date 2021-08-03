@@ -19,23 +19,21 @@
               industry. Lorem Ipsum has been the industry's standard dummy
             </div>
             <v-form @submit.prevent="submitEnquiry()">
-              <input
-                 v-model="form.id"
-                  type="text" 
-                  hidden
-                />
+              <input v-model="form.id" type="text" hidden />
               <div class="form-group">
                 <input
-                 v-model="form.email"
-                  type="text" name="email"
+                  v-model="form.email"
+                  type="text"
+                  name="email"
                   placeholder="Enter email"
                   class="form-control"
                 />
               </div>
               <div class="form-group">
                 <input
-                 v-model="form.phone"
-                  type="text" name="phone"
+                  v-model="form.phone"
+                  type="text"
+                  name="phone"
                   placeholder="Phone Number"
                   class="form-control"
                 />
@@ -45,11 +43,16 @@
                 <button
                   type="button"
                   class="btn btn-default border text-dark px-4 rounded-0"
-                  data-dismiss="modal" ref="Close"
+                  data-dismiss="modal"
+                  ref="Close"
                 >
                   Cancel
                 </button>
-                <button type="submit" id="submit" class="btn btn-green btn-green-sm ml-auto">
+                <button
+                  type="submit"
+                  id="submit"
+                  class="btn btn-green btn-green-sm ml-auto"
+                >
                   Submit
                 </button>
               </div>
@@ -116,28 +119,37 @@
       <div class="container-lg">
         <div v-html="products.description"></div>
 
-<div class="row align-items-center border-bottom">
-   <div class="col-md-6">Available bulk packing 5Kg, 10Kg, 50Kg</div>
-    <div class="col-md-6 text-right"> 
-     <a v-if="products.url" target="_blank" :href="products.url"  class="btn btn-default border font-bold">Shop online </a></div>
-</div>
-<div class="row align-items-center border-bottom">
-   <div class="col-md-6">Available retail packing 15ml, 50ml, 100ml</div>
-    <div class="col-md-6 text-right"> <a
+        <div class="row align-items-center border-bottom">
+          <div class="col-md-6"><span v-if="products.retail"> Retail packing</span> {{products.retail}}</div>
+          <div class="col-md-6 text-right">
+            <a
+              v-if="products.url"
+              target="_blank"
+              :href="products.url"
+              class="btn btn-default border font-bold"
+              >Shop online
+            </a>
+          </div>
+        </div>
+        <div class="row align-items-center border-bottom">
+          <div class="col-md-6"><span v-if="products.bulk"> Bulk packing</span> {{products.bulk}}</div>
+          <div class="col-md-6 text-right">
+            <a
               href="#"
               class="btn btn-default border font-bold"
               data-toggle="modal"
               data-target="#enquiryModal"
               >Bulk Order</a
-            ></div>
-</div>
-
-    >
+            >
+          </div>
         </div>
       </div>
     </section>
     <!-- organic -->
-    <section v-if="products.store_id" class="org-product-info position-relative">
+    <section
+      v-if="products.store_id"
+      class="org-product-info position-relative"
+    >
       <div class="wall"></div>
       <div class="container-lg">
         <div class="box text-center text-light">
@@ -272,10 +284,10 @@ export default {
     return {
       products: {},
       form: new Form({
-                id: '',
-                email: '',
-                phone: ''
-            }),
+        id: "",
+        email: "",
+        phone: "",
+      }),
     };
   },
   methods: {
@@ -285,25 +297,26 @@ export default {
         this.form.id = this.products.id;
       });
     },
-    submitEnquiry(){
-          $('#submit').text('Please Wait...').attr('disabled','true');
-          this.form.post('/api/enquire')
-          .then(() => {
-              this.form.reset();
-              this.$refs.Close.click();
-              swal.fire({
-                  icon: 'success',
-                  title: 'Thank You,Our executives will contact you shortly!'
-              })
-          })
-          .catch(() => {
-              this.form.reset();
-              this.$refs.Close.click();
-              swal.fire({
-                  icon: 'error',
-                  title: 'Something went wrong,Please try after sometime!'
-              })
-          })
+    submitEnquiry() {
+      $("#submit").text("Please Wait...").attr("disabled", "true");
+      this.form
+        .post("/api/enquire")
+        .then(() => {
+          this.form.reset();
+          this.$refs.Close.click();
+          swal.fire({
+            icon: "success",
+            title: "Thank You,Our executives will contact you shortly!",
+          });
+        })
+        .catch(() => {
+          this.form.reset();
+          this.$refs.Close.click();
+          swal.fire({
+            icon: "error",
+            title: "Something went wrong,Please try after sometime!",
+          });
+        });
     },
   },
   created() {

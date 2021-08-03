@@ -44,6 +44,14 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="name">Bulk Packings</label>
+                                    <input v-model="form.bulk" type="text" class="form-control" id="bulk" placeholder="Bulk packs" :class="{ 'is-invalid': form.errors.has('bulk') }">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Retail Packings</label>
+                                    <input v-model="form.retail" type="text" class="form-control" id="retail" placeholder="Retail packs" :class="{ 'is-invalid': form.errors.has('retail') }">
+                                </div>
+                                <div class="form-group">
                                     <label for="url">Shop Online Link</label>
                                     <input v-model="form.url" type="text" class="form-control" id="sub_header" placeholder="Shop Link">
                                 </div>
@@ -163,7 +171,9 @@ export default {
                 category_id: '',
                 short_description: '',
                 sub_header: '',
-                url: ''
+                url: '',
+                retail: '',
+                bulk: ''
             }),
             imgStatus: false,
             bannerStatus: false
