@@ -19,21 +19,23 @@
               industry. Lorem Ipsum has been the industry's standard dummy
             </div>
             <v-form @submit.prevent="submitEnquiry()">
-              <input v-model="form.id" type="text" hidden />
+              <input
+                 v-model="form.id"
+                  type="text" 
+                  hidden
+                />
               <div class="form-group">
                 <input
-                  v-model="form.email"
-                  type="text"
-                  name="email"
+                 v-model="form.email"
+                  type="text" name="email"
                   placeholder="Enter email"
                   class="form-control"
                 />
               </div>
               <div class="form-group">
                 <input
-                  v-model="form.phone"
-                  type="text"
-                  name="phone"
+                 v-model="form.phone"
+                  type="text" name="phone"
                   placeholder="Phone Number"
                   class="form-control"
                 />
@@ -43,16 +45,11 @@
                 <button
                   type="button"
                   class="btn btn-default border text-dark px-4 rounded-0"
-                  data-dismiss="modal"
-                  ref="Close"
+                  data-dismiss="modal" ref="Close"
                 >
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  id="submit"
-                  class="btn btn-green btn-green-sm ml-auto"
-                >
+                <button type="submit" id="submit" class="btn btn-green btn-green-sm ml-auto">
                   Submit
                 </button>
               </div>
@@ -119,37 +116,63 @@
       <div class="container-lg">
         <div v-html="products.description"></div>
 
-        <div class="row align-items-center border-bottom">
-          <div class="col-md-6"><span v-if="products.retail"> Retail packing</span> {{products.retail}}</div>
-          <div class="col-md-6 text-right">
-            <a
-              v-if="products.url"
-              target="_blank"
-              :href="products.url"
-              class="btn btn-default border font-bold"
-              >Shop online
-            </a>
+<div class="row align-items-center border-bottom py-5">
+<div class="col-md-6 py-0 mb-4 mb-md-0">
+  <div class="pack-booking p-4 d-flex bg-green py-5 ">
+     <div class="row align-items-center ">
+         <div class="col-sm-7 py-0">
+            <h5 class="py-0 font-normal text-green">Available bulk packing</h5>
+            <div class="h3 font-bold mb-0 pb-0">
+            5<small class="fs-6 pr-3"> Kg,</small> 
+            10<small class="fs-6 pr-3"> Kg, </small>
+            50<small class="fs-6"> Kg</small>
+            </div>
+         </div>
+          <div class="col-sm-5 py-0">
+             <div class="load text-center">
+             <a href="#" class="load-all-btn">
+             <span>Shop now</span>
+             <i class="las la-angle-right"></i>
+             </a>
+             </div>
           </div>
-        </div>
-        <div class="row align-items-center border-bottom">
-          <div class="col-md-6"><span v-if="products.bulk"> Bulk packing</span> {{products.bulk}}</div>
-          <div class="col-md-6 text-right">
-            <a
-              href="#"
-              class="btn btn-default border font-bold"
-              data-toggle="modal"
-              data-target="#enquiryModal"
-              >Bulk Order</a
-            >
+     </div>
+  </div>
+</div>
+
+<div class="col-md-6 py-0">
+  <div class="pack-booking p-4 d-flex bg-sandal py-5 ">
+     <div class="row align-items-center ">
+         <div class="col-sm-7 py-0">
+            <h5 class="py-0 font-normal text-sandel">Available bulk packing</h5>
+            <div class="h3 font-bold mb-0 pb-0">
+            15<small class="fs-6 pr-3"> ml,</small> 
+            50<small class="fs-6 pr-3"> ml, </small>
+            100<small class="fs-6"> ml</small>
+            </div>
+         </div>
+          <div class="col-sm-5 py-0">
+             <div class="load text-center">
+             <a href="#" class="load-all-btn">
+             <span>Shop now</span>
+             <i class="las la-angle-right"></i>
+             </a>
+             </div>
           </div>
+     </div>
+  </div>
+</div>
+
+
+</div>
+
+
+    >
         </div>
       </div>
     </section>
     <!-- organic -->
-    <section
-      v-if="products.store_id"
-      class="org-product-info position-relative"
-    >
+    <section v-if="products.store_id" class="org-product-info position-relative">
       <div class="wall"></div>
       <div class="container-lg">
         <div class="box text-center text-light">

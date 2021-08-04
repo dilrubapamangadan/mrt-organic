@@ -18,6 +18,11 @@
     font-family: 'OrpheusProBold';
 }
 
+.font-normal {
+    font-family: 'OrpheusPro'!important;
+    font-weight: normal !important;
+}
+
 .text-green {
     color: #276f46;
 }
@@ -1717,6 +1722,67 @@ footer .last a:hover {
 }
 .cms ol {
     margin: 0 0 0 22px;
+}
+.pack-booking.bg-green {
+    background-color: #e5faee;
+}
+.pack-booking small {
+    font-size: 50%;
+}
+.pack-booking .load {
+    padding: 0
+}
+.pack-booking .load .load-all-btn {
+    border: 1px solid #30955b;
+    line-height: 23px;
+    font-size: 16px;
+}
+.pack-booking .load .load-all-btn::before {
+    background: #30955b;
+    width: 59px;
+}
+.pack-booking .load:hover .load-all-btn::before {
+    width: 110%;
+    right: -10px;
+}
+.pack-booking .load .load-all-btn i {
+    color: #ffffff;
+    font-size: 22px;
+}
+.pack-booking .load .load-all-btn span {
+    font-family: 'OrpheusProBold';
+}
+.pack-booking .load:hover .load-all-btn span {
+    color: #ffffff;
+}
+.text-green {
+    color: #30955b;
+    ;
+}
+.pack-booking.bg-sandal {
+    background-color: #fde7c3;
+}
+.pack-booking.bg-sandal .load .load-all-btn {
+    border: 1px solid #9d6e22;
+    line-height: 23px;
+    font-size: 16px;
+}
+.pack-booking.bg-sandal .load .load-all-btn::before {
+    background: #9d6e22;
+    width: 59px;
+}
+.pack-booking.bg-sandal .load:hover .load-all-btn::before {
+    width: 110%;
+}
+.pack-booking.bg-sandal .load .load-all-btn span {
+    color: #9d6e22;
+}
+.pack-booking.bg-sandal .load:hover .load-all-btn span {
+    color: #ffffff;
+}
+.text-sandel {
+    color: #ab9063;
+    ;
 }
 
 /**/
