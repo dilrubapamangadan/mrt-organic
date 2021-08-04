@@ -123,9 +123,7 @@
          <div class="col-sm-7 py-0">
             <h5 class="py-0 font-normal text-green">Available bulk packing</h5>
             <div class="h3 font-bold mb-0 pb-0">
-            5<small class="fs-6 pr-3"> Kg,</small> 
-            10<small class="fs-6 pr-3"> Kg, </small>
-            50<small class="fs-6"> Kg</small>
+           5 Kg, 10 Kg, 50 Kg
             </div>
          </div>
           <div class="col-sm-5 py-0">
@@ -146,9 +144,7 @@
          <div class="col-sm-7 py-0">
             <h5 class="py-0 font-normal text-sandel">Available bulk packing</h5>
             <div class="h3 font-bold mb-0 pb-0">
-            15<small class="fs-6 pr-3"> ml,</small> 
-            50<small class="fs-6 pr-3"> ml, </small>
-            100<small class="fs-6"> ml</small>
+           15 ml, 50 ml, 100 ml
             </div>
          </div>
           <div class="col-sm-5 py-0">
