@@ -1,7 +1,7 @@
 <template>
   <section>
     <div
-      class="modal fade"
+      class="modal"
       id="enquiryModal"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
@@ -117,18 +117,18 @@
         <div v-html="products.description"></div>
 
 <div class="row align-items-center border-bottom py-5">
-<div class="col-md-6 py-0 mb-4 mb-md-0">
+<div class="col-md-6 py-0 " v-if="products.url || products.retail">
   <div class="pack-booking p-4 d-flex bg-green py-5 ">
      <div class="row align-items-center ">
          <div class="col-sm-7 py-0">
             <h5 class="py-0 font-normal text-green">Available bulk packing</h5>
             <div class="h3 font-bold mb-0 pb-0">
-           5 Kg, 10 Kg, 50 Kg
+           {{products.retail}}
             </div>
          </div>
           <div class="col-sm-5 py-0">
              <div class="load text-center">
-             <a href="#" class="load-all-btn">
+             <a :href="products.url"  target="_blank" class="load-all-btn">
              <span>Shop now</span>
              <i class="las la-angle-right"></i>
              </a>
@@ -138,18 +138,18 @@
   </div>
 </div>
 
-<div class="col-md-6 py-0">
+<div class="col-md-6 py-0" v-if="products.bulk">
   <div class="pack-booking p-4 d-flex bg-sandal py-5 ">
      <div class="row align-items-center ">
          <div class="col-sm-7 py-0">
             <h5 class="py-0 font-normal text-sandel">Available bulk packing</h5>
             <div class="h3 font-bold mb-0 pb-0">
-           15 ml, 50 ml, 100 ml
+           {{products.bulk}}
             </div>
          </div>
           <div class="col-sm-5 py-0">
              <div class="load text-center">
-             <a href="#" class="load-all-btn">
+             <a href="#"  data-toggle="modal" data-target="#enquiryModal" class="load-all-btn">
              <span>Shop now</span>
              <i class="las la-angle-right"></i>
              </a>
@@ -163,7 +163,6 @@
 </div>
 
 
-    >
         </div>
       </div>
     </section>
@@ -322,6 +321,7 @@ export default {
         .post("/api/enquire")
         .then(() => {
           this.form.reset();
+          $("#submit").text("Submit").prop("disabled", false);
           this.$refs.Close.click();
           swal.fire({
             icon: "success",
@@ -330,6 +330,7 @@ export default {
         })
         .catch(() => {
           this.form.reset();
+          $("#submit").text("Submit").prop("disabled", false);
           this.$refs.Close.click();
           swal.fire({
             icon: "error",

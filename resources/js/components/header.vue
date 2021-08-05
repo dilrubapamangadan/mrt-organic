@@ -35,10 +35,10 @@
                     <div class="collapse col-4 navbar-collapse d-none d-lg-block" id="main_nav">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active"> 
-                                <router-link class="nav-link" to="/"><i class="las la-home"></i></router-link>
+                                <a class="nav-link" href="/"><i class="las la-home"></i></a>
                             </li>
                             <li class="nav-item">
-                                <router-link class="nav-link" to="/about">Our Story</router-link>
+                                <a class="nav-link" href="/about">Our Story</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link  dropdown-toggle" data-toggle="dropdown" href="#"> Organic Products</a>
@@ -55,7 +55,7 @@
                     </div>
                     <!-- navbar-collapse.// -->
                     <div class="col-4 text-center ">
-                        <a class="brand text-white" href="#"><img src="/assets/custom/img/brand-logo.png" data-src="/assets/custom/img/brand-logo.png" width="266" height="104" alt="MRT"> </a>
+                        <a class="brand text-white" href="/"><img src="/assets/custom/img/brand-logo.png" data-src="/assets/custom/img/brand-logo.png" width="266" height="104" alt="MRT"> </a>
                     </div>
                     <div class="col-4  d-none d-lg-block">
                         <ul class="navbar-nav ">
@@ -68,7 +68,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><router-link class="nav-link" to="/contact"> Contact Us</router-link></li>
+                            <li class="nav-item"><a class="nav-link" href="/contact"> Contact Us</a></li>
                         </ul>
                     </div>
                     <div class="col-5 d-block d-md-none  relative">
@@ -95,7 +95,7 @@
                                     </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Contact us</a></li>
+                                <li><a href="/contact">Contact us</a></li>
                             </ul>
                         </div>
                     </div>

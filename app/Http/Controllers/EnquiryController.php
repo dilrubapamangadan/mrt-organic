@@ -47,6 +47,7 @@ class EnquiryController extends Controller
         $newEnquiry->phone = $request['phone'];
         $newEnquiry->product_id = $request['id'];
         $newEnquiry->save();
+        
         Mail::to(env('MAIL_TO'))->send(new EnquiryMail($request));
         return 1;
     }
@@ -99,5 +100,23 @@ class EnquiryController extends Controller
     public function destroy(Enquiry $enquiry)
     {
         //
+    }
+
+    public function storeContact(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            'phone' => 'required'
+        ]);
+
+        $newEnquiry = new Enquiry;
+        $newEnquiry->email = $request['email'];
+        $newEnquiry->phone = $request['phone'];
+        $newEnquiry->name = $request['name'];
+        $newEnquiry->message = $request['message'];
+        $newEnquiry->save();
+
+        Mail::to(env('MAIL_TO'))->send(new EnquiryMail($request));
+        return 1;
     }
 }

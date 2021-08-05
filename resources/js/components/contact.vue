@@ -54,25 +54,25 @@ Aluva – 683101, Cochin, Kerala, India.
                      
                </div>
                <div class="col-md-8">
-                  <form>
+                  <form @submit.prevent="submitEnquiry()">
   <div class="form-group">
     <label for="formGroupExampleInput">Name</label>
-    <input type="text" class="form-control form-control-lg" id="formGroupExampleInput" placeholder="Enter Name">
+    <input v-model="form.name" name="name" type="text" class="form-control form-control-lg" id="formGroupExampleInput" placeholder="Enter Name">
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Email</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter email">
+    <input v-model="form.email" name="email" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter email">
   </div>
    <div class="form-group">
     <label for="formGroupExampleInput2">Mobile</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter mobile ">
+    <input v-model="form.phone" name="phone" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter mobile ">
   </div>
    <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <label for="exampleFormControlTextarea1">Message</label>
+    <textarea v-model="form.message" name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
   <div class="text-right">
-           <input type="submit" class="btn btn-dark text-white font-bold px-5" value="Submit">
+           <input type="submit" id="submit" class="btn btn-dark text-white font-bold px-5" value="Submit">
   </div>
 </form>
                </div>
@@ -96,6 +96,40 @@ export default {
             footer1,
             Certification,
                 Index 
+        },
+        data() {
+          return {
+            products: {},
+            form: new Form({
+              name: "",
+              email: "",
+              phone: "",
+              message: ""
+            }),
+          };
+        },
+        methods: {
+          submitEnquiry() {
+              $("#submit").text("Please Wait...").attr("disabled", "true");
+              this.form
+                .post("/api/contact")
+                .then(() => {
+                  this.form.reset();
+           
+                  swal.fire({
+                    icon: "success",
+                    title: "Thank You,Our executives will contact you shortly!",
+                  });
+                })
+                .catch(() => {
+                  this.form.reset();
+
+                  swal.fire({
+                    icon: "error",
+                    title: "Something went wrong,Please try after sometime!",
+                  });
+                });
+          },
         }
 }
 </script>

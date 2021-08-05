@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-
+use App\Models\Product;
 class EnquiryMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -19,6 +19,10 @@ class EnquiryMail extends Mailable
     public function __construct($data)
     {
         $this->enquiryData = $data;
+        $this->enquiryData['product']=false;
+        if($this->enquiryData['id']){
+            $this->enquiryData['product'] = Product::where('id',$this->enquiryData['id'])->first();
+        }
     }
 
     /**
