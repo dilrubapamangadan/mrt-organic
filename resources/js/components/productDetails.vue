@@ -118,7 +118,7 @@
 
 <div class="row align-items-center border-bottom py-5">
 <div class="col-md-6 py-0 " v-if="products.url || products.retail">
-  <div class="pack-booking p-4 d-flex bg-green py-5 ">
+  <div class="pack-booking p-4  bg-green py-5 ">
      <div class="row align-items-center ">
          <div class="col-sm-7 py-0">
             <h5 class="py-0 font-normal text-green">Available bulk packing</h5>
@@ -139,7 +139,7 @@
 </div>
 
 <div class="col-md-6 py-0" v-if="products.bulk">
-  <div class="pack-booking p-4 d-flex bg-sandal py-5 ">
+  <div class="pack-booking p-4  bg-sandal py-5 ">
      <div class="row align-items-center ">
          <div class="col-sm-7 py-0">
             <h5 class="py-0 font-normal text-sandel">Available bulk packing</h5>
