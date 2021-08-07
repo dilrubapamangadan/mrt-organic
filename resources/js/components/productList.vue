@@ -196,6 +196,12 @@ export default {
 	  
     },
   },
+  watch: {
+    '$route' (to,from){
+      this.slug = this.$route.params.slug;
+      this.loadProduct(this.slug);
+    }
+  },
   created() {
     this.slug = this.$route.params.slug;
     this.loadProduct(this.slug);

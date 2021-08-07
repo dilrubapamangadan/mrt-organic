@@ -1,13 +1,8 @@
 <template>
 <div>
-   
-    <header1></header1>
-    <router-view></router-view>
 
-        <!-- set progressbar -->
-    <!-- <vue-progress-bar></vue-progress-bar>   -->
-    <footer1></footer1>
-       
+    <router-view :key="$route.path"></router-view>
+
 </div>
 </template>
 
