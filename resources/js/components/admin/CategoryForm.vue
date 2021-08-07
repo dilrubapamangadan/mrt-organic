@@ -42,7 +42,10 @@
                                     <label for="name">Sub Header</label>
                                     <input v-model="form.sub_header" type="text" class="form-control" id="sub_header" placeholder="Sub Header" :class="{ 'is-invalid': form.errors.has('sub_header') }">
                                 </div>
-                        
+                                <div class="form-group">
+                                    <label for="tag">Tittle Tag</label>
+                                    <input v-model="form.tag" type="text" class="form-control" id="tag" placeholder="Title tag" :class="{ 'is-invalid': form.errors.has('tag') }">
+                                </div>
 
                                 <div class="form-group">
                                     <label for="inputState">Store</label>
@@ -149,7 +152,8 @@ data() {
                 banner:'',
                 sub_header:'',
                 short_description:'',
-                store_id: ''
+                store_id: '',
+                tag: ''
             }),
             imgStatus: false,
             bannerStatus: false

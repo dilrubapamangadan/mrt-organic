@@ -96,14 +96,21 @@ const routes= [
 
 const router = new VueRouter({
     routes,
-    mode: 'history'
+    mode: 'history',
+    scrollBehavior (to, from, savedPosition) {
+        if (savedPosition) {
+          return savedPosition
+        } else {
+          return { x: 0, y: 0 }
+        }
+      }
 });
 
 router.beforeEach((to, from, next) => {
     if(to.name == 'Products' || to.name == 'Product'){
-        var name = to.params.slug;
-        name = name.replace(/-/g, " ").toUpperCase();
-        document.title = `${ process.env.MIX_APP_NAME } - ${ name }`
+        var name = to.params.tag;
+        // name = name.replace(/-/g, " ").toUpperCase();
+        document.title = name;
     }else{
         document.title = `${ process.env.MIX_APP_NAME } - ${ to.name }`
     }

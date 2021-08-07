@@ -42,7 +42,10 @@
                                     <label for="sub">Sub Header</label>
                                     <input v-model="form.sub_header" type="text" class="form-control" id="sub_header" placeholder="Sub Header" :class="{ 'is-invalid': form.errors.has('sub_header') }">
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="sub">Tittle Tag</label>
+                                    <input v-model="form.tag" type="text" class="form-control" id="tag" placeholder="Title tag" :class="{ 'is-invalid': form.errors.has('tag') }">
+                                </div>
                                 <div class="form-group">
                                     <label for="name">Bulk Packings</label>
                                     <input v-model="form.bulk" type="text" class="form-control" id="bulk" placeholder="Bulk packs" :class="{ 'is-invalid': form.errors.has('bulk') }">
@@ -173,7 +176,8 @@ export default {
                 sub_header: '',
                 url: '',
                 retail: '',
-                bulk: ''
+                bulk: '',
+                tag:''
             }),
             imgStatus: false,
             bannerStatus: false

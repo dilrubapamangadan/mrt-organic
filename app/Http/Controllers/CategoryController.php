@@ -51,6 +51,7 @@ class CategoryController extends Controller
         $newCategory->store_id = $request["store_id"];
         $newCategory->sub_header = $request["sub_header"];
         $newCategory->short_description = $request["short_description"];
+        $newCategory->tag = $request["tag"];
         $filePath = '';        // Check if a profile image has been uploaded
         if ($request['img']) {
             // Make a image name based on user name and current timestamp
@@ -103,7 +104,7 @@ class CategoryController extends Controller
         $categoryData = DB::table('categories')
         ->Join('stores', 'stores.id', '=', 'categories.store_id')
         ->where('stores.slug',$slug)
-        ->select('categories.name as name','categories.img as img','categories.banner as banner','categories.sub_header as sub_header','categories.description as description','categories.short_description as short_description','categories.slug as slug','categories.id as id')
+        ->select('categories.name as name','categories.img as img','categories.tag as tag','categories.banner as banner','categories.sub_header as sub_header','categories.description as description','categories.short_description as short_description','categories.slug as slug','categories.id as id')
         ->get();
        
         return $categoryData;
@@ -114,7 +115,7 @@ class CategoryController extends Controller
         $categoryData = DB::table('categories')
         ->Join('stores', 'stores.id', '=', 'categories.store_id')
         ->where('categories.slug',$slug)
-        ->select('categories.name as name','categories.img as img','categories.banner as banner','categories.sub_header as sub_header','categories.description as description','categories.short_description as short_description','categories.slug as slug','categories.id as id','stores.name as store')
+        ->select('categories.name as name','categories.img as img','categories.tag as tag','categories.banner as banner','categories.sub_header as sub_header','categories.description as description','categories.short_description as short_description','categories.slug as slug','categories.id as id','stores.name as store')
         ->get();
        
         return $categoryData;
@@ -151,6 +152,7 @@ class CategoryController extends Controller
             $existingCategory->store_id = $request['store_id'];
             $existingCategory->sub_header = $request['sub_header'];
             $existingCategory->short_description = $request['short_description'];
+            $existingCategory->tag = $request['tag'];
 
             $filePath = '';        // Check if a profile image has been uploaded
             if ($request['img'] != $existingCategory->img) {

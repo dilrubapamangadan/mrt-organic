@@ -45,7 +45,7 @@
                                 <ul class="dropdown-menu fade-up">
                                     <li v-for="category in categoryOrganic" :key="category.slug">
                                          <!-- <router-link  class="dropdown-item" :to="`/products/${category.slug}`"> -->
-                                         <router-link  class="dropdown-item" :to="{ name:`Products`,params:{slug:category.slug,id:category.id}}">
+                                         <router-link  class="dropdown-item" :to="{ name:`Products`,params:{tag:category.tag,slug:category.slug,id:category.id}}">
                                             {{ category.name | upText }}
                                         </router-link>
                                     </li>
@@ -62,7 +62,7 @@
                             <li class="nav-item dropdown"> <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown"> Conventional Products </a>
                                 <ul class="dropdown-menu fade-up">
                                      <li v-for="category in categoryConventional" :key="category.slug">
-                                         <router-link  class="dropdown-item" :to="`/products/${category.slug}`">
+                                         <router-link  class="dropdown-item" :to="{ name:`Products`,params:{tag:category.tag,slug:category.slug,id:category.id}}">
                                             {{ category.name | upText }}
                                         </router-link>
                                     </li>
@@ -80,7 +80,7 @@
                                     <router-link class="has-sub" to="/products"> Organic Products<i class="las la-angle-right ml-auto float-right"></i></router-link>
                                     <ul class="dl-submenu">
                                         <li v-for="category in categoryOrganic" :key="category.slug">
-                                            <router-link  :to="{ name:`Products`,params:{slug:category.slug,id:category.id}}">
+                                            <router-link  class="dropdown-item" :to="{ name:`Products`,params:{tag:category.tag,slug:category.slug,id:category.id}}">
                                                 {{ category.name | upText }}
                                             </router-link>
                                         </li>
@@ -89,7 +89,7 @@
                                 <li> <a href="#">Convetional Products <i class="las la-angle-right ml-auto float-right"></i></a>
                                     <ul class="dl-submenu">
                                        <li v-for="category in categoryConventional" :key="category.slug">
-                                         <router-link  :to="`/products/${category.slug}`">
+                                         <router-link  class="dropdown-item" :to="{ name:`Products`,params:{tag:category.tag,slug:category.slug,id:category.id}}">
                                             {{ category.name | upText }}
                                         </router-link>
                                     </li>
