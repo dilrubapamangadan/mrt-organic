@@ -29,56 +29,87 @@
     </section>
     <section class="category-description">
       <div class="container-lg">
+
+
+
+
         <div class="py-5">
-            <div class="row">
-               <div class="col-md-4">
-                    <h4 class="font-bold">REACH US</h4>
-                    <address class="pb-4">
-                         MRT ORGANIC GREEN PRODUCTS<br/>
+<div class="row">
+   <div class="col-md-4">
+      <div class="pl-5 position-relative">
+      <i class="las la-map-marker-alt position-absolute left-0 h2 text-green"></i>
+ <h4 class="font-bold">REACH US</h4>
+  MRT ORGANIC GREEN PRODUCTS<br/>
 3 – Palatty Buildings, Pipeline Road<br/>
 Nr to Telephone Exchange<br/>
 Aluva – 683101, Cochin, Kerala, India.
-                    </address>
-                     <h4 class="font-bold">REACH US</h4>
-                     <small class="text-muted d-block">Phone:</small>
-                     <div class="pb-1 font-bold">+91-484-2632991,+91-484-2124310</div>
+      </div>
+   </div>
+    <div class="col-md-4">
+      <div class="pl-5 pb-4 position-relative">
+      <i class="las la-tty position-absolute left-0 h2 text-green"></i>
 
-                      <small class="text-muted d-block">Mobile:</small>
-                      <div class="pb-1 font-bold">+91-9746039299</div>
+ +91-484-2632991,<br/>
++91-484-2124310
+ 
+      </div>
+        <div class="pl-5 pb-4 position-relative">
+      <i class="las la-mobile-alt position-absolute left-0 h2 text-green"></i>
 
-                      <small class="text-muted d-block">Fax:</small>
-                      <div class="pb-1 font-bold">+91-484-2624133</div>
+ +91-9746039299
+ 
+      </div>
+   </div>
+    <div class="col-md-4">
+      <div class="pl-5 pb-4 position-relative">
+      <i class="las la-fax position-absolute left-0 h2 text-green"></i>
+ +91-484-2624133
+      </div>
+       <div class="pl-5 position-relative">
+      <i class="las la-envelope position-absolute left-0 h2 text-green"></i>
+     
+organic@mrtorganic.com
+      </div>
+   </div>
+</div>
+   <form @submit.prevent="submitEnquiry()">
+<div class="bg-white p-md-5 p-4 shadow rounded mt-5 contact-form">
 
-                     <small class="text-muted d-block">Emailx:</small>
-                      <div class="pb-1 font-bold">organic@mrtorganic.com</div>
-                     
-               </div>
-               <div class="col-md-8">
-                  <form @submit.prevent="submitEnquiry()">
-  <div class="form-group">
+
+            <div class="row">
+         
+              <div class="col-lg-6">
+ <div class="form-group">
     <label for="formGroupExampleInput">Name</label>
     <input v-model="form.name" name="name" type="text" class="form-control form-control-lg" id="formGroupExampleInput" placeholder="Enter Name">
   </div>
-  <div class="form-group">
+   <div class="form-group">
     <label for="formGroupExampleInput2">Email</label>
     <input v-model="form.email" name="email" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter email">
   </div>
-   <div class="form-group">
+  <div class="form-group">
     <label for="formGroupExampleInput2">Mobile</label>
     <input v-model="form.phone" name="phone" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter mobile ">
   </div>
-   <div class="form-group">
+              </div>
+               <div class="col-lg-6">
+ <div class="form-group">
     <label for="exampleFormControlTextarea1">Message</label>
-    <textarea v-model="form.message" name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea v-model="form.message" name="message" class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
   </div>
   <div class="text-right">
            <input type="submit" id="submit" class="btn btn-dark text-white font-bold px-5" value="Submit">
   </div>
-</form>
+              </div>
+         
+  
+
                </div>
             </div>
+               </form>
+            </div>
         </div>
-          </div>
+         
     </section>
           <Certification></Certification>
         <footer1></footer1>

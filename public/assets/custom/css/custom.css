@@ -1784,6 +1784,13 @@ footer .last a:hover {
     color: #ab9063;
     ;
 }
+.left-0 {
+    left: 0;
+}
+.contact-form {
+    background: url(../img/contact.jpg) no-repeat right 2px;
+    padding-right: 300px!important;
+}
 
 /**/
 @media (min-width:1400px) {
