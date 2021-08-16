@@ -48,43 +48,6 @@
 <script src="{{ asset('assets/custom/js/jquery.dlmenu.js') }}"></script>
 
 
-<script>
-    //fixed header script
-    $(window).scroll(function(){
-        if ($(window).scrollTop() >= 100) {
-            $('header').addClass('fixed-header');
-        // $('nav div').addClass('visible-title');
-        }
-        else {
-            $('header').removeClass('fixed-header');
-        // $('nav div').removeClass('visible-title');
-        }
-    });
-        
-    
-
-    $(window).on('load', function() {
-        $('#status').fadeOut(); 
-        $('#preloader').delay(350).fadeOut('slow');
-        $('body').delay(350).css({'overflow':'visible'});
-    })
-
-    $(document).ready(function() {
-    
-
-            $('.carousel').carousel({
-                pause: "false"
-            });
-        
-    });
-
-    $(function() {
-        // $( '#dl-menu' ).dlmenu({
-        //     animationClasses : { classin : 'dl-animate-in-5', classout : 'dl-animate-out-5' }
-        // });
-    });
-</script>
-
 </body>
 </html>
         
