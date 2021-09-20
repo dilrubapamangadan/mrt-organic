@@ -53,6 +53,7 @@ class ProductController extends Controller
         $newProduct->url = $request["url"];
         $newProduct->bulk = $request["bulk"];
         $newProduct->tag = $request["tag"];
+        $newProduct->tagDescription = $request["tagDescription"];
         $newProduct->retail = $request["retail"];
         $filePath = '';        // Check if a profile image has been uploaded
         if ($request['img']  != $newProduct->img) {
@@ -106,7 +107,7 @@ class ProductController extends Controller
         ->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id')
         ->leftJoin('categories', 'categories.id', '=', 'product_categories.category_id')
         ->where('products.id',$id)
-        ->select('products.id as id','products.name as name','products.url as url','products.description as description','products.status as status','products.img as img','products.banner as banner','products.bulk as bulk','products.tag as tag','products.retail as retail','product_categories.category_id as category_id','categories.store_id as store_id')
+        ->select('products.id as id','products.name as name','products.url as url','products.description as description','products.status as status','products.img as img','products.banner as banner','products.bulk as bulk','products.tag as tag','products.tagDescription as tagDescription','products.retail as retail','product_categories.category_id as category_id','categories.store_id as store_id')
         ->get();
        
         return $productData;
@@ -118,7 +119,7 @@ class ProductController extends Controller
         ->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id')
         ->leftJoin('categories', 'categories.id', '=', 'product_categories.category_id')
         ->where('categories.slug','LIKE','%'.$slug.'%')
-        ->select('products.id as id','products.name as name','products.tag as tag','products.slug as slug','products.url as url','products.description as description','categories.short_description as short_description','products.status as status','products.img as img','products.bulk as bulk','products.retail as retail','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id')
+        ->select('products.id as id','products.name as name','products.tag as tag','products.tagDescription as tagDescription','products.slug as slug','products.url as url','products.description as description','categories.short_description as short_description','products.status as status','products.img as img','products.bulk as bulk','products.retail as retail','products.banner as banner','product_categories.category_id as category_id','categories.store_id as store_id')
         ->get();
        
         return $productData;
@@ -158,6 +159,7 @@ class ProductController extends Controller
             $existingProduct->bulk = $request["bulk"];
             $existingProduct->retail = $request["retail"];
             $existingProduct->tag = $request["tag"];
+            $existingProduct->tagDescription = $request["tagDescription"];
             $filePath = '';
             if ($request['img'] != $existingProduct->img) {
               
@@ -233,7 +235,7 @@ class ProductController extends Controller
         ->leftJoin('categories', 'categories.id', '=', 'product_categories.category_id')
         ->Join('stores', 'stores.id', '=', 'categories.store_id')
         ->where('products.slug','LIKE','%'.$slug.'%')
-        ->select('products.id as id','products.name as name','products.sub_header as sub_header','products.tag as tag','products.url as url','products.description as description','products.short_description as short_description','products.status as status','products.img as img','products.banner as banner','products.bulk as bulk','products.retail as retail','product_categories.category_id as category_id','categories.store_id as store_id','stores.name as store')
+        ->select('products.id as id','products.name as name','products.sub_header as sub_header','products.tag as tag','products.tagDescription as tagDescription','products.url as url','products.description as description','products.short_description as short_description','products.status as status','products.img as img','products.banner as banner','products.bulk as bulk','products.retail as retail','product_categories.category_id as category_id','categories.store_id as store_id','stores.name as store')
         ->get();
        
         return $productData;

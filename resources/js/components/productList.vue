@@ -202,6 +202,17 @@ export default {
       this.loadProduct(this.slug);
     }
   },
+  metaInfo(){
+    return {
+      title: this.category.tag,
+      meta: [
+        {
+          name: 'description',
+          content: this.category.tagDescription
+        }
+      ]
+    }
+  },
   created() {
     this.slug = this.$route.params.slug;
     this.loadProduct(this.slug);

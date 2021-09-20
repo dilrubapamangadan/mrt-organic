@@ -9,6 +9,9 @@ import Swal from 'sweetalert2'
 import 'animate.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Meta from 'vue-meta'
+ 
+Vue.use(Meta);
 
 //scroll
 import VueSmoothScroll from 'vue2-smooth-scroll'

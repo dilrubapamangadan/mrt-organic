@@ -339,6 +339,17 @@ export default {
         });
     },
   },
+  metaInfo(){
+    return {
+      title: this.products.tag,
+      meta: [
+        {
+          name: 'description',
+          content: this.products.tagDescription
+        }
+      ]
+    }
+  },
   created() {
     this.slug = this.$route.params.slug;
     this.loadProduct(this.slug);

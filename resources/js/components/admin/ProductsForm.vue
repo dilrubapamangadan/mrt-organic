@@ -46,6 +46,10 @@
                                     <label for="sub">Tittle Tag</label>
                                     <input v-model="form.tag" type="text" class="form-control" id="tag" placeholder="Title tag" :class="{ 'is-invalid': form.errors.has('tag') }">
                                 </div>
+                                 <div class="form-group">
+                                    <label for="tag">Meta Description Tag</label>
+                                    <textarea v-model="form.tagDescription" type="text" class="form-control" id="tagDescription"  :class="{ 'is-invalid': form.errors.has('tagDescription') }"></textarea>
+                                </div>
                                 <div class="form-group">
                                     <label for="name">Bulk Packings</label>
                                     <input v-model="form.bulk" type="text" class="form-control" id="bulk" placeholder="Bulk packs" :class="{ 'is-invalid': form.errors.has('bulk') }">
@@ -177,7 +181,8 @@ export default {
                 url: '',
                 retail: '',
                 bulk: '',
-                tag:''
+                tag:'',
+                tagDescription:''
             }),
             imgStatus: false,
             bannerStatus: false

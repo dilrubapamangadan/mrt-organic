@@ -52,6 +52,7 @@ class CategoryController extends Controller
         $newCategory->sub_header = $request["sub_header"];
         $newCategory->short_description = $request["short_description"];
         $newCategory->tag = $request["tag"];
+        $newCategory->tagDescription = $request["tagDescription"];
         $filePath = '';        // Check if a profile image has been uploaded
         if ($request['img']) {
             // Make a image name based on user name and current timestamp
@@ -115,7 +116,7 @@ class CategoryController extends Controller
         $categoryData = DB::table('categories')
         ->Join('stores', 'stores.id', '=', 'categories.store_id')
         ->where('categories.slug',$slug)
-        ->select('categories.name as name','categories.img as img','categories.tag as tag','categories.banner as banner','categories.sub_header as sub_header','categories.description as description','categories.short_description as short_description','categories.slug as slug','categories.id as id','stores.name as store')
+        ->select('categories.name as name','categories.img as img','categories.tag as tag','categories.tagDescription as tagDescription','categories.banner as banner','categories.sub_header as sub_header','categories.description as description','categories.short_description as short_description','categories.slug as slug','categories.id as id','stores.name as store')
         ->get();
        
         return $categoryData;
@@ -153,7 +154,7 @@ class CategoryController extends Controller
             $existingCategory->sub_header = $request['sub_header'];
             $existingCategory->short_description = $request['short_description'];
             $existingCategory->tag = $request['tag'];
-
+            $existingCategory->tagDescription = $request["tagDescription"];
             $filePath = '';        // Check if a profile image has been uploaded
             if ($request['img'] != $existingCategory->img) {
                 if($existingCategory->img){
