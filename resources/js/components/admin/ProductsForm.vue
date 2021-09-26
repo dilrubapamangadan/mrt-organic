@@ -129,11 +129,11 @@
                                 <has-error :form="form" field="description"></has-error>
                         
                             
-                                <!-- <div class="custom-control custom-switch">
+                                <div class="custom-control custom-switch">
                                     <input type="checkbox"  v-model="form.status" class="custom-control-input" id="customSwitch1">
                                     <label class="custom-control-label" v-show="form.status" for="customSwitch1">Active</label>
                                     <label class="custom-control-label" v-show="!form.status" for="customSwitch1">Inactive</label>
-                                </div> -->
+                                </div>
 
                             
 
