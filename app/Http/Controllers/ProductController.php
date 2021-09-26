@@ -55,6 +55,7 @@ class ProductController extends Controller
         $newProduct->tag = $request["tag"];
         $newProduct->tagDescription = $request["tagDescription"];
         $newProduct->retail = $request["retail"];
+        $newProduct->status = $request["status"]?1:0;
         $filePath = '';        // Check if a profile image has been uploaded
         if ($request['img']  != $newProduct->img) {
             // Make a image name based on user name and current timestamp
@@ -161,6 +162,7 @@ class ProductController extends Controller
             $existingProduct->retail = $request["retail"];
             $existingProduct->tag = $request["tag"];
             $existingProduct->tagDescription = $request["tagDescription"];
+            $existingProduct->status = $request['status'] ? 1 : 0;
             $filePath = '';
             if ($request['img'] != $existingProduct->img) {
               
