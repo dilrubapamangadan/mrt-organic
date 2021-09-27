@@ -216,10 +216,10 @@ class ProductController extends Controller
     {
         $existingProduct = Product::find( $id );
         if($existingProduct->img){
-            unlink(public_path('img/product/'.$existingProduct->img));
+            unlink('img/product/'.$existingProduct->img);
         }
         if($existingProduct->banner){
-            unlink(public_path('img/product/'.$existingProduct->banner));
+            unlink('img/product/'.$existingProduct->banner);
         }
         if( $existingProduct ){
             $existingProduct->delete();

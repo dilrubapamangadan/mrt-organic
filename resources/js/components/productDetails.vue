@@ -49,8 +49,8 @@
                 >
                   Cancel
                 </button>
-                <button type="submit" id="submit" class="btn btn-green btn-green-sm ml-auto">
-                  Submit
+                <button v-bind:disabled="hasSubmitted" type="submit" id="submit" class="btn btn-green btn-green-sm ml-auto">
+                  {{ submit }}
                 </button>
               </div>
             </v-form>
@@ -306,6 +306,8 @@ export default {
         email: "",
         phone: "",
       }),
+      hasSubmitted:false,
+      submit:'Submit'
     };
   },
   methods: {
@@ -316,10 +318,13 @@ export default {
       });
     },
     submitEnquiry() {
-      $("#submit").text("Please Wait...").attr("disabled", "true");
+      this.hasSubmitted = true;
+      this.submit = "Please wait...";
       this.form
         .post("/api/enquire")
         .then(() => {
+          this.hasSubmitted = false;
+              this.submit = "Submit";
           this.form.reset();
           $("#submit").text("Submit").prop("disabled", false);
           this.$refs.Close.click();
@@ -329,6 +334,8 @@ export default {
           });
         })
         .catch(() => {
+          this.hasSubmitted = false;
+              this.submit = "Submit";
           this.form.reset();
           $("#submit").text("Submit").prop("disabled", false);
           this.$refs.Close.click();

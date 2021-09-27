@@ -127,15 +127,15 @@
 
                                 </div>
                                 <has-error :form="form" field="description"></has-error>
-                        
                             
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox"  v-model="form.status" class="custom-control-input" id="customSwitch1">
-                                    <label class="custom-control-label" v-show="form.status" for="customSwitch1">Active</label>
-                                    <label class="custom-control-label" v-show="!form.status" for="customSwitch1">Inactive</label>
+                                <div class="form-group">
+                                    <label for="inputState">Status</label>
+                                    <select  v-model="form.status" class="form-control" :class="{ 'is-invalid': form.errors.has('status') }">
+                                        <option  v-bind:value="1" :selected="form.status == 1"> Active </option>
+                                        <option  v-bind:value="0" :selected="form.status == 0"> Inactive </option>
+                                    </select>
+                                <!-- <has-error :form="form" field="store"></has-error> -->
                                 </div>
-
-                            
 
                         </div>
                         <div class="modal-footer">
@@ -317,7 +317,7 @@ export default {
             this.getProduct(this.id);
         }
         Fire.$on('updateList',() => {
-            this.$router.push({name:"Manage Products"})
+            this.$router.push({name:"Manage Products"}).catch(()=>{})
         });
     }
 }

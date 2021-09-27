@@ -104,9 +104,8 @@
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <vue-editor v-model="form.description" ></vue-editor>
-
                                 </div>
-                                <!-- <has-error :form="form" field="description"></has-error> -->
+                                <has-error :form="form" field="description"></has-error>
                             
                                 <!-- <div class="custom-control custom-switch">
                                     <input type="checkbox"  v-model="form.status" class="custom-control-input" id="customSwitch1">

@@ -98,7 +98,7 @@ organic@mrtorganic.com
     <textarea v-model="form.message" name="message" class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
   </div>
   <div class="text-right">
-           <input type="submit" id="submit" class="btn btn-dark text-white font-bold px-5" value="Submit">
+           <input type="submit" v-bind:disabled="hasSubmitted" id="submit" class="btn btn-dark text-white font-bold px-5" :value="submit">
   </div>
               </div>
          
@@ -137,22 +137,28 @@ export default {
               phone: "",
               message: ""
             }),
+            hasSubmitted:false,
+            submit:'Submit'
           };
         },
         methods: {
           submitEnquiry() {
-              $("#submit").text("Please Wait...").attr("disabled", "true");
+            this.hasSubmitted = true;
+              this.submit = "Please wait...";
               this.form
                 .post("/api/contact")
                 .then(() => {
+                  this.hasSubmitted = false;
+              this.submit = "Submit";
                   this.form.reset();
-           
                   swal.fire({
                     icon: "success",
                     title: "Thank You,Our executives will contact you shortly!",
                   });
                 })
                 .catch(() => {
+                  this.hasSubmitted = false;
+              this.submit = "Submit";
                   this.form.reset();
 
                   swal.fire({

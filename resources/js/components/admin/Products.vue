@@ -83,7 +83,7 @@
                                 </td>
                                  -->
                                 <td class="align-middle">
-                                    <span v-if="product.status" class="badge badge-success">Active</span>
+                                    <span v-if="product.status == 1" class="badge badge-success">Active</span>
                                     <span v-else class="badge badge-danger">Inactive</span>
                                 </td>
                                 <td class="project-actions text-right align-middle">
