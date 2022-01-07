@@ -40,9 +40,9 @@
       <i class="las la-map-marker-alt position-absolute left-0 h2 text-green"></i>
  <h4 class="font-bold">REACH US</h4>
   MRT ORGANIC GREEN PRODUCTS<br/>
-3 – Palatty Buildings, Pipeline Road<br/>
-Nr to Telephone Exchange<br/>
-Aluva – 683101, Cochin, Kerala, India.
+MRT House, AMC 17/323/325<br/>
+SWTS Road, Azizi Junction,<br/>
+Aluva - 683101, Cochin, Kerala, India.
       </div>
    </div>
     <div class="col-md-4">
@@ -50,14 +50,14 @@ Aluva – 683101, Cochin, Kerala, India.
       <i class="las la-tty position-absolute left-0 h2 text-green"></i>
 
  +91-484-2632991,<br/>
-+91-484-2124310
- 
+ +91-484-2124310
+
       </div>
         <div class="pl-5 pb-4 position-relative">
       <i class="las la-mobile-alt position-absolute left-0 h2 text-green"></i>
 
  +91-9746039299
- 
+
       </div>
    </div>
     <div class="col-md-4">
@@ -67,7 +67,7 @@ Aluva – 683101, Cochin, Kerala, India.
       </div>
        <div class="pl-5 position-relative">
       <i class="las la-envelope position-absolute left-0 h2 text-green"></i>
-     
+
 organic@mrtorganic.com
       </div>
    </div>
@@ -77,7 +77,7 @@ organic@mrtorganic.com
 
 
             <div class="row">
-         
+
               <div class="col-lg-6">
  <div class="form-group">
     <label for="formGroupExampleInput">Name</label>
@@ -101,15 +101,15 @@ organic@mrtorganic.com
            <input type="submit" v-bind:disabled="hasSubmitted" id="submit" class="btn btn-dark text-white font-bold px-5" :value="submit">
   </div>
               </div>
-         
-  
+
+
 
                </div>
             </div>
                </form>
             </div>
         </div>
-         
+
     </section>
           <Certification></Certification>
         <footer1></footer1>
@@ -122,11 +122,11 @@ import footer1 from './footer.vue'
 import Certification from "./index/Certification.vue";
 import Index from './index.vue';
 export default {
-        components: { 
+        components: {
             header1,
             footer1,
             Certification,
-                Index 
+                Index
         },
         data() {
           return {
